@@ -44,3 +44,48 @@ export function buildDeck(
     }))
   );
 }
+
+/**
+ * Build an interlaced deck: group cards (TODOS) appear in pairs
+ * every 5 player cards, so they feel like "racha grupal" moments.
+ */
+export function buildInterlacedDeck(
+  cardMap: Record<CardCategory, CardData[]>
+): GameCard[] {
+  const groupCards: GameCard[] = [];
+  const playerCards: GameCard[] = [];
+
+  for (const [cat, cards] of Object.entries(cardMap)) {
+    const gameCards = cards.map((card) => ({
+      ...card,
+      category: cat as CardCategory,
+    }));
+    if (cat === "TODOS") {
+      groupCards.push(...gameCards);
+    } else {
+      playerCards.push(...gameCards);
+    }
+  }
+
+  const sg = shuffleArray(groupCards);
+  const sp = shuffleArray(playerCards);
+
+  const result: GameCard[] = [];
+  let gi = 0;
+
+  // Every 5 player cards, insert 2 group cards (consecutive "racha grupal")
+  for (let i = 0; i < sp.length; i++) {
+    result.push(sp[i]);
+    if ((i + 1) % 5 === 0) {
+      if (gi < sg.length) result.push(sg[gi++]);
+      if (gi < sg.length) result.push(sg[gi++]);
+    }
+  }
+
+  // Append remaining group cards
+  while (gi < sg.length) {
+    result.push(sg[gi++]);
+  }
+
+  return result;
+}

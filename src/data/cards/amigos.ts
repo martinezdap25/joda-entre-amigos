@@ -1,46 +1,63 @@
 import { CardData } from "@/lib/types";
 
+// REGLA: todas las cartas deben tener al {player} como actor directo.
+// El CUMPLIÓ/TOMÓ debe aplicar siempre al jugador de turno.
+// ⏱️ = reto con tiempo explícito (preparado para timer futuro)
+
 export const amigosCards: CardData[] = [
-  { id: "a01", text: "{player}, decí algo que siempre quisiste decirle a {randomPlayer} pero nunca te animaste" },
-  { id: "a02", text: "Ronda de honestidad: cada uno le dice a {player} algo que mejoraría de él/ella" },
-  { id: "a03", text: "{player}, rankeá a todos del grupo del más al menos confiable. En voz alta" },
-  { id: "a04", text: "{player}, ¿a quién no invitarías a tu casamiento del grupo?" },
-  { id: "a05", text: "{player}, decí quién te parece más atractivo/a del grupo (modo incómodo)" },
-  { id: "a06", text: "El grupo tiene que decirle a {player} cuál es su peor cualidad" },
-  { id: "a07", text: "{player}, ¿con quién del grupo te irías de viaje y con quién JAMÁS?" },
-  { id: "a08", text: "{player}, ¿a quién del grupo sacarías primero de un grupo de WhatsApp?" },
-  { id: "a09", text: "Todos le dicen a {player} la primera impresión que tuvieron de él/ella" },
-  { id: "a10", text: "{player}, ¿quién del grupo te parece que tiene la vida más fácil?" },
-  { id: "a11", text: "{player} y {randomPlayer}: cada uno dice la peor cualidad del otro" },
-  { id: "a12", text: "{player}, rankeá los outfits de todos del grupo de hoy. Sin piedad" },
-  { id: "a13", text: "El grupo vota si {player} es más irritante borracho/a o sobrio/a" },
-  { id: "a14", text: "{player}, ¿quién del grupo te parece más falso/a a veces?" },
-  { id: "a15", text: "{player}, contá algo que te molesta de {randomPlayer} pero nunca dijiste" },
-  { id: "a16", text: "Ronda relámpago: todos dicen con qué animal compararían a {player}" },
-  { id: "a17", text: "{player}, ¿a quién del grupo le darías tu contraseña de Netflix?" },
-  { id: "a18", text: "{player}, elegí quién es el alma del grupo y quién es el que siempre arruina planes" },
-  { id: "a19", text: "Cada uno le da a {player} una puntuación del 1 al 10 como amigo/a" },
-  { id: "a20", text: "{player}, ¿quién del grupo cambió más desde que lo/la conocés?" },
-  { id: "a21", text: "{player}, decí quién del grupo sería tu último recurso para pedirle un favor" },
-  { id: "a22", text: "El grupo le dice a {player} qué debería cambiar de su perfil de redes" },
-  { id: "a23", text: "{player}, ¿a quién del grupo le copiarías la forma de ser?" },
-  { id: "a24", text: "{player} tiene que decir algo genuinamente lindo de {randomPlayer}. Sin chistes" },
-  { id: "a25", text: "{player}, si tuvieras que eliminar a alguien del grupo para siempre, ¿a quién?" },
-  { id: "a26", text: "Ronda de roast: todos tienen 10 segundos para bardear a {player}" },
-  { id: "a27", text: "{player}, ¿quién del grupo es el que más te bancó en un momento difícil?" },
-  { id: "a28", text: "{player}, contá un recuerdo vergonzoso que tengas con {randomPlayer}" },
-  { id: "a29", text: "{player}, ¿a quién le pedirías consejo de amor y a quién JAMÁS?" },
-  { id: "a30", text: "El grupo vota si {player} es de fiar con un secreto importante" },
-  { id: "a31", text: "{player}, ¿quién del grupo te parece que tiene más suerte en la vida?" },
-  { id: "a32", text: "{player}, decí quién del grupo habla más al pedo" },
-  { id: "a33", text: "{player}, ¿quién del grupo creés que habla de vos cuando no estás?" },
-  { id: "a34", text: "Todos le dicen a {player} en una palabra cómo lo/la describirían" },
-  { id: "a35", text: "{player}, ¿quién del grupo necesita una intervención urgente en su vida amorosa?" },
-  { id: "a36", text: "{player}, rankeá a todos del grupo por nivel de madurez" },
-  { id: "a37", text: "{player}, ¿a quién del grupo invitarías a vivir con vos y a quién ni en pedo?" },
-  { id: "a38", text: "{player}, decí algo que te da cringe de {randomPlayer} pero con cariño" },
-  { id: "a39", text: "El grupo le dice a {player} cuál es su muletilla más insoportable" },
-  { id: "a40", text: "{player}, ¿quién del grupo tiene más secretos oscuros según vos?" },
-  { id: "a41", text: "{player}, si fueras profesor/a y el grupo fueran tus alumnos, ¿a quién aprobás y a quién no?" },
-  { id: "a42", text: "{player}, contá la mayor traición que viviste con alguien del grupo (por mínima que sea)" },
+  // ── VERSUS ─────────────────────────────────────────────────
+  { id: "a01", text: "VERSUS: {player} vs {randomPlayer} — Piedra, papel o tijera al mejor de 3. El que pierda toma doble, el que gane reparte 2 tragos entre el grupo" },
+  { id: "a02", text: "VERSUS: {player} vs {randomPlayer} — Duelo de miradas: 30 segundos sin parpadear. El primero que parpadee pierde y toma doble", duration: 30 }, // ⏱️
+  { id: "a03", text: "VERSUS: {player} vs {randomPlayer} — Pulseada. El que pierda toma, el que gane elige a alguien del grupo para que tome uno" },
+  { id: "a04", text: "VERSUS: {player} vs {randomPlayer} — Cara seria: mirándose a los ojos sin reírse. El primero en quebrarse toma doble" },
+  { id: "a05", text: "VERSUS: {player} vs {randomPlayer} — Reacción rápida: ¿quién es el jugador más viejo? El último en tocarlo pierde y toma" },
+  { id: "a06", text: "VERSUS: {player} vs {randomPlayer} — Guerra de pulgares. El que pierda toma, el que gane obliga a alguien del grupo a tomar uno" },
+  { id: "a07", text: "VERSUS: {player} vs {randomPlayer} — Nombren países alternando sin repetir. El primero que se quede en blanco o repita pierde y toma doble" },
+  { id: "a08", text: "VERSUS: {player} vs {randomPlayer} — Aguanten la respiración. El que no aguante más pierde y toma. El grupo hace de árbitro", duration: 60 }, // ⏱️
+  { id: "a09", text: "VERSUS: {player} vs {randomPlayer} — Batalla de humor negro. Cada uno lanza su mejor chiste oscuro. El grupo vota. El perdedor toma doble" },
+  { id: "a10", text: "VERSUS: {player} vs {randomPlayer} — ¿Quién es más probable que sea infiel? El grupo vota entre los dos sin piedad. El más señalado toma doble" },
+  { id: "a11", text: "VERSUS: {player} vs {randomPlayer} — Pose cómica: cada uno hace la pose más ridícula posible. El grupo vota al menos gracioso. El perdedor toma doble" },
+  { id: "a12", text: "VERSUS: {player} vs {randomPlayer} — Reacción rápida: el último en quitarse el calzado pierde y toma" },
+  { id: "a13", text: "VERSUS: {player} vs {randomPlayer} — Inventen un saludo con choque de manos. Si al ejecutarlo no les sale, ambos toman" },
+  { id: "a14", text: "VERSUS: {player} vs {randomPlayer} — ¿A cuál de los dos llamarías para esconder un cuerpo? El grupo vota. El más señalado toma doble" },
+
+  // ── ACCIONES DIRECTAS DEL JUGADOR ──────────────────────────
+  { id: "a15", text: "{player}, decile a {randomPlayer} una verdad incómoda en menos de 5 segundos o tomás doble", duration: 5 }, // ⏱️
+  { id: "a16", text: "{player}, apoyá la cabeza en el hombro de {randomPlayer} hasta tu próximo turno o tomá doble" },
+  { id: "a17", text: "{player} y {randomPlayer}: cada uno dice la peor cualidad del otro. El que dude o se ría toma" },
+  { id: "a18", text: "{player}, intercambiá lugar con {randomPlayer} hasta tu próximo turno" },
+  { id: "a19", text: "{player}, imita a {randomPlayer}. Si el grupo no lo adivina en 3 intentos, tomás" },
+  { id: "a20", text: "{player}, contá una anécdota incómoda con {randomPlayer} en 10 segundos o tomás doble", duration: 10 }, // ⏱️
+  { id: "a21", text: "{player}, dale un empujón amistoso a {randomPlayer} o tomá doble" },
+  { id: "a22", text: "{player}, susurrale algo incómodo a {randomPlayer}. Si se ríe, toma doble. Si no, tomás vos" },
+  { id: "a23", text: "{player}, tocá la cara de {randomPlayer} durante 5 segundos sin reírte. Si fallás, tomás triple", duration: 5 }, // ⏱️
+  { id: "a24", text: "{player}, intercambiá un accesorio con {randomPlayer} por 2 rondas o tomá doble" },
+  { id: "a25", text: "{player}, hacé contacto visual con {randomPlayer} por 10 segundos. El primero que rompa toma", duration: 10 }, // ⏱️
+  { id: "a26", text: "{player}, apoyá tu mano sobre la de {randomPlayer} hasta tu próximo turno. Si la retirás, tomás" },
+  { id: "a27", text: "{player}, dale un pico a {randomPlayer} o tomá triple" },
+  { id: "a28", text: "{player}, dale un apodo a {randomPlayer} ahora mismo. Si el grupo lo usa hasta el final, salvás un trago" },
+  { id: "a29", text: "{player} y {randomPlayer}: digan 3 verdades incómodas alternando. El que se quede sin ideas toma triple" },
+  { id: "a30", text: "{player}, decí quién te cae peor del grupo. Esa persona elige si tomás doble o triple" },
+  { id: "a31", text: "ROAST: todos tienen 5 segundos para bardear a {player}. Si aguantás sin reírte ni quejarte, salvás. Si no, tomás", duration: 5 }, // ⏱️
+  { id: "a32", text: "{player}, decí una verdad incómoda sobre alguien del grupo sin decir el nombre. El grupo adivina. Si lo adivinan, tomás" },
+
+  // ── INTERACCIÓN EMOCIONAL / CONEXIÓN ───────────────────────
+  { id: "a33", text: "{player}, abrazá a {randomPlayer} por la espalda y no lo/la soltés por 20 segundos o tomá doble", duration: 20 }, // ⏱️
+  { id: "a34", text: "{player}, hacé contacto visual con {randomPlayer} mientras le decís algo genuinamente lindo. Si te reís, tomás" },
+  { id: "a35", text: "{player}, contale al grupo el momento más vergonzoso que viviste con {randomPlayer}" },
+  { id: "a36", text: "{player}, describí a {randomPlayer} como personaje de película o serie. Si el grupo no adivina, tomás" },
+  { id: "a37", text: "{player}, declarale en serio algo que admirás de {randomPlayer}. Sin chiste ni ironía, o tomás doble" },
+  { id: "a38", text: "{player}, contá algo que le envidias a {randomPlayer} y nunca le dijiste" },
+  { id: "a39", text: "{player}, describí tu peor anécdota con alguien del grupo sin decir el nombre. El grupo adivina" },
+  { id: "a40", text: "{player}, decile a {randomPlayer} lo que realmente pensás de su vida amorosa" },
+  { id: "a41", text: "{player}, dale un masaje de 15 segundos en la cabeza a {randomPlayer} o tomá doble", duration: 15 }, // ⏱️
+  { id: "a42", text: "{player}, contá algo que le perdonaste a alguien del grupo pero que todavía te molesta un poco" },
+  { id: "a43", text: "{player}, mirá fijo a {randomPlayer} y mostrá la cara que pone cuando miente" },
+  { id: "a44", text: "{player}, contá tu recuerdo favorito con alguien del grupo sin decir quién. El grupo adivina" },
+  { id: "a45", text: "{player}, confesá algo que pensás sobre {randomPlayer} y que nunca te animaste a decir" },
+  { id: "a46", text: "{player}, abrazá a la persona del grupo con la que tenés la relación más complicada, por 10 segundos", duration: 10 }, // ⏱️
+  { id: "a47", text: "{player}, contá algo que alguien del grupo hizo por vos y que nunca le agradeciste bien" },
+  { id: "a48", text: "{player}, hacé una imitación de {randomPlayer} contando una historia aburrida. El grupo puntúa del 1 al 10" },
+  { id: "a49", text: "{player}, decile al grupo quién creés que es el más hipócrita de todos aquí y por qué. Sin esquivar" },
+  { id: "a50", text: "{player}, imitá cómo {randomPlayer} se enoja. Si no lo reconocen en el grupo, tomás triple" },
 ];

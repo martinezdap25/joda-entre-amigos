@@ -14,8 +14,12 @@ export default function Home() {
     totalCards,
     turnIndex,
     progress,
+    scores,
+    isGroupCard,
     startGame,
-    nextCard,
+    handleCompleted,
+    handleDrank,
+    handleNext,
     restartGame,
     exitGame,
   } = useGame();
@@ -33,9 +37,11 @@ export default function Home() {
           currentCard={currentCard}
           cardIndex={cardIndex}
           totalCards={totalCards}
-          turnIndex={turnIndex}
           progress={progress}
-          onNext={nextCard}
+          isGroupCard={isGroupCard}
+          onCompleted={handleCompleted}
+          onDrank={handleDrank}
+          onNext={handleNext}
           onExit={exitGame}
         />
       )}
@@ -43,6 +49,7 @@ export default function Home() {
       {screen === "finished" && (
         <GameOver
           totalCards={totalCards}
+          scores={scores}
           onRestart={restartGame}
           onExit={exitGame}
         />

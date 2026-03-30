@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { GameCard, GameScreen } from "@/lib/types";
-import { shuffleArray, buildDeck } from "@/lib/utils";
+import { GameCard, GameScreen, PlayerScore } from "@/lib/types";
+import { buildInterlacedDeck } from "@/lib/utils";
 import { cardsByCategory } from "@/data";
-import { CARDS_PER_PLAYER } from "@/lib/constants";
+import { CARDS_PER_PLAYER, CATEGORY_CONFIG } from "@/lib/constants";
 
 interface UseGameReturn {
   // State
@@ -17,10 +17,14 @@ interface UseGameReturn {
   currentCard: GameCard | null;
   progress: number;
   totalCards: number;
+  scores: PlayerScore[];
+  isGroupCard: boolean;
 
   // Actions
   startGame: (playerList: string[]) => void;
-  nextCard: () => void;
+  handleCompleted: () => void;
+  handleDrank: () => void;
+  handleNext: () => void;
   restartGame: () => void;
   exitGame: () => void;
 }
@@ -31,6 +35,7 @@ export function useGame(): UseGameReturn {
   const [deck, setDeck] = useState<GameCard[]>([]);
   const [cardIndex, setCardIndex] = useState(0);
   const [turnIndex, setTurnIndex] = useState(0);
+  const [scores, setScores] = useState<PlayerScore[]>([]);
 
   const currentPlayer = players.length > 0
     ? players[turnIndex % players.length]
@@ -38,32 +43,24 @@ export function useGame(): UseGameReturn {
 
   const currentCard = deck.length > 0 ? deck[cardIndex] : null;
 
+  const isGroupCard = currentCard
+    ? CATEGORY_CONFIG[currentCard.category].isGroupCard
+    : false;
+
   const progress = deck.length > 0
     ? Math.round(((cardIndex + 1) / deck.length) * 100)
     : 0;
 
-  const createShuffledDeck = useCallback(
+  const createDeck = useCallback(
     (playerCount: number) => {
-      const allCards = buildDeck(cardsByCategory);
-      const shuffled = shuffleArray(allCards);
+      const allCards = buildInterlacedDeck(cardsByCategory);
       const total = CARDS_PER_PLAYER * playerCount;
-      return shuffled.slice(0, Math.min(total, shuffled.length));
+      return allCards.slice(0, Math.min(total, allCards.length));
     },
     []
   );
 
-  const startGame = useCallback(
-    (playerList: string[]) => {
-      setPlayers(playerList);
-      setDeck(createShuffledDeck(playerList.length));
-      setCardIndex(0);
-      setTurnIndex(0);
-      setScreen("playing");
-    },
-    [createShuffledDeck]
-  );
-
-  const nextCard = useCallback(() => {
+  const advanceCard = useCallback(() => {
     if (cardIndex + 1 >= deck.length) {
       setScreen("finished");
       return;
@@ -72,17 +69,56 @@ export function useGame(): UseGameReturn {
     setTurnIndex((i) => i + 1);
   }, [cardIndex, deck.length]);
 
+  const handleCompleted = useCallback(() => {
+    const pts = currentCard ? CATEGORY_CONFIG[currentCard.category].points : 1;
+    setScores((prev) =>
+      prev.map((s) =>
+        s.name === currentPlayer ? { ...s, medals: s.medals + pts } : s
+      )
+    );
+    advanceCard();
+  }, [currentPlayer, currentCard, advanceCard]);
+
+  const handleDrank = useCallback(() => {
+    const pts = currentCard ? CATEGORY_CONFIG[currentCard.category].points : 1;
+    setScores((prev) =>
+      prev.map((s) =>
+        s.name === currentPlayer ? { ...s, drinks: s.drinks + pts } : s
+      )
+    );
+    advanceCard();
+  }, [currentPlayer, currentCard, advanceCard]);
+
+  // Para cartas grupales: avanza sin asignar puntos a nadie
+  const handleNext = useCallback(() => {
+    advanceCard();
+  }, [advanceCard]);
+
+  const startGame = useCallback(
+    (playerList: string[]) => {
+      setPlayers(playerList);
+      setDeck(createDeck(playerList.length));
+      setScores(playerList.map((name) => ({ name, medals: 0, drinks: 0 })));
+      setCardIndex(0);
+      setTurnIndex(0);
+      setScreen("playing");
+    },
+    [createDeck]
+  );
+
   const restartGame = useCallback(() => {
-    setDeck(createShuffledDeck(players.length));
+    setDeck(createDeck(players.length));
+    setScores(players.map((name) => ({ name, medals: 0, drinks: 0 })));
     setCardIndex(0);
     setTurnIndex(0);
     setScreen("playing");
-  }, [createShuffledDeck, players.length]);
+  }, [createDeck, players]);
 
   const exitGame = useCallback(() => {
     setScreen("setup");
     setPlayers([]);
     setDeck([]);
+    setScores([]);
     setCardIndex(0);
     setTurnIndex(0);
   }, []);
@@ -97,8 +133,12 @@ export function useGame(): UseGameReturn {
     currentCard,
     progress,
     totalCards: deck.length,
+    scores,
+    isGroupCard,
     startGame,
-    nextCard,
+    handleCompleted,
+    handleDrank,
+    handleNext,
     restartGame,
     exitGame,
   };
