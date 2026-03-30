@@ -1,5 +1,7 @@
 "use client";
 
+import { RotateCcw, DoorOpen } from "lucide-react";
+
 interface GameOverProps {
   totalCards: number;
   onRestart: () => void;
@@ -20,12 +22,14 @@ export function GameOver({ totalCards, onRestart, onExit }: GameOverProps) {
       </p>
 
       <div className="flex gap-3 flex-wrap justify-center">
-        <button onClick={onRestart} className="btn-primary max-w-[220px]">
-          🔄 OTRA RONDA
+        <button onClick={onRestart} className="btn-primary max-w-[220px] flex items-center justify-center gap-2">
+          <RotateCcw size={18} strokeWidth={2.5} />
+          OTRA RONDA
         </button>
 
-        <button onClick={onExit} className="btn-secondary">
-          🚪 SALIR
+        <button onClick={onExit} className="btn-secondary flex items-center justify-center gap-2">
+          <DoorOpen size={18} strokeWidth={2.5} />
+          SALIR
         </button>
       </div>
     </div>

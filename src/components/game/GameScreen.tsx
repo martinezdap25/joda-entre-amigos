@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LogOut, ChevronRight } from "lucide-react";
 import { GameCard } from "@/lib/types";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { PlayerChip } from "@/components/ui/PlayerChip";
@@ -44,9 +45,11 @@ export function GameScreen({
         <button
           onClick={onExit}
           className="glass rounded-xl px-3.5 py-2 text-xs font-body text-white/40
-                     cursor-pointer transition-all duration-200 hover:text-white/70"
+                     cursor-pointer transition-all duration-200 hover:text-white/70
+                     flex items-center gap-1.5"
         >
-          ← Salir
+          <LogOut size={13} />
+          Salir
         </button>
         <span className="font-body text-xs text-white/30">
           {cardIndex + 1} / {totalCards}
@@ -85,8 +88,9 @@ export function GameScreen({
       </div>
 
       {/* Next button */}
-      <button onClick={handleNext} className="btn-primary max-w-[400px] mt-7">
-        SIGUIENTE →
+      <button onClick={handleNext} className="btn-primary max-w-[400px] mt-7 flex items-center justify-center gap-2">
+        SIGUIENTE
+        <ChevronRight size={22} strokeWidth={2.5} />
       </button>
 
       {/* Player rotation indicator */}

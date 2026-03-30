@@ -4,6 +4,9 @@ export const MIN_PLAYERS = 2;
 export const MAX_PLAYERS = 15;
 export const MAX_NAME_LENGTH = 20;
 
+/** Cantidad de cartas por jugador por partida */
+export const CARDS_PER_PLAYER = 10;
+
 export const CATEGORY_CONFIG: Record<CardCategory, CategoryConfig> = {
   RETO: {
     label: "RETO",

@@ -2,14 +2,14 @@ import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "Joda Entre Amigos — El juego que arruina amistades",
+  title: "El Coliseo del Trago — Bebe o Muere",
   description:
     "Juego de cartas para fiestas y juntadas. Retos, confesiones, y momentos incómodos entre amigos. 250+ cartas.",
   keywords: ["juego de cartas", "fiesta", "amigos", "do or drink", "yo nunca nunca"],
-  authors: [{ name: "Joda Entre Amigos" }],
+  authors: [{ name: "El Coliseo del Trago" }],
   openGraph: {
-    title: "Joda Entre Amigos 🔥",
-    description: "El juego de fiesta que arruina amistades. 250+ cartas.",
+    title: "El Coliseo del Trago 🏛️",
+    description: "Bebe o Muere. 250+ cartas.",
     type: "website",
   },
 };
@@ -37,7 +37,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Nunito:wght@400;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Galindo&family=Nunito:wght@400;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -47,7 +47,7 @@ export default function RootLayout({
           fontFamily: "'Nunito', sans-serif",
           // CSS custom props for Tailwind font families
           // @ts-ignore
-          "--font-display": "'Permanent Marker'",
+          "--font-display": "'Galindo'",
           "--font-body": "'Nunito'",
         } as React.CSSProperties}
       >

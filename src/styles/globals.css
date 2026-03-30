@@ -19,10 +19,10 @@
 
   body {
     background:
-      radial-gradient(ellipse at 20% 0%, rgba(255, 107, 53, 0.07) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 100%, rgba(224, 64, 251, 0.05) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(0, 229, 255, 0.03) 0%, transparent 70%),
-      #0a0a12;
+      radial-gradient(ellipse at 20% 0%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(139, 105, 20, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(201, 168, 76, 0.02) 0%, transparent 70%),
+      #08070e;
   }
 
   ::selection {
@@ -50,6 +50,11 @@
 
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-fire via-brand-pink to-brand-cyan;
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(160deg, #F5E27A 0%, #C9A84C 40%, #E8C84A 60%, #8B6914 100%);
   }
 
   .btn-primary {

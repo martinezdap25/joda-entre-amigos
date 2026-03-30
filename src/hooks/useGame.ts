@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { GameCard, GameScreen } from "@/lib/types";
 import { shuffleArray, buildDeck } from "@/lib/utils";
 import { cardsByCategory } from "@/data";
+import { CARDS_PER_PLAYER } from "@/lib/constants";
 
 interface UseGameReturn {
   // State
@@ -41,15 +42,20 @@ export function useGame(): UseGameReturn {
     ? Math.round(((cardIndex + 1) / deck.length) * 100)
     : 0;
 
-  const createShuffledDeck = useCallback(() => {
-    const allCards = buildDeck(cardsByCategory);
-    return shuffleArray(allCards);
-  }, []);
+  const createShuffledDeck = useCallback(
+    (playerCount: number) => {
+      const allCards = buildDeck(cardsByCategory);
+      const shuffled = shuffleArray(allCards);
+      const total = CARDS_PER_PLAYER * playerCount;
+      return shuffled.slice(0, Math.min(total, shuffled.length));
+    },
+    []
+  );
 
   const startGame = useCallback(
     (playerList: string[]) => {
       setPlayers(playerList);
-      setDeck(createShuffledDeck());
+      setDeck(createShuffledDeck(playerList.length));
       setCardIndex(0);
       setTurnIndex(0);
       setScreen("playing");
@@ -67,11 +73,11 @@ export function useGame(): UseGameReturn {
   }, [cardIndex, deck.length]);
 
   const restartGame = useCallback(() => {
-    setDeck(createShuffledDeck());
+    setDeck(createShuffledDeck(players.length));
     setCardIndex(0);
     setTurnIndex(0);
     setScreen("playing");
-  }, [createShuffledDeck]);
+  }, [createShuffledDeck, players.length]);
 
   const exitGame = useCallback(() => {
     setScreen("setup");
