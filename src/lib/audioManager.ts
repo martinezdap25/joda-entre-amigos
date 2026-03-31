@@ -30,7 +30,12 @@ class AudioManager {
     const audio = new Audio(src);
     audio.loop   = true;
     audio.volume = this._musicVol;
-    audio.play().catch(() => {});
+    audio.play().catch(() => {
+      // Autoplay bloqueado — arrancar en la primera interacción del usuario
+      const resume = () => { audio.play().catch(() => {}); };
+      document.addEventListener("click",      resume, { once: true });
+      document.addEventListener("touchstart", resume, { once: true });
+    });
     this.bgAudio = audio;
   }
 
