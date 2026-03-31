@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { RotateCcw, DoorOpen } from "lucide-react";
 import { PlayerScore } from "@/lib/types";
 
@@ -11,6 +12,19 @@ interface GameOverProps {
 }
 
 export function GameOver({ totalCards, scores, onRestart, onExit }: GameOverProps) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const audio = new Audio("/sounds/final_song.mp3");
+    audio.loop = true;
+    audio.volume = 0.6;
+    audio.play().catch(() => {});
+    audioRef.current = audio;
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, []);
   // Campeón: más medallas (desempate: menos copas)
   const champion = [...scores].sort((a, b) =>
     b.medals - a.medals || a.drinks - b.drinks
