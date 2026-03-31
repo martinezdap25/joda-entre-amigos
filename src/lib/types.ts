@@ -8,7 +8,10 @@ export type CardCategory =
 export interface CardData {
   id: string;
   text: string;
-  duration?: number; // segundos para el timer (⏱️), undefined = sin timer
+  duration?: number;       // segundos para el timer (⏱️), undefined = sin timer
+  description?: string;    // texto aclaratorio opcional, se muestra en gris pequeño
+  image?: string;          // ruta de imagen opcional (ej: "/poses/pose1.jpg")
+  poseCount?: 1 | 2 | 3;  // cantidad de jugadores requeridos para la pose
 }
 
 export interface GameCard extends CardData {

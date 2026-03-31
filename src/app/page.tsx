@@ -12,7 +12,6 @@ export default function Home() {
     currentCard,
     cardIndex,
     totalCards,
-    turnIndex,
     progress,
     scores,
     isGroupCard,
@@ -20,6 +19,8 @@ export default function Home() {
     handleCompleted,
     handleDrank,
     handleNext,
+    handleVersusResult,
+    handlePoseResult,
     restartGame,
     exitGame,
   } = useGame();
@@ -42,6 +43,8 @@ export default function Home() {
           onCompleted={handleCompleted}
           onDrank={handleDrank}
           onNext={handleNext}
+          onVersusResult={handleVersusResult}
+          onPoseResult={handlePoseResult}
           onExit={exitGame}
         />
       )}

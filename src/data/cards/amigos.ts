@@ -60,4 +60,25 @@ export const amigosCards: CardData[] = [
   { id: "a48", text: "{player}, hacé una imitación de {randomPlayer} contando una historia aburrida. El grupo puntúa del 1 al 10" },
   { id: "a49", text: "{player}, decile al grupo quién creés que es el más hipócrita de todos aquí y por qué. Sin esquivar" },
   { id: "a50", text: "{player}, imitá cómo {randomPlayer} se enoja. Si no lo reconocen en el grupo, tomás triple" },
+
+  // ── POSES ───────────────────────────────────────────────────
+  // Fotos en /public/poses/ — poseCount indica cuántos jugadores
+  // poseCount 1 → solo {player} | 2 → {player}+{randomPlayer} | 3 → +{randomPlayer2}
+
+  // — 1 jugador —
+  { id: "pose01", text: "{player}, replicá esta pose. Si no querés, tomás", image: "/images/poses/pose1p1.jpg", poseCount: 1 },
+  { id: "pose02", text: "{player}, replicá esta pose. Si no querés, tomás", image: "/images/poses/pose1p2.jpg", poseCount: 1 },
+  { id: "pose03", text: "{player}, replicá esta pose. Si no querés, tomás", image: "/images/poses/pose1p3.jpg", poseCount: 1 },
+
+  // — 2 jugadores —
+  { id: "pose04", text: "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman", image: "/images/poses/pose2p1.jpeg", poseCount: 2 },
+  { id: "pose05", text: "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman", image: "/images/poses/pose2p2.jpeg", poseCount: 2 },
+  { id: "pose06", text: "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman", image: "/images/poses/pose2p3.jpeg", poseCount: 2 },
+  { id: "pose07", text: "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman", image: "/images/poses/pose2p4.jpg", poseCount: 2 },
+  { id: "pose08", text: "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman", image: "/images/poses/pose2p5.jpg", poseCount: 2 },
+
+  // — 3 jugadores —
+  { id: "pose09", text: "{player}, {randomPlayer} y {randomPlayer2}: repliquen esta pose entre los 3. Si no quieren, todos toman", image: "/images/poses/pose3p1.png", poseCount: 3 },
+  { id: "pose10", text: "{player}, {randomPlayer} y {randomPlayer2}: repliquen esta pose entre los 3. Si no quieren, todos toman", image: "/images/poses/pose3p2.jpg", poseCount: 3 },
+  { id: "pose11", text: "{player}, {randomPlayer} y {randomPlayer2}: repliquen esta pose entre los 3. Si no quieren, todos toman", image: "/images/poses/pose3p3.jpeg", poseCount: 3 },
 ];

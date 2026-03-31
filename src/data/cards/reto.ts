@@ -4,22 +4,18 @@ export const retoCards: CardData[] = [
   { id: "r01", text: "{player}, hacé 10 flexiones lentas. Cada una que no hagas = trago" },
   { id: "r02", text: "{player}, intercambiá una prenda con {randomPlayer} por 2 rondas" },
   { id: "r03", text: "{player}, sentate encima de {randomPlayer} hasta tu próximo turno" },
-  { id: "r04", text: "VERSUS: {player} vs {randomPlayer} — el primero que se ría pierde" },
-  { id: "r05", text: "{player}, hacé 15 sentadillas sin parar" },
-  { id: "r06", text: "{player}, bailá pegado/a con {randomPlayer} durante 15 segundos", duration: 15 }, // ⏱️
+  { id: "r04", text: "VERSUS: {player} vs {randomPlayer} — el primero que se ría pierde", description: "Si empatan, pierde {player}" },
+  { id: "r06", text: "{player}, bailá pegado/a con {randomPlayer} durante 15 segundos", duration: 15 },
   { id: "r07", text: "{player}, hablá como bebé hasta tu próximo turno" },
   { id: "r08", text: "{player}, dale un beso en la mejilla a {randomPlayer} sin reírte" },
   { id: "r09", text: "{player}, sacate una prenda o tomá" },
-  { id: "r10", text: "{player}, cargá a {randomPlayer} 5 segundos", duration: 5 }, // ⏱️
+  { id: "r10", text: "{player}, cargá a {randomPlayer} 5 segundos", duration: 5 },
 
   { id: "r11", text: "{player}, dejá que el grupo te ponga un apodo por toda la partida" },
   { id: "r12", text: "{player}, declarale amor a {randomPlayer} con drama exagerado" },
   { id: "r13", text: "{player}, no podés decir 'sí' ni 'no' por 2 rondas" },
   { id: "r14", text: "{player}, dejá que el grupo elija algo que tengas que comer o tomar" },
-  { id: "r15", text: "{player}, hacé plancha 20 segundos", duration: 20 }, // ⏱️
   { id: "r16", text: "{player}, dejá que {randomPlayer} te haga un peinado ridículo" },
-  { id: "r17", text: "{player}, imitá a {randomPlayer} hasta que adivinen quién es" },
-  { id: "r18", text: "{player}, actuá una escena dramática ridícula con {randomPlayer}" },
   { id: "r19", text: "{player}, usá un objeto como sombrero por 2 rondas" },
   { id: "r20", text: "{player}, elegí una palabra prohibida hasta tu próximo turno" },
 
@@ -29,30 +25,38 @@ export const retoCards: CardData[] = [
   { id: "r24", text: "{player}, girá 5 veces y caminá en línea recta" },
   { id: "r25", text: "VERSUS: {player} vs {randomPlayer} — pulseada. El perdedor toma" },
   { id: "r26", text: "{player}, cantá algo que el grupo elija" },
-  { id: "r27", text: "{player}, sostené un hielo en la mano 10 segundos", duration: 10 }, // ⏱️
+  { id: "r27", text: "{player}, sostené un hielo en la mano 10 segundos", duration: 10 },
   { id: "r28", text: "{player}, decile un piropo ridículo a {randomPlayer}" },
   { id: "r29", text: "{player}, terminá todas tus frases con 'mi rey' hasta tu próximo turno" },
   { id: "r30", text: "{player}, mantené contacto físico con {randomPlayer} por 1 ronda" },
 
   { id: "r31", text: "{player}, pedile perdón a {randomPlayer} por algo inventado con drama" },
-  { id: "r32", text: "{player}, hacé 10 abdominales" },
-  { id: "r33", text: "{player}, serví tragos como si fueras un mesero elegante" },
-  { id: "r34", text: "{player}, aguantá en un pie 15 segundos", duration: 15 }, // ⏱️
-  { id: "r35", text: "{player}, dejá que el grupo elija una pose ridícula y mantenela 10 segundos", duration: 10 }, // ⏱️
-  { id: "r36", text: "{player}, gritá algo épico como si fueras un guerrero" },
-  { id: "r37", text: "{player}, obedecé a {randomPlayer} por una ronda" },
+  { id: "r33", text: "{player}, serví un trago como si fueras un mesero elegante" },
+  { id: "r35", text: "{player}, dejá que el grupo elija una pose ridícula y mantenela 10 segundos", duration: 10 },
+  { id: "r36", text: "{player}, gritá como si te hubieras golpeado el dedo chiquito" },
+  { id: "r37", text: "{player}, obedecé a {randomPlayer} por 2 rondas", description: "No puede mandarte nada peligroso. Si te negás, tomás 2" },
   { id: "r38", text: "{player}, no podés sentarte por 2 rondas" },
-  { id: "r39", text: "VERSUS: {player} vs {randomPlayer} — trabalenguas. El que pierde toma" },
-  { id: "r40", text: "{player}, abrazá fuerte a {randomPlayer} 10 segundos", duration: 10 }, // ⏱️
+  { id: "r39", text: "VERSUS: {player} vs {randomPlayer} — trabalenguas. El que pierde toma", description: "Si empatan, pierde {player}" },
+  { id: "r40", text: "{player}, abrazá fuerte a {randomPlayer} 10 segundos", duration: 10 },
 
-  { id: "r41", text: "{player}, hacé una mini serenata a {randomPlayer}" },
   { id: "r42", text: "{player}, hablá con acento raro por 2 rondas" },
   { id: "r43", text: "VERSUS: {player} vs {randomPlayer} — mano no dominante. El que pierde toma" },
   { id: "r44", text: "{player}, dejá que te tiren un poco de agua o tomá" },
   { id: "r45", text: "{player}, intercambiá remera con {randomPlayer}" },
-  { id: "r46", text: "{player}, hacé equilibrio con un pie 20 segundos", duration: 20 }, // ⏱️
-  { id: "r47", text: "{player}, besá la mano de {randomPlayer} con intensidad" },
-  { id: "r48", text: "{player}, hacé de caballo para {randomPlayer}" },
+  { id: "r47", text: "{player}, besá la mano de {randomPlayer} como si fuera una princesa" },
   { id: "r49", text: "{player}, hablá cantando por una ronda" },
-  { id: "r50", text: "VERSUS: {player} vs {randomPlayer} — cosquillas. El primero que pierda toma" },
+  { id: "r50", text: "VERSUS: {player} vs {randomPlayer} — cosquillas. El primero que pierda toma", description: "Si empatan, pierde {player}" },
+
+  // NUEVAS
+  { id: "r51", text: "{player}, si no sabés el segundo nombre de {randomPlayer}, tomás 2" },
+  { id: "r52", text: "{player}, intentá adivinar el color de la ropa interior de {randomPlayer}. Si fallás, tomás 2" },
+  { id: "r53", text: "{player}, escondé una moneda en tu ropa. {randomPlayer} tiene 10 segundos para encontrarla. Si no puede, ganás", duration: 10 },
+  { id: "r54", text: "{player}, cada jugador debe apretarte los cachetes como si fuera tu abuela" },
+  { id: "r55", text: "{player}, hablá susurrando durante 2 rondas", description: "Cada vez que te olvides, tomás 1" },
+  { id: "r56", text: "{player}, dale un beso en el cachete a la persona que esté 3 lugares a tu derecha" },
+  { id: "r57", text: "{player}, hacé una risa de millonario sin salirte del personaje" },
+  { id: "r58", text: "{player}, armá un equipo con la mitad del grupo. El resto toma 1" },
+  { id: "r59", text: "{player}, pasá un hielo con la boca a la persona que está 2 lugares a tu izquierda" },
+  { id: "r60", text: "{player}, dale la mano a {randomPlayer} durante 2 rondas" },
+  { id: "r61", text: "{player}, hablá como vaca durante una ronda" },
 ];

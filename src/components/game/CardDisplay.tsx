@@ -5,12 +5,15 @@ import { processCardText } from "@/lib/utils";
 import { CATEGORY_CONFIG } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
 import { CardTimer } from "./CardTimer";
+import { ImageLightbox } from "./ImageLightbox";
 
 interface CardDisplayProps {
   card: GameCard;
   currentPlayer: string;
   players: string[];
   animKey: number;
+  versusPlayer?: string;
+  versusPlayer2?: string;
   onTimerRunning?: (running: boolean) => void;
 }
 
@@ -110,10 +113,12 @@ export function CardDisplay({
   currentPlayer,
   players,
   animKey,
+  versusPlayer,
+  versusPlayer2,
   onTimerRunning,
 }: CardDisplayProps) {
   const config = CATEGORY_CONFIG[card.category];
-  const text = processCardText(card.text, currentPlayer, players);
+  const text = processCardText(card.text, currentPlayer, players, versusPlayer, versusPlayer2);
   const animationProps = getCardAnimation(card.category);
   const showLightning = card.category === "RETO" || card.category === "PICANTE";
 
@@ -163,9 +168,27 @@ export function CardDisplay({
         {text}
       </p>
 
+      {/* Imagen opcional (ej: poses) */}
+      {card.image && <ImageLightbox src={card.image} />}
+
+      {/* Descripción opcional */}
+      {card.description && (
+        <p
+          className="font-display text-[#888] leading-relaxed mt-4 max-w-[320px] text-center"
+          style={{ fontSize: "clamp(0.72rem, 2.5vw, 0.82rem)", letterSpacing: "0.01em" }}
+        >
+          {card.description}
+        </p>
+      )}
+
       {/* Timer (solo para cartas con duración explícita) */}
       {card.duration !== undefined && (
-        <CardTimer duration={card.duration} accentColor={config.color} onRunningChange={onTimerRunning} />
+        <CardTimer
+          duration={card.duration}
+          accentColor={config.color}
+          large={card.category === "TODOS"}
+          onRunningChange={onTimerRunning}
+        />
       )}
 
       {/* Línea ornamental inferior */}

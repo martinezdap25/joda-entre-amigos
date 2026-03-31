@@ -25,6 +25,8 @@ interface UseGameReturn {
   handleCompleted: () => void;
   handleDrank: () => void;
   handleNext: () => void;
+  handleVersusResult: (winner: string, loser: string) => void;
+  handlePoseResult: (involvedPlayers: string[], success: boolean) => void;
   restartGame: () => void;
   exitGame: () => void;
 }
@@ -94,6 +96,33 @@ export function useGame(): UseGameReturn {
     advanceCard();
   }, [advanceCard]);
 
+  // Para cartas VERSUS: winner recibe medallas, loser recibe copas
+  const handleVersusResult = useCallback((winner: string, loser: string) => {
+    const pts = currentCard ? CATEGORY_CONFIG[currentCard.category].points : 1;
+    setScores((prev) =>
+      prev.map((s) => {
+        if (s.name === winner) return { ...s, medals: s.medals + pts };
+        if (s.name === loser) return { ...s, drinks: s.drinks + pts };
+        return s;
+      })
+    );
+    advanceCard();
+  }, [currentCard, advanceCard]);
+
+  // Para cartas de pose: todos los involucrados reciben medallas o copas
+  const handlePoseResult = useCallback((involvedPlayers: string[], success: boolean) => {
+    const pts = currentCard ? CATEGORY_CONFIG[currentCard.category].points : 1;
+    setScores((prev) =>
+      prev.map((s) => {
+        if (!involvedPlayers.includes(s.name)) return s;
+        return success
+          ? { ...s, medals: s.medals + pts }
+          : { ...s, drinks: s.drinks + pts };
+      })
+    );
+    advanceCard();
+  }, [currentCard, advanceCard]);
+
   const startGame = useCallback(
     (playerList: string[]) => {
       setPlayers(playerList);
@@ -139,6 +168,8 @@ export function useGame(): UseGameReturn {
     handleCompleted,
     handleDrank,
     handleNext,
+    handleVersusResult,
+    handlePoseResult,
     restartGame,
     exitGame,
   };

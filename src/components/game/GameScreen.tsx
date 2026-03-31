@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Shield } from "lucide-react";
 import { GameCard } from "@/lib/types";
+import { pickRandomPlayer } from "@/lib/utils";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { CardDisplay } from "./CardDisplay";
 
@@ -17,6 +18,8 @@ interface GameScreenProps {
   onCompleted: () => void;
   onDrank: () => void;
   onNext: () => void;
+  onVersusResult: (winner: string, loser: string) => void;
+  onPoseResult: (involvedPlayers: string[], success: boolean) => void;
   onExit: () => void;
 }
 
@@ -31,11 +34,36 @@ export function GameScreen({
   onCompleted,
   onDrank,
   onNext,
+  onVersusResult,
+  onPoseResult,
   onExit,
 }: GameScreenProps) {
   const [animKey, setAnimKey] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
+  const [versusPlayer, setVersusPlayer] = useState<string>("");
+  const [versusPlayer2, setVersusPlayer2] = useState<string>("");
+
+  const isVersus = currentCard.text.startsWith("VERSUS:");
+  const isPose = !!currentCard.poseCount;
+  const poseCount = currentCard.poseCount ?? 1;
+
+  // Elegir jugadores extra una vez por carta
+  useEffect(() => {
+    const needsOne = (isVersus || poseCount >= 2) && players.length > 1;
+    if (!needsOne) { setVersusPlayer(""); setVersusPlayer2(""); return; }
+
+    const p1 = pickRandomPlayer(players, currentPlayer);
+    setVersusPlayer(p1);
+
+    if (poseCount >= 3 && players.length > 2) {
+      const rest = players.filter(p => p !== currentPlayer && p !== p1);
+      setVersusPlayer2(rest[Math.floor(Math.random() * rest.length)] ?? "");
+    } else {
+      setVersusPlayer2("");
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentCard.id]);
 
   const handleChoice = (action: () => void) => {
     if (timerRunning) {
@@ -54,9 +82,9 @@ export function GameScreen({
   };
 
   return (
-    <div className="min-h-dvh flex flex-col items-center px-4 py-5 relative z-10 bg-gradient-to-b from-[#18120a] via-[#221a0e] to-[#0e0c08]">
+    <div className="h-dvh flex flex-col items-center px-4 py-5 relative z-10 bg-gradient-to-b from-[#18120a] via-[#221a0e] to-[#0e0c08]">
       {/* Top bar */}
-      <div className="w-full max-w-[440px] flex justify-between items-center mb-5">
+      <div className="w-full max-w-[440px] flex justify-between items-center mb-5 shrink-0">
         <button
           onClick={onExit}
           className="rounded-lg px-4 py-2 text-xs font-display tracking-[0.18em] uppercase border border-[#C9A84C]/60 bg-[#18120a] text-[#C9A84C] hover:bg-[#221a0e] hover:text-[#F0D98A] transition-colors duration-200 focus:outline-none"
@@ -120,6 +148,8 @@ export function GameScreen({
           currentPlayer={currentPlayer}
           players={players}
           animKey={animKey}
+          versusPlayer={versusPlayer || undefined}
+          versusPlayer2={versusPlayer2 || undefined}
           onTimerRunning={setTimerRunning}
         />
       </div>
@@ -139,6 +169,68 @@ export function GameScreen({
             <span className="text-xl">🎲</span>
             SIGUIENTE
           </button>
+        ) : isVersus && versusPlayer ? (
+          /* Carta VERSUS → winner recibe medallas, loser recibe copas */
+          <>
+            <button
+              onClick={() => handleChoice(() => onVersusResult(currentPlayer, versusPlayer))}
+              className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="text-lg">🏅</span>
+              <span className="truncate max-w-full px-2">{currentPlayer}</span>
+              <span className="text-[10px] text-[#C9A84C]/50 tracking-[0.2em]">GANÓ</span>
+            </button>
+
+            <button
+              onClick={() => handleChoice(() => onVersusResult(versusPlayer, currentPlayer))}
+              className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="text-lg">🏅</span>
+              <span className="truncate max-w-full px-2">{versusPlayer}</span>
+              <span className="text-[10px] text-[#C9A84C]/50 tracking-[0.2em]">GANÓ</span>
+            </button>
+          </>
+        ) : isPose && poseCount >= 2 ? (
+          /* Pose grupal → todos los involucrados ganan medallas o copas */
+          (() => {
+            const involved = [currentPlayer, versusPlayer, versusPlayer2]
+              .filter(Boolean)
+              .slice(0, poseCount) as string[];
+            return (
+              <>
+                <button
+                  onClick={() => handleChoice(() => onPoseResult(involved, true))}
+                  className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
+                  <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
+                  <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
+                  <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
+                  <span className="text-xl">🏅</span>
+                  <span className="text-xs tracking-[0.15em]">CLAVARON</span>
+                </button>
+                <button
+                  onClick={() => handleChoice(() => onPoseResult(involved, false))}
+                  className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
+                  <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
+                  <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
+                  <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
+                  <span className="text-xl">🍷</span>
+                  <span className="text-xs tracking-[0.15em]">NO CLAVARON</span>
+                </button>
+              </>
+            );
+          })()
         ) : (
           /* Carta de jugador → CUMPLIÓ / TOMÓ */
           <>
