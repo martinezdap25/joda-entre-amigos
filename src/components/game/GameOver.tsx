@@ -16,8 +16,8 @@ export function GameOver({ totalCards, scores, onRestart, onExit }: GameOverProp
 
   useEffect(() => {
     const audio = new Audio("/sounds/final_song.mp3");
-    audio.loop = true;
-    audio.volume = 0.6;
+    audio.loop = false;
+    audio.volume = 0.4;
     audio.play().catch(() => {});
     audioRef.current = audio;
     return () => {
