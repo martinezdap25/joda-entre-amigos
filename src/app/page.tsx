@@ -43,7 +43,7 @@ export default function Home() {
 
       {/* Botón de volumen — solo en setup */}
       {screen === "setup" && (
-        <div className="fixed top-4 right-4 z-50">
+        <div className="fixed top-4 right-4 z-[100]">
           <VolumeControl />
         </div>
       )}

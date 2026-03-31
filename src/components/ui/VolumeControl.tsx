@@ -1,14 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Volume2, VolumeX, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { audioManager } from "@/lib/audioManager";
 
 export function VolumeControl() {
-  const [open, setOpen]       = useState(false);
-  const [musicVol, setMusicVolState] = useState(() => audioManager.musicVol);
-  const [sfxVol,   setSfxVolState]   = useState(() => audioManager.sfxVol);
+  const [open, setOpen]            = useState(false);
+  const [musicVol, setMusicVolState] = useState(0.3);
+  const [sfxVol,   setSfxVolState]   = useState(0.6);
+
+  /* Sync con audioManager solo en el cliente (evita hydration mismatch) */
+  useEffect(() => {
+    setMusicVolState(audioManager.musicVol);
+    setSfxVolState(audioManager.sfxVol);
+  }, []);
 
   const handleMusicVol = (v: number) => {
     setMusicVolState(v);
