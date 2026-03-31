@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useGame } from "@/hooks";
 import { ParticleBackground } from "@/components/layout/ParticleBackground";
 import { PlayerSetup, GameScreen, GameOver } from "@/components/game";
+import { VolumeControl } from "@/components/ui/VolumeControl";
+import { audioManager } from "@/lib/audioManager";
 
 export default function Home() {
   const {
@@ -26,44 +28,27 @@ export default function Home() {
     exitGame,
   } = useGame();
 
-  const bgRef = useRef<HTMLAudioElement | null>(null);
-
-  // Arranca al montar la app
   useEffect(() => {
     if (screen !== "setup") return;
-
-    const audio = new Audio("/sounds/bellaciao.mp3");
-    audio.loop   = true;
-    audio.volume = 0.3;
-    bgRef.current = audio;
-
-    const tryPlay = () => audio.play().catch(() => {});
-    audio.play().catch(() => {
-      document.addEventListener("click",      tryPlay, { once: true });
-      document.addEventListener("touchstart", tryPlay, { once: true });
-    });
-
-    return () => {
-      document.removeEventListener("click",      tryPlay);
-      document.removeEventListener("touchstart", tryPlay);
-      audio.pause();
-      audio.src = "";
-      bgRef.current = null;
-    };
+    audioManager.playBg("/sounds/bellaciao.mp3");
+    return () => audioManager.stopBg();
   }, [screen]);
 
-  // Para la música cuando el jugador presiona Comenzar
   const handleStartGame = (players: string[]) => {
-    if (bgRef.current) {
-      bgRef.current.pause();
-      bgRef.current = null;
-    }
+    audioManager.stopBg();
     startGame(players);
   };
 
   return (
     <main className="relative min-h-dvh">
       <ParticleBackground />
+
+      {/* Botón de volumen — solo en setup */}
+      {screen === "setup" && (
+        <div className="fixed top-4 right-4 z-[100]">
+          <VolumeControl />
+        </div>
+      )}
 
       {screen === "setup" && <PlayerSetup onStartGame={handleStartGame} />}
 

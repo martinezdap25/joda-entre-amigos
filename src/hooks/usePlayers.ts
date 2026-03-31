@@ -9,7 +9,7 @@ interface UsePlayersReturn {
   error: string;
   canStart: boolean;
   setPlayerName: (name: string) => void;
-  addPlayer: () => void;
+  addPlayer: () => boolean;
   removePlayer: (name: string) => void;
 }
 
@@ -20,27 +20,28 @@ export function usePlayers(): UsePlayersReturn {
 
   const canStart = players.length >= MIN_PLAYERS;
 
-  const addPlayer = useCallback(() => {
+  const addPlayer = useCallback((): boolean => {
     const name = playerName.trim().slice(0, MAX_NAME_LENGTH);
 
     if (!name) {
       setError("Escribí un nombre");
-      return;
+      return false;
     }
 
     if (players.some((p) => p.toLowerCase() === name.toLowerCase())) {
       setError("Ese nombre ya está en la lista");
-      return;
+      return false;
     }
 
     if (players.length >= MAX_PLAYERS) {
       setError(`Máximo ${MAX_PLAYERS} jugadores`);
-      return;
+      return false;
     }
 
     setPlayers((prev) => [...prev, name]);
     setPlayerName("");
     setError("");
+    return true;
   }, [playerName, players]);
 
   const removePlayer = useCallback((name: string) => {

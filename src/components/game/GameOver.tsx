@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
 import { RotateCcw, DoorOpen } from "lucide-react";
 import { PlayerScore } from "@/lib/types";
+import { audioManager } from "@/lib/audioManager";
 
 interface GameOverProps {
   totalCards: number;
@@ -18,7 +19,7 @@ export function GameOver({ totalCards, scores, onRestart, onExit }: GameOverProp
   useEffect(() => {
     const audio = new Audio("/sounds/final_song.mp3");
     audio.loop = false;
-    audio.volume = 0.4;
+    audio.volume = audioManager.musicVol;
     audio.play().catch(() => {});
     audioRef.current = audio;
 

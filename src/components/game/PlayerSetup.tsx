@@ -7,6 +7,7 @@ import { MIN_PLAYERS } from "@/lib/constants";
 import { Logo } from "@/components/ui/Logo";
 import { PlayerInput } from "@/components/ui/PlayerInput";
 import { PlayerList } from "@/components/ui/PlayerList";
+import { audioManager } from "@/lib/audioManager";
 
 interface PlayerSetupProps {
   onStartGame: (players: string[]) => void;
@@ -26,7 +27,7 @@ export function PlayerSetup({ onStartGame }: PlayerSetupProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleAdd = () => {
-    addPlayer();
+    if (addPlayer()) audioManager.playSfx("/sounds/espada.mp3");
     inputRef.current?.focus();
   };
 
