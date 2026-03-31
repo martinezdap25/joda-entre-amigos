@@ -18,7 +18,7 @@ export const amigosCards: CardData[] = [
   { id: "a10", text: "VERSUS: {player} vs {randomPlayer} — ¿Quién es más probable que sea infiel? El grupo vota entre los dos sin piedad. El más señalado toma doble" },
   { id: "a11", text: "VERSUS: {player} vs {randomPlayer} — Pose cómica: cada uno hace la pose más ridícula posible. El grupo vota al menos gracioso. El perdedor toma doble" },
   { id: "a12", text: "VERSUS: {player} vs {randomPlayer} — Reacción rápida: el último en quitarse el calzado pierde y toma" },
-  { id: "a13", text: "VERSUS: {player} vs {randomPlayer} — Inventen un saludo con choque de manos. Si al ejecutarlo no les sale, ambos toman" },
+  { id: "a13", text: "{player} y {randomPlayer}: inventen un saludo con choque de manos y ejecútenlo. Si lo clavan, ganan. Si no les sale, ambos toman", poseCount: 2 },
   { id: "a14", text: "VERSUS: {player} vs {randomPlayer} — ¿A cuál de los dos llamarías para esconder un cuerpo? El grupo vota. El más señalado toma doble" },
 
   // ── ACCIONES DIRECTAS DEL JUGADOR ──────────────────────────

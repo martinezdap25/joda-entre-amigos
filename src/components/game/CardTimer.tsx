@@ -1,6 +1,13 @@
 "use client";
 
 import { useState, useRef } from "react";
+import {
+  playTimerStart,
+  playTimerTick,
+  playTimerUrgent,
+  playTimerDone,
+  playBastaPress,
+} from "@/lib/sounds";
 
 interface CardTimerProps {
   duration: number;
@@ -26,8 +33,11 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
         setRemaining(0);
         setStatus("done");
         onRunningChange?.(false);
+        playTimerDone();
       } else {
         setRemaining(current);
+        if (current <= 3) playTimerUrgent();
+        else playTimerTick();
       }
     }, 1000);
   };
@@ -36,12 +46,14 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
     setRemaining(duration);
     setStatus("running");
     onRunningChange?.(true);
+    playTimerStart();
     startInterval();
   };
 
   // Modo BASTA: reinicia y arranca de inmediato sin animación
   const handlePress = () => {
     setRemaining(duration);
+    playBastaPress();
     startInterval();
   };
 
