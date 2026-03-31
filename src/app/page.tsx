@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import { useGame } from "@/hooks";
 import { ParticleBackground } from "@/components/layout/ParticleBackground";
 import { PlayerSetup, GameScreen, GameOver } from "@/components/game";
+import { VolumeControl } from "@/components/ui/VolumeControl";
+import { audioManager } from "@/lib/audioManager";
 
 export default function Home() {
   const {
@@ -25,9 +28,25 @@ export default function Home() {
     exitGame,
   } = useGame();
 
+  /* Música de fondo: solo en setup */
+  useEffect(() => {
+    if (screen === "setup") {
+      audioManager.playBg("/sounds/bellaciao.mp3");
+    } else {
+      audioManager.stopBg();
+    }
+  }, [screen]);
+
   return (
     <main className="relative min-h-dvh">
       <ParticleBackground />
+
+      {/* Botón de volumen — solo en setup */}
+      {screen === "setup" && (
+        <div className="fixed top-4 right-4 z-50">
+          <VolumeControl />
+        </div>
+      )}
 
       {screen === "setup" && <PlayerSetup onStartGame={startGame} />}
 
