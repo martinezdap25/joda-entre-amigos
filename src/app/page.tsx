@@ -29,7 +29,13 @@ export default function Home() {
   } = useGame();
 
   useEffect(() => {
-    if (screen !== "setup") return;
+    if (screen !== "setup") {
+      // Detener explícitamente en cualquier pantalla que no sea setup.
+      // Esto cubre el caso donde el .catch() de play() registró un
+      // resumeHandler huérfano antes de que el cleanup anterior corriera.
+      audioManager.stopBg();
+      return;
+    }
     audioManager.playBg("/sounds/bellaciao.mp3");
     return () => audioManager.stopBg();
   }, [screen]);

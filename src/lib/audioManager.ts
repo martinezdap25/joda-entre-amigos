@@ -33,13 +33,20 @@ class AudioManager {
     const audio = new Audio(src);
     audio.loop   = true;
     audio.volume = this._musicVol;
+    // Asignamos ANTES de play() para que el guard del .catch() funcione
+    // aunque stopBg() sea llamado entre play() y la resolución del promise
+    this.bgAudio = audio;
     audio.play().catch(() => {
-      const resume = () => { audio.play().catch(() => {}); };
+      // Si stopBg() fue llamado antes de que este microtask corriera,
+      // bgAudio ya no es este audio — no registrar el listener huérfano
+      if (this.bgAudio !== audio) return;
+      const resume = () => {
+        if (this.bgAudio === audio) audio.play().catch(() => {});
+      };
       this.resumeHandler = resume;
       document.addEventListener("click",      resume, { once: true });
       document.addEventListener("touchstart", resume, { once: true });
     });
-    this.bgAudio = audio;
   }
 
   stopBg() {
