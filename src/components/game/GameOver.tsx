@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import confetti from "canvas-confetti";
 import { RotateCcw, DoorOpen } from "lucide-react";
 import { PlayerScore } from "@/lib/types";
 
@@ -20,9 +21,20 @@ export function GameOver({ totalCards, scores, onRestart, onExit }: GameOverProp
     audio.volume = 0.4;
     audio.play().catch(() => {});
     audioRef.current = audio;
+
+    // Confetti burst
+    const burst = () => {
+      confetti({ particleCount: 80, spread: 70, origin: { x: 0.3, y: 0.5 }, colors: ["#C9A84C", "#F0D98A", "#FF6B35", "#FF1744", "#FFEA00"] });
+      confetti({ particleCount: 80, spread: 70, origin: { x: 0.7, y: 0.5 }, colors: ["#C9A84C", "#F0D98A", "#FF6B35", "#FF1744", "#FFEA00"] });
+    };
+    const t1 = setTimeout(burst, 300);
+    const t2 = setTimeout(burst, 900);
+
     return () => {
       audio.pause();
       audio.currentTime = 0;
+      clearTimeout(t1);
+      clearTimeout(t2);
     };
   }, []);
   // Campeón: más medallas (desempate: menos copas)

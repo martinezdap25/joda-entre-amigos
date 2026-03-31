@@ -10,6 +10,7 @@ class AudioManager {
   private bgAudio: HTMLAudioElement | null = null;
   private _musicVol = 0.3;
   private _sfxVol   = 0.6;
+  private resumeHandler: (() => void) | null = null;
 
   constructor() {
     if (typeof window === "undefined") return;
@@ -26,13 +27,15 @@ class AudioManager {
 
   playBg(src: string) {
     if (typeof window === "undefined") return;
-    if (this.bgAudio) { this.bgAudio.pause(); this.bgAudio = null; }
+    // Ya está sonando el mismo archivo — no hacer nada
+    if (this.bgAudio && !this.bgAudio.paused && this.bgAudio.src.endsWith(src)) return;
+    this._clearBg();
     const audio = new Audio(src);
     audio.loop   = true;
     audio.volume = this._musicVol;
     audio.play().catch(() => {
-      // Autoplay bloqueado — arrancar en la primera interacción del usuario
       const resume = () => { audio.play().catch(() => {}); };
+      this.resumeHandler = resume;
       document.addEventListener("click",      resume, { once: true });
       document.addEventListener("touchstart", resume, { once: true });
     });
@@ -40,9 +43,20 @@ class AudioManager {
   }
 
   stopBg() {
-    if (!this.bgAudio) return;
-    this.bgAudio.pause();
-    this.bgAudio = null;
+    this._clearBg();
+  }
+
+  private _clearBg() {
+    // Limpia listeners pendientes de autoplay
+    if (this.resumeHandler) {
+      document.removeEventListener("click",      this.resumeHandler);
+      document.removeEventListener("touchstart", this.resumeHandler);
+      this.resumeHandler = null;
+    }
+    if (this.bgAudio) {
+      this.bgAudio.pause();
+      this.bgAudio = null;
+    }
   }
 
   setMusicVol(vol: number) {
