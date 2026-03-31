@@ -1,18 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Shield, Volume2, VolumeX } from "lucide-react";
+import { Shield } from "lucide-react";
 import { GameCard } from "@/lib/types";
 import { pickRandomPlayer } from "@/lib/utils";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { CardDisplay } from "./CardDisplay";
-import {
-  playCardReveal,
-  playSuccess,
-  playFail,
-  isMuted,
-  toggleMute,
-} from "@/lib/sounds";
 
 interface GameScreenProps {
   players: string[];
@@ -50,7 +43,6 @@ export function GameScreen({
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
   const [versusPlayer, setVersusPlayer] = useState<string>("");
   const [versusPlayer2, setVersusPlayer2] = useState<string>("");
-  const [mutedUI, setMutedUI] = useState(() => isMuted());
 
   const isVersus = currentCard.text.startsWith("VERSUS:");
   const isPose = !!currentCard.poseCount;
@@ -78,7 +70,6 @@ export function GameScreen({
       setPendingAction(() => action);
       return;
     }
-    playCardReveal();
     setAnimKey((k) => k + 1);
     setTimeout(() => action(), 30);
   };
@@ -86,14 +77,8 @@ export function GameScreen({
   const confirmAdvance = () => {
     setTimerRunning(false);
     setPendingAction(null);
-    playCardReveal();
     setAnimKey((k) => k + 1);
     setTimeout(() => pendingAction?.(), 30);
-  };
-
-  const handleMuteToggle = () => {
-    const nowMuted = toggleMute();
-    setMutedUI(nowMuted);
   };
 
   return (
@@ -106,14 +91,7 @@ export function GameScreen({
         >
           Salir
         </button>
-        <span className="font-display text-xs text-[#C9A84C]/30 tracking-[0.18em] flex items-center gap-3">
-          <button
-            onClick={handleMuteToggle}
-            className="text-[#C9A84C]/40 hover:text-[#C9A84C] transition-colors focus:outline-none"
-            aria-label={mutedUI ? "Activar sonido" : "Silenciar"}
-          >
-            {mutedUI ? <VolumeX size={16} /> : <Volume2 size={16} />}
-          </button>
+        <span className="font-display text-xs text-[#C9A84C]/30 tracking-[0.18em]">
           <Shield size={13} className="inline-block mr-1 mb-0.5 text-[#C9A84C]/40" />
           {cardIndex + 1} / {totalCards}
         </span>
@@ -181,7 +159,7 @@ export function GameScreen({
         {isGroupCard ? (
           /* Carta grupal → solo SIGUIENTE, sin scoring */
           <button
-            onClick={() => { playSuccess(); handleChoice(onNext); }}
+            onClick={() => handleChoice(onNext)}
             className="relative flex-1 py-5 border-2 font-display tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden text-base bg-gradient-to-b from-[#1a1800] via-[#1a1500] to-[#0e0c08] border-[#FFEA00]/60 text-[#FFEA00] hover:border-[#FFE000] hover:scale-[1.02] active:scale-[0.98]"
           >
             <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#FFEA00]/60 pointer-events-none" />
@@ -195,7 +173,7 @@ export function GameScreen({
           /* Carta VERSUS → winner recibe medallas, loser recibe copas */
           <>
             <button
-              onClick={() => { playSuccess(); handleChoice(() => onVersusResult(currentPlayer, versusPlayer)); }}
+              onClick={() => handleChoice(() => onVersusResult(currentPlayer, versusPlayer))}
               className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
@@ -208,7 +186,7 @@ export function GameScreen({
             </button>
 
             <button
-              onClick={() => { playSuccess(); handleChoice(() => onVersusResult(versusPlayer, currentPlayer)); }}
+              onClick={() => handleChoice(() => onVersusResult(versusPlayer, currentPlayer))}
               className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
@@ -229,7 +207,7 @@ export function GameScreen({
             return (
               <>
                 <button
-                  onClick={() => { playSuccess(); handleChoice(() => onPoseResult(involved, true)); }}
+                  onClick={() => handleChoice(() => onPoseResult(involved, true))}
                   className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
@@ -240,7 +218,7 @@ export function GameScreen({
                   <span className="text-xs tracking-[0.15em]">CLAVARON</span>
                 </button>
                 <button
-                  onClick={() => { playFail(); handleChoice(() => onPoseResult(involved, false)); }}
+                  onClick={() => handleChoice(() => onPoseResult(involved, false))}
                   className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
@@ -257,7 +235,7 @@ export function GameScreen({
           /* Carta de jugador → CUMPLIÓ / TOMÓ */
           <>
             <button
-              onClick={() => { playSuccess(); handleChoice(onCompleted); }}
+              onClick={() => handleChoice(onCompleted)}
               className="relative flex-1 py-5 border-2 font-display tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden text-base bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
@@ -269,7 +247,7 @@ export function GameScreen({
             </button>
 
             <button
-              onClick={() => { playFail(); handleChoice(onDrank); }}
+              onClick={() => handleChoice(onDrank)}
               className="relative flex-1 py-5 border-2 font-display tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden text-base bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
