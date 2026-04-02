@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { SearchablePlayerList } from "@/components/ui/SearchablePlayerList";
 
@@ -11,9 +12,13 @@ interface BastaLoserModalProps {
 
 export function BastaLoserModal({ players, onConfirm }: BastaLoserModalProps) {
   const [selected, setSelected] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => { setMounted(true); }, []);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4">
       <motion.div
         initial={{ scale: 0.88, opacity: 0, y: 20 }}
@@ -129,6 +134,7 @@ export function BastaLoserModal({ players, onConfirm }: BastaLoserModalProps) {
           <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#C9A84C]/20" />
         </div>
       </motion.div>
-    </div>
+    </div>,
+    document.body
   );
 }

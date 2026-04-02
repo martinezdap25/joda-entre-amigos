@@ -77,27 +77,29 @@ function getCardAnimation(category: string) {
     case "PICANTE":
       // Impacto: entra rápido desde arriba, leve shake
       return {
-        initial: { opacity: 0, y: -40 },
+        initial: { opacity: 0, y: -40, scale: 1 },
         animate: {
           opacity: 1,
           y: [0, -4, 3, -2, 0],
+          scale: 1,
           transition: { duration: 0.4, ease: "easeOut", y: { duration: 0.5, times: [0, 0.2, 0.4, 0.7, 1] } },
         },
       };
     case "CONFESION":
       // Lenta, misteriosa
       return {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+        initial: { opacity: 0, y: 20, scale: 1 },
+        animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
       };
     case "AMIGOS":
       // Entrada con leve shake horizontal
       return {
-        initial: { opacity: 0, y: 20 },
+        initial: { opacity: 0, y: 20, scale: 1 },
         animate: {
           opacity: 1,
           y: 0,
           x: [0, -3, 3, -2, 0],
+          scale: 1,
           transition: { duration: 0.4, ease: "easeOut", x: { duration: 0.4, times: [0, 0.2, 0.4, 0.7, 1] } },
         },
       };
@@ -114,8 +116,8 @@ function getCardAnimation(category: string) {
     default:
       // Suave fade up
       return {
-        initial: { opacity: 0, y: 25 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
+        initial: { opacity: 0, y: 25, scale: 1 },
+        animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: "easeOut" } },
       };
   }
 }
@@ -138,7 +140,9 @@ export function CardDisplay({
 
   useEffect(() => {
     if (showLightning) audioManager.playSfx("/sounds/vine-boom-fx.mp3");
-    else if (card.category === "BASTA") audioManager.playSfx("/sounds/basta_chicos_fx.mp3");
+    else if (card.category === "BASTA") audioManager.playSfx("/sounds/basta_chicos_fx.mp3", 2.2);
+    else if (card.category === "TODOS") audioManager.playSfx("/sounds/todos_card_fx.mp3");
+    else if (card.category === "AMIGOS") audioManager.playSfx("/sounds/amigos_mierda_fx.mp3", 1.5);
     else audioManager.playSfx("/sounds/faaah_fx.mp3");
   }, [card.id, showLightning, card.category]);
 

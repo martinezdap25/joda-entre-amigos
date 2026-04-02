@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { audioManager } from "@/lib/audioManager";
 
 interface CardTimerProps {
   duration: number;
@@ -24,12 +25,15 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
       current -= 1;
       if (current <= 0) {
         clearInterval(intervalRef.current!);
+        audioManager.stopTimerTick();
         setRemaining(0);
         setStatus("done");
         onRunningChange?.(false);
         onDone?.();
       } else {
         setRemaining(current);
+        // Tick de bomba: urgente en los últimos 3 segundos
+        audioManager.playTimerTick(current <= 3);
       }
     }, 1000);
   };
@@ -43,6 +47,7 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
 
   // Modo BASTA: reinicia y arranca de inmediato sin animación
   const handlePress = () => {
+    audioManager.stopTimerTick();
     setRemaining(duration);
     startInterval();
   };

@@ -1,6 +1,7 @@
 "use client";
 
-import { KeyboardEvent, forwardRef } from "react";
+import { KeyboardEvent, forwardRef, useRef } from "react";
+import { audioManager } from "@/lib/audioManager";
 
 interface PlayerInputProps {
   value: string;
@@ -23,8 +24,19 @@ export const PlayerInput = forwardRef<HTMLInputElement, PlayerInputProps>(
     },
     ref
   ) => {
+    const lastTickRef = useRef(0);
+
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Enter") onAdd();
+    };
+
+    const handleChange = (v: string) => {
+      onChange(v);
+      const now = Date.now();
+      if (now - lastTickRef.current > 80) {
+        lastTickRef.current = now;
+        audioManager.playTypingClick();
+      }
     };
 
     return (
@@ -50,7 +62,7 @@ export const PlayerInput = forwardRef<HTMLInputElement, PlayerInputProps>(
               ref={ref}
               type="text"
               value={value}
-              onChange={(e) => onChange(e.target.value)}
+              onChange={(e) => handleChange(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder={placeholder}
               maxLength={maxLength}

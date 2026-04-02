@@ -7,6 +7,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 @layer base {
   :root {
     --color-fire: 255 107 53;

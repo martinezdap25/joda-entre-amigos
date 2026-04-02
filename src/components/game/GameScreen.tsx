@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Shield } from "lucide-react";
 import { GameCard } from "@/lib/types";
 import { pickRandomPlayer } from "@/lib/utils";
@@ -9,6 +9,7 @@ import { ProgressBar } from "@/components/ui/ProgressBar";
 import { CardDisplay } from "./CardDisplay";
 import { CardTimer } from "./CardTimer";
 import { BastaLoserModal } from "./BastaLoserModal";
+import { audioManager } from "@/lib/audioManager";
 
 interface GameScreenProps {
   players: string[];
@@ -49,6 +50,12 @@ export function GameScreen({
   const [versusPlayer, setVersusPlayer] = useState<string>("");
   const [versusPlayer2, setVersusPlayer2] = useState<string>("");
   const [bastaFinished, setBastaFinished] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Reset scroll interno al cambiar de carta
+  useEffect(() => {
+    containerRef.current?.scrollTo({ top: 0, left: 0 });
+  }, [animKey]);
 
   const isBasta = currentCard.category === "BASTA";
   const isVersus = currentCard.text.startsWith("VERSUS:");
@@ -90,7 +97,7 @@ export function GameScreen({
   };
 
   return (
-    <div className="h-dvh flex flex-col items-center px-4 py-5 relative z-10 bg-gradient-to-b from-[#18120a] via-[#221a0e] to-[#0e0c08]">
+    <div ref={containerRef} className="no-scrollbar fixed inset-0 overflow-y-scroll overflow-x-hidden flex flex-col items-center px-4 py-5 z-10 bg-gradient-to-b from-[#18120a] via-[#221a0e] to-[#0e0c08]">
       {/* Top bar */}
       <div className="w-full max-w-[440px] flex justify-between items-center mb-5 shrink-0">
         <button
@@ -174,7 +181,10 @@ export function GameScreen({
               accentColor="#C9A84C"
               large
               onRunningChange={setTimerRunning}
-              onDone={() => setBastaFinished(true)}
+              onDone={() => {
+                audioManager.playSfx("/sounds/basta_final_fx.mp3");
+                setBastaFinished(true);
+              }}
             />
           </div>
         ) : isGroupCard ? (
