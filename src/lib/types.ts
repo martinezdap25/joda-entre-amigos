@@ -3,7 +3,8 @@ export type CardCategory =
   | "CONFESION"
   | "TODOS"
   | "AMIGOS"
-  | "PICANTE";
+  | "PICANTE"
+  | "BASTA";
 
 export interface CardData {
   id: string;

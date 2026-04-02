@@ -23,7 +23,7 @@ export const CATEGORY_CONFIG: Record<CardCategory, CategoryConfig> = {
     color: "#E040FB",
     bgGlow: "rgba(224,64,251,0.15)",
     tailwindColor: "brand-pink",
-    points: 2,
+    points: 1,
     isGroupCard: false,
   },
   TODOS: {
@@ -45,12 +45,21 @@ export const CATEGORY_CONFIG: Record<CardCategory, CategoryConfig> = {
     isGroupCard: false,
   },
   PICANTE: {
-    label: "PICANTE LEVE",
+    label: "PICANTE",
     emoji: "🌶️",
     color: "#FF9100",
     bgGlow: "rgba(255,145,0,0.15)",
     tailwindColor: "brand-orange",
     points: 3,
     isGroupCard: false,
+  },
+  BASTA: {
+    label: "¡BASTA!",
+    emoji: "⏱️",
+    color: "#C9A84C",
+    bgGlow: "rgba(201,168,76,0.15)",
+    tailwindColor: "brand-gold",
+    points: 0,
+    isGroupCard: true,
   },
 };

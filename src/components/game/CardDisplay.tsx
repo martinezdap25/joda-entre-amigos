@@ -1,11 +1,13 @@
 "use client";
 
+import { useEffect, useMemo } from "react";
 import { GameCard } from "@/lib/types";
 import { processCardText } from "@/lib/utils";
 import { CATEGORY_CONFIG } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
 import { CardTimer } from "./CardTimer";
 import { ImageLightbox } from "./ImageLightbox";
+import { audioManager } from "@/lib/audioManager";
 
 interface CardDisplayProps {
   card: GameCard;
@@ -15,6 +17,7 @@ interface CardDisplayProps {
   versusPlayer?: string;
   versusPlayer2?: string;
   onTimerRunning?: (running: boolean) => void;
+  onTimerDone?: () => void;
 }
 
 /* ── Rayo SVG animado ────────────────────────────────── */
@@ -89,7 +92,7 @@ function getCardAnimation(category: string) {
         animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
       };
     case "AMIGOS":
-      // Entrada con leve shake horizontal (sin desplazar)
+      // Entrada con leve shake horizontal
       return {
         initial: { opacity: 0, y: 20 },
         animate: {
@@ -97,6 +100,16 @@ function getCardAnimation(category: string) {
           y: 0,
           x: [0, -3, 3, -2, 0],
           transition: { duration: 0.4, ease: "easeOut", x: { duration: 0.4, times: [0, 0.2, 0.4, 0.7, 1] } },
+        },
+      };
+    case "BASTA":
+      // Pop energético — entra escalando con rebote
+      return {
+        initial: { opacity: 0, scale: 0.82 },
+        animate: {
+          opacity: 1,
+          scale: [1.06, 0.97, 1.02, 1],
+          transition: { duration: 0.45, ease: "easeOut", scale: { duration: 0.45, times: [0.2, 0.5, 0.75, 1] } },
         },
       };
     default:
@@ -116,11 +129,23 @@ export function CardDisplay({
   versusPlayer,
   versusPlayer2,
   onTimerRunning,
+  onTimerDone,
 }: CardDisplayProps) {
   const config = CATEGORY_CONFIG[card.category];
   const text = processCardText(card.text, currentPlayer, players, versusPlayer, versusPlayer2);
   const animationProps = getCardAnimation(card.category);
   const showLightning = card.category === "RETO" || card.category === "PICANTE";
+  const isBasta = card.category === "BASTA";
+  const bastaDirection = useMemo(
+    () => (Math.random() > 0.5 ? "derecha →" : "← izquierda"),
+    [card.id]
+  );
+
+  useEffect(() => {
+    if (showLightning) audioManager.playSfx("/sounds/vine-boom-fx.mp3");
+    else if (card.category === "BASTA") audioManager.playSfx("/sounds/bata_fx.mp3");
+    else audioManager.playSfx("/sounds/faaah_fx.mp3");
+  }, [card.id, showLightning, card.category]);
 
   return (
     <motion.div
@@ -150,23 +175,42 @@ export function CardDisplay({
         {config.emoji}
       </div>
 
-      {/* Category label */}
-      <div className="font-display text-xs tracking-[0.25em] uppercase mb-3 opacity-90 text-[#C9A84C]">
-        {config.label}
-      </div>
+      {/* Category label — oculto para BASTA (ya se muestra en el header) */}
+      {!isBasta && (
+        <div className="font-display text-xs tracking-[0.25em] uppercase mb-3 opacity-90 text-[#C9A84C]">
+          {config.label}
+        </div>
+      )}
 
-      {/* Points indicator */}
-      <div className="font-display text-[11px] text-[#C9A84C]/50 tracking-[0.25em] uppercase mb-5">
-        {config.points} {config.points === 1 ? "punto" : "puntos"}
-      </div>
+      {/* Points indicator — oculto para cartas grupales (0 pts no aporta info) */}
+      {!config.isGroupCard && (
+        <div className="font-display text-[11px] text-[#C9A84C]/50 tracking-[0.25em] uppercase mb-5">
+          {config.points} {config.points === 1 ? "punto" : "puntos"}
+        </div>
+      )}
 
       {/* Card text */}
       <p
         className="font-display font-bold text-[#F0D98A] leading-relaxed m-0 max-w-[340px]"
-        style={{ fontSize: "clamp(1.18rem, 4.5vw, 1.38rem)", letterSpacing: "0.01em" }}
+        style={{
+          fontSize: isBasta ? "clamp(0.95rem, 3.5vw, 1.1rem)" : "clamp(1.18rem, 4.5vw, 1.38rem)",
+          letterSpacing: "0.01em",
+        }}
       >
         {text}
       </p>
+
+      {/* Indicador BASTA: quién empieza y hacia dónde */}
+      {isBasta && (
+        <div className="mt-4 flex flex-col items-center gap-1">
+          <p className="font-display text-[10px] tracking-[0.22em] uppercase opacity-50" style={{ color: config.color }}>
+            Empieza
+          </p>
+          <p className="font-display text-base font-bold" style={{ color: config.color }}>
+            {currentPlayer} · {bastaDirection}
+          </p>
+        </div>
+      )}
 
       {/* Imagen opcional (ej: poses) */}
       {card.image && <ImageLightbox src={card.image} />}
@@ -186,8 +230,9 @@ export function CardDisplay({
         <CardTimer
           duration={card.duration}
           accentColor={config.color}
-          large={card.category === "TODOS"}
+          large={card.category === "TODOS" || isBasta}
           onRunningChange={onTimerRunning}
+          onDone={onTimerDone}
         />
       )}
 

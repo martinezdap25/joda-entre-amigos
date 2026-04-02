@@ -27,6 +27,7 @@ interface UseGameReturn {
   handleNext: () => void;
   handleVersusResult: (winner: string, loser: string) => void;
   handlePoseResult: (involvedPlayers: string[], success: boolean) => void;
+  handleBastaLoser: (loser: string) => void;
   restartGame: () => void;
   exitGame: () => void;
 }
@@ -93,6 +94,14 @@ export function useGame(): UseGameReturn {
 
   // Para cartas grupales: avanza sin asignar puntos a nadie
   const handleNext = useCallback(() => {
+    advanceCard();
+  }, [advanceCard]);
+
+  // Para BASTA: el perdedor suma 2 copas y se avanza
+  const handleBastaLoser = useCallback((loser: string) => {
+    setScores((prev) =>
+      prev.map((s) => s.name === loser ? { ...s, drinks: s.drinks + 2 } : s)
+    );
     advanceCard();
   }, [advanceCard]);
 
@@ -169,6 +178,7 @@ export function useGame(): UseGameReturn {
     handleDrank,
     handleNext,
     handleVersusResult,
+    handleBastaLoser,
     handlePoseResult,
     restartGame,
     exitGame,

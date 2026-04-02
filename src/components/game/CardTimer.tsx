@@ -7,11 +7,12 @@ interface CardTimerProps {
   accentColor: string;
   large?: boolean;   // modo BASTA: botón interactivo que reinicia al presionar
   onRunningChange?: (running: boolean) => void;
+  onDone?: () => void; // llamado una sola vez cuando el timer expira
 }
 
 type TimerStatus = "idle" | "running" | "done";
 
-export function CardTimer({ duration, accentColor, large = false, onRunningChange }: CardTimerProps) {
+export function CardTimer({ duration, accentColor, large = false, onRunningChange, onDone }: CardTimerProps) {
   const [status, setStatus] = useState<TimerStatus>("idle");
   const [remaining, setRemaining] = useState(duration);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -26,6 +27,7 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
         setRemaining(0);
         setStatus("done");
         onRunningChange?.(false);
+        onDone?.();
       } else {
         setRemaining(current);
       }
@@ -118,12 +120,6 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
         }}
       >
         <span className="text-6xl tabular-nums leading-none">{remaining}</span>
-        <span
-          className="text-[10px] tracking-[0.22em] uppercase mt-1"
-          style={{ opacity: 0.55 }}
-        >
-          TOCA AL DECIR ALGO
-        </span>
       </button>
     </div>
   );

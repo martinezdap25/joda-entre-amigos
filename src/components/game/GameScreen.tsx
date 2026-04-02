@@ -6,6 +6,7 @@ import { GameCard } from "@/lib/types";
 import { pickRandomPlayer } from "@/lib/utils";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { CardDisplay } from "./CardDisplay";
+import { BastaLoserModal } from "./BastaLoserModal";
 
 interface GameScreenProps {
   players: string[];
@@ -20,6 +21,7 @@ interface GameScreenProps {
   onNext: () => void;
   onVersusResult: (winner: string, loser: string) => void;
   onPoseResult: (involvedPlayers: string[], success: boolean) => void;
+  onBastaLoser: (loser: string) => void;
   onExit: () => void;
 }
 
@@ -36,6 +38,7 @@ export function GameScreen({
   onNext,
   onVersusResult,
   onPoseResult,
+  onBastaLoser,
   onExit,
 }: GameScreenProps) {
   const [animKey, setAnimKey] = useState(0);
@@ -43,6 +46,7 @@ export function GameScreen({
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
   const [versusPlayer, setVersusPlayer] = useState<string>("");
   const [versusPlayer2, setVersusPlayer2] = useState<string>("");
+  const [bastaFinished, setBastaFinished] = useState(false);
 
   const isVersus = currentCard.text.startsWith("VERSUS:");
   const isPose = !!currentCard.poseCount;
@@ -108,18 +112,19 @@ export function GameScreen({
       <div key={`player-${animKey}`} className="text-center mb-7 animate-fade-up">
         {isGroupCard ? (
           <>
-            <p className="font-display text-xs text-[#FFEA00]/40 tracking-[0.22em] uppercase mb-2">
+            <p className="font-display text-xs tracking-[0.22em] uppercase mb-2 text-[#C9A84C]/40">
               Ronda grupal
             </p>
             <h2
-              className="font-display text-[#FFEA00] m-0"
+              className="font-display m-0"
               style={{
                 fontSize: "clamp(1.6rem, 6vw, 2.2rem)",
                 letterSpacing: "0.06em",
                 fontWeight: 700,
+                color: currentCard.category === "BASTA" ? "#C9A84C" : "#FFEA00",
               }}
             >
-              TODOS JUEGAN
+              {currentCard.category === "BASTA" ? "¡BASTA!" : "TODOS JUEGAN"}
             </h2>
           </>
         ) : (
@@ -151,6 +156,7 @@ export function GameScreen({
           versusPlayer={versusPlayer || undefined}
           versusPlayer2={versusPlayer2 || undefined}
           onTimerRunning={setTimerRunning}
+          onTimerDone={currentCard.category === "BASTA" ? () => setBastaFinished(true) : undefined}
         />
       </div>
 
@@ -260,6 +266,18 @@ export function GameScreen({
           </>
         )}
       </div>
+      {/* Modal: perdedor de BASTA */}
+      {bastaFinished && (
+        <BastaLoserModal
+          players={players}
+          onConfirm={(loser) => {
+            setBastaFinished(false);
+            setAnimKey((k) => k + 1);
+            setTimeout(() => onBastaLoser(loser), 30);
+          }}
+        />
+      )}
+
       {/* Modal: confirmación cuando el timer sigue corriendo */}
       {pendingAction && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-6">

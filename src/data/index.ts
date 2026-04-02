@@ -4,6 +4,7 @@ import { confesionCards } from "./cards/confesion";
 import { todosCards } from "./cards/todos";
 import { amigosCards } from "./cards/amigos";
 import { picanteCards } from "./cards/picante";
+import { bastaCards } from "./cards/basta";
 
 export const cardsByCategory: Record<CardCategory, CardData[]> = {
   RETO: retoCards,
@@ -11,6 +12,7 @@ export const cardsByCategory: Record<CardCategory, CardData[]> = {
   TODOS: todosCards,
   AMIGOS: amigosCards,
   PICANTE: picanteCards,
+  BASTA: bastaCards,
 };
 
 export const totalCardCount = Object.values(cardsByCategory).reduce(
