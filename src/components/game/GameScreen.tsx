@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { Shield } from "lucide-react";
 import { GameCard } from "@/lib/types";
 import { pickRandomPlayer } from "@/lib/utils";
+import { CATEGORY_CONFIG } from "@/lib/constants";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { CardDisplay } from "./CardDisplay";
+import { CardTimer } from "./CardTimer";
 import { BastaLoserModal } from "./BastaLoserModal";
 
 interface GameScreenProps {
@@ -48,12 +50,14 @@ export function GameScreen({
   const [versusPlayer2, setVersusPlayer2] = useState<string>("");
   const [bastaFinished, setBastaFinished] = useState(false);
 
+  const isBasta = currentCard.category === "BASTA";
   const isVersus = currentCard.text.startsWith("VERSUS:");
   const isPose = !!currentCard.poseCount;
   const poseCount = currentCard.poseCount ?? 1;
 
   // Elegir jugadores extra una vez por carta
   useEffect(() => {
+    setBastaFinished(false);
     const needsOne = (isVersus || poseCount >= 2) && players.length > 1;
     if (!needsOne) { setVersusPlayer(""); setVersusPlayer2(""); return; }
 
@@ -156,13 +160,24 @@ export function GameScreen({
           versusPlayer={versusPlayer || undefined}
           versusPlayer2={versusPlayer2 || undefined}
           onTimerRunning={setTimerRunning}
-          onTimerDone={currentCard.category === "BASTA" ? () => setBastaFinished(true) : undefined}
         />
       </div>
 
       {/* Botones: condicional según tipo de carta */}
       <div className="w-full max-w-[400px] flex gap-3 mt-8">
-        {isGroupCard ? (
+        {isBasta ? (
+          /* Carta BASTA → timer externo; cuando termina aparece modal de perdedor */
+          <div className="w-full flex justify-center">
+            <CardTimer
+              key={`basta-timer-${animKey}`}
+              duration={currentCard.duration ?? 30}
+              accentColor="#C9A84C"
+              large
+              onRunningChange={setTimerRunning}
+              onDone={() => setBastaFinished(true)}
+            />
+          </div>
+        ) : isGroupCard ? (
           /* Carta grupal → solo SIGUIENTE, sin scoring */
           <button
             onClick={() => handleChoice(onNext)}

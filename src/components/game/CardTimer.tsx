@@ -54,7 +54,7 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
     return (
       <button
         onClick={handleStart}
-        className={`mt-5 flex items-center justify-center gap-2 border font-display tracking-[0.22em] uppercase transition-all duration-150 hover:scale-[1.03] active:scale-[0.97] ${
+        className={`mt-5 flex items-center justify-center border font-display tracking-[0.22em] uppercase transition-all duration-150 hover:scale-[1.03] active:scale-[0.97] ${
           large ? "px-10 py-5 text-lg w-full max-w-[260px]" : "px-5 py-2 text-[11px]"
         }`}
         style={{
@@ -63,7 +63,6 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
           background: `${accentColor}10`,
         }}
       >
-        <span className={large ? "text-2xl" : "text-base"}>⏱️</span>
         INICIAR · {duration}s
       </button>
     );

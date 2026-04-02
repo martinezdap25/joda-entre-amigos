@@ -17,7 +17,6 @@ interface CardDisplayProps {
   versusPlayer?: string;
   versusPlayer2?: string;
   onTimerRunning?: (running: boolean) => void;
-  onTimerDone?: () => void;
 }
 
 /* ── Rayo SVG animado ────────────────────────────────── */
@@ -129,21 +128,17 @@ export function CardDisplay({
   versusPlayer,
   versusPlayer2,
   onTimerRunning,
-  onTimerDone,
 }: CardDisplayProps) {
   const config = CATEGORY_CONFIG[card.category];
   const text = processCardText(card.text, currentPlayer, players, versusPlayer, versusPlayer2);
   const animationProps = getCardAnimation(card.category);
   const showLightning = card.category === "RETO" || card.category === "PICANTE";
   const isBasta = card.category === "BASTA";
-  const bastaDirection = useMemo(
-    () => (Math.random() > 0.5 ? "derecha →" : "← izquierda"),
-    [card.id]
-  );
+  const bastaGoesRight = useMemo(() => Math.random() > 0.5, [card.id]);
 
   useEffect(() => {
     if (showLightning) audioManager.playSfx("/sounds/vine-boom-fx.mp3");
-    else if (card.category === "BASTA") audioManager.playSfx("/sounds/bata_fx.mp3");
+    else if (card.category === "BASTA") audioManager.playSfx("/sounds/basta_chicos_fx.mp3");
     else audioManager.playSfx("/sounds/faaah_fx.mp3");
   }, [card.id, showLightning, card.category]);
 
@@ -193,7 +188,7 @@ export function CardDisplay({
       <p
         className="font-display font-bold text-[#F0D98A] leading-relaxed m-0 max-w-[340px]"
         style={{
-          fontSize: isBasta ? "clamp(0.95rem, 3.5vw, 1.1rem)" : "clamp(1.18rem, 4.5vw, 1.38rem)",
+          fontSize: "clamp(1.18rem, 4.5vw, 1.38rem)",
           letterSpacing: "0.01em",
         }}
       >
@@ -202,13 +197,59 @@ export function CardDisplay({
 
       {/* Indicador BASTA: quién empieza y hacia dónde */}
       {isBasta && (
-        <div className="mt-4 flex flex-col items-center gap-1">
-          <p className="font-display text-[10px] tracking-[0.22em] uppercase opacity-50" style={{ color: config.color }}>
-            Empieza
-          </p>
-          <p className="font-display text-base font-bold" style={{ color: config.color }}>
-            {currentPlayer} · {bastaDirection}
-          </p>
+        <div className="mt-5 w-full max-w-[300px] flex flex-col items-center gap-2">
+          {/* Separador ornamental */}
+          <div className="flex items-center gap-3 w-full">
+            <div className="flex-1 h-px" style={{ background: `linear-gradient(to right, transparent, ${config.color}40)` }} />
+            <span className="font-display text-[9px] tracking-[0.35em] uppercase" style={{ color: `${config.color}60` }}>arranca</span>
+            <div className="flex-1 h-px" style={{ background: `linear-gradient(to left, transparent, ${config.color}40)` }} />
+          </div>
+
+          {/* Fila principal: flecha ← nombre → flecha */}
+          <div className="flex items-center gap-3 w-full justify-center">
+            {/* Flecha izquierda — activa si va a la izquierda */}
+            <motion.svg
+              width="28" height="28" viewBox="0 0 28 28" fill="none"
+              animate={!bastaGoesRight ? { x: [-3, 0, -3], opacity: [0.9, 1, 0.9] } : { opacity: 0.18 }}
+              transition={!bastaGoesRight ? { duration: 1.1, repeat: Infinity, ease: "easeInOut" } : {}}
+            >
+              <path d="M18 6 L8 14 L18 22" stroke={config.color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M8 14 H22" stroke={config.color} strokeWidth="2.5" strokeLinecap="round" opacity="0.5" />
+            </motion.svg>
+
+            {/* Nombre del jugador */}
+            <div className="flex flex-col items-center">
+              <span
+                className="font-display font-bold leading-none"
+                style={{
+                  color: config.color,
+                  fontSize: "clamp(1rem, 4vw, 1.2rem)",
+                  letterSpacing: "0.04em",
+                  textShadow: `0 0 18px ${config.color}60`,
+                }}
+              >
+                {currentPlayer}
+              </span>
+            </div>
+
+            {/* Flecha derecha — activa si va a la derecha */}
+            <motion.svg
+              width="28" height="28" viewBox="0 0 28 28" fill="none"
+              animate={bastaGoesRight ? { x: [0, 3, 0], opacity: [0.9, 1, 0.9] } : { opacity: 0.18 }}
+              transition={bastaGoesRight ? { duration: 1.1, repeat: Infinity, ease: "easeInOut" } : {}}
+            >
+              <path d="M10 6 L20 14 L10 22" stroke={config.color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M20 14 H6" stroke={config.color} strokeWidth="2.5" strokeLinecap="round" opacity="0.5" />
+            </motion.svg>
+          </div>
+
+          {/* Label dirección */}
+          <span
+            className="font-display text-[10px] tracking-[0.28em] uppercase"
+            style={{ color: `${config.color}70` }}
+          >
+            hacia la {bastaGoesRight ? "derecha" : "izquierda"}
+          </span>
         </div>
       )}
 
@@ -225,14 +266,13 @@ export function CardDisplay({
         </p>
       )}
 
-      {/* Timer (solo para cartas con duración explícita) */}
-      {card.duration !== undefined && (
+      {/* Timer — solo para cartas con duración, excepto BASTA que lo muestra fuera de la card */}
+      {card.duration !== undefined && !isBasta && (
         <CardTimer
           duration={card.duration}
           accentColor={config.color}
-          large={card.category === "TODOS" || isBasta}
+          large={card.category === "TODOS"}
           onRunningChange={onTimerRunning}
-          onDone={onTimerDone}
         />
       )}
 
