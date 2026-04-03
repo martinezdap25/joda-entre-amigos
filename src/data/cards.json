@@ -941,7 +941,8 @@
   {
     "id": "a05",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Reacción rápida: ¿quién es el jugador más viejo? El que se equivoca pierde."
+    "text": "{player} vs {randomPlayer} — Reacción rápida: ¿quién es el jugador más viejo? El que se equivoca pierde.",
+    "description": "Si vos sos el más viejo ganaste."
   },
   {
     "id": "a06",
@@ -1060,7 +1061,8 @@
   {
     "id": "v11",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Reacción rápida: el último en tocar al jugador más joven pierde."
+    "text": "{player} vs {randomPlayer} — Reacción rápida: el último en tocar al jugador más joven pierde.",
+    "description": "Si vos sos el más joven ganaste automáticamente."
   },
   {
     "id": "v12",
