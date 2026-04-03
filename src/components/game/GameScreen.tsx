@@ -51,6 +51,11 @@ export function GameScreen({
   const [versusPlayer2, setVersusPlayer2] = useState<string>("");
   const [bastaFinished, setBastaFinished] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+  }, []);
 
   // Reset scroll interno al cambiar de carta
   useEffect(() => {
@@ -86,14 +91,14 @@ export function GameScreen({
       return;
     }
     setAnimKey((k) => k + 1);
-    setTimeout(() => action(), 30);
+    timeoutRef.current = setTimeout(() => action(), 30);
   };
 
   const confirmAdvance = () => {
     setTimerRunning(false);
     setPendingAction(null);
     setAnimKey((k) => k + 1);
-    setTimeout(() => pendingAction?.(), 30);
+    timeoutRef.current = setTimeout(() => pendingAction?.(), 30);
   };
 
   return (
@@ -298,7 +303,7 @@ export function GameScreen({
           onConfirm={(loser) => {
             setBastaFinished(false);
             setAnimKey((k) => k + 1);
-            setTimeout(() => onBastaLoser(loser), 30);
+            timeoutRef.current = setTimeout(() => onBastaLoser(loser), 30);
           }}
         />
       )}

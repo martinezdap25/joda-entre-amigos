@@ -72,25 +72,30 @@ export function useGame(): UseGameReturn {
     setTurnIndex((i) => i + 1);
   }, [cardIndex, deck.length]);
 
+  const getPoints = useCallback((card: typeof currentCard) => {
+    if (!card) return 1;
+    return card.points ?? CATEGORY_CONFIG[card.category].points;
+  }, []);
+
   const handleCompleted = useCallback(() => {
-    const pts = currentCard ? CATEGORY_CONFIG[currentCard.category].points : 1;
+    const pts = getPoints(currentCard);
     setScores((prev) =>
       prev.map((s) =>
         s.name === currentPlayer ? { ...s, medals: s.medals + pts } : s
       )
     );
     advanceCard();
-  }, [currentPlayer, currentCard, advanceCard]);
+  }, [currentPlayer, currentCard, advanceCard, getPoints]);
 
   const handleDrank = useCallback(() => {
-    const pts = currentCard ? CATEGORY_CONFIG[currentCard.category].points : 1;
+    const pts = getPoints(currentCard);
     setScores((prev) =>
       prev.map((s) =>
         s.name === currentPlayer ? { ...s, drinks: s.drinks + pts } : s
       )
     );
     advanceCard();
-  }, [currentPlayer, currentCard, advanceCard]);
+  }, [currentPlayer, currentCard, advanceCard, getPoints]);
 
   // Para cartas grupales: avanza sin asignar puntos a nadie
   const handleNext = useCallback(() => {
@@ -107,7 +112,7 @@ export function useGame(): UseGameReturn {
 
   // Para cartas VERSUS: winner recibe medallas, loser recibe copas
   const handleVersusResult = useCallback((winner: string, loser: string) => {
-    const pts = currentCard ? CATEGORY_CONFIG[currentCard.category].points : 1;
+    const pts = getPoints(currentCard);
     setScores((prev) =>
       prev.map((s) => {
         if (s.name === winner) return { ...s, medals: s.medals + pts };
@@ -116,11 +121,11 @@ export function useGame(): UseGameReturn {
       })
     );
     advanceCard();
-  }, [currentCard, advanceCard]);
+  }, [currentCard, advanceCard, getPoints]);
 
   // Para cartas de pose: todos los involucrados reciben medallas o copas
   const handlePoseResult = useCallback((involvedPlayers: string[], success: boolean) => {
-    const pts = currentCard ? CATEGORY_CONFIG[currentCard.category].points : 1;
+    const pts = getPoints(currentCard);
     setScores((prev) =>
       prev.map((s) => {
         if (!involvedPlayers.includes(s.name)) return s;
@@ -130,7 +135,7 @@ export function useGame(): UseGameReturn {
       })
     );
     advanceCard();
-  }, [currentCard, advanceCard]);
+  }, [currentCard, advanceCard, getPoints]);
 
   const startGame = useCallback(
     (playerList: string[]) => {

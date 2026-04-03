@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { audioManager } from "@/lib/audioManager";
 
 interface CardTimerProps {
@@ -17,6 +17,13 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
   const [status, setStatus] = useState<TimerStatus>("idle");
   const [remaining, setRemaining] = useState(duration);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      audioManager.stopTimerTick();
+    };
+  }, []);
 
   const startInterval = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);

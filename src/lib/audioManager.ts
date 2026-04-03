@@ -8,6 +8,7 @@ const SFX_VOL_KEY   = "joda_sfx_vol";
 
 class AudioManager {
   private bgAudio: HTMLAudioElement | null = null;
+  private sfxAudio: HTMLAudioElement | null = null;
   private tickAudio: HTMLAudioElement | null = null;
   private audioCtx: AudioContext | null = null;
   private _musicVol = 0.3;
@@ -73,9 +74,15 @@ class AudioManager {
 
   playSfx(src: string, volumeScale = 1) {
     if (typeof window === 'undefined' || this._sfxVol === 0) return;
+    if (this.sfxAudio) {
+      this.sfxAudio.pause();
+      this.sfxAudio.currentTime = 0;
+    }
     const audio = new Audio(src);
     audio.volume = Math.min(1, this._sfxVol * volumeScale);
     audio.play().catch(() => {});
+    this.sfxAudio = audio;
+    audio.addEventListener('ended', () => { this.sfxAudio = null; }, { once: true });
   }
 
   setSfxVol(vol: number) {

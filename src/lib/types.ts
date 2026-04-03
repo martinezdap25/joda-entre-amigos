@@ -9,6 +9,7 @@ export type CardCategory =
 export interface CardData {
   id: string;
   text: string;
+  points?: number;         // puntos que da esta carta; si no se define, usa el default de la categoría
   duration?: number;       // segundos para el timer (⏱️), undefined = sin timer
   description?: string;    // texto aclaratorio opcional, se muestra en gris pequeño
   image?: string;          // ruta de imagen opcional (ej: "/poses/pose1.jpg")

@@ -142,7 +142,8 @@ export function CardDisplay({
     if (showLightning) audioManager.playSfx("/sounds/vine-boom-fx.mp3");
     else if (card.category === "BASTA") audioManager.playSfx("/sounds/basta_chicos_fx.mp3", 2.2);
     else if (card.category === "TODOS") audioManager.playSfx("/sounds/todos_card_fx.mp3");
-    else if (card.category === "AMIGOS") audioManager.playSfx("/sounds/amigos_mierda_fx.mp3", 1.5);
+    else if (card.category === "AMIGOS") audioManager.playSfx("/sounds/dead_fx.mp3", 1.8);
+    else if (card.category === "CONFESION") audioManager.playSfx("/sounds/dexter_fx.mp3");
     else audioManager.playSfx("/sounds/faaah_fx.mp3");
   }, [card.id, showLightning, card.category]);
 
@@ -182,11 +183,14 @@ export function CardDisplay({
       )}
 
       {/* Points indicator — oculto para cartas grupales (0 pts no aporta info) */}
-      {!config.isGroupCard && (
-        <div className="font-display text-[11px] text-[#C9A84C]/50 tracking-[0.25em] uppercase mb-5">
-          {config.points} {config.points === 1 ? "punto" : "puntos"}
-        </div>
-      )}
+      {!config.isGroupCard && (() => {
+        const pts = card.points ?? config.points;
+        return (
+          <div className="font-display text-[11px] text-[#C9A84C]/50 tracking-[0.25em] uppercase mb-5">
+            {pts} {pts === 1 ? "punto" : "puntos"}
+          </div>
+        );
+      })()}
 
       {/* Card text */}
       <p
