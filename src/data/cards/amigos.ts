@@ -6,20 +6,20 @@ import { CardData } from "@/lib/types";
 
 export const amigosCards: CardData[] = [
   // ── VERSUS ─────────────────────────────────────────────────
-  { id: "a01", text: "VERSUS: {player} vs {randomPlayer} — Piedra, papel o tijera al mejor de 3. El que pierda toma doble, el que gane reparte 2 tragos entre el grupo" },
-  { id: "a02", text: "VERSUS: {player} vs {randomPlayer} — Duelo de miradas: 30 segundos sin parpadear. El primero que parpadee pierde y toma doble", duration: 30 }, // ⏱️
-  { id: "a03", text: "VERSUS: {player} vs {randomPlayer} — Pulseada. El que pierda toma, el que gane elige a alguien del grupo para que tome uno" },
-  { id: "a04", text: "VERSUS: {player} vs {randomPlayer} — Cara seria: mirándose a los ojos sin reírse. El primero en quebrarse toma doble" },
-  { id: "a05", text: "VERSUS: {player} vs {randomPlayer} — Reacción rápida: ¿quién es el jugador más viejo? El último en tocarlo pierde y toma" },
-  { id: "a06", text: "VERSUS: {player} vs {randomPlayer} — Guerra de pulgares. El que pierda toma, el que gane obliga a alguien del grupo a tomar uno" },
-  { id: "a07", text: "VERSUS: {player} vs {randomPlayer} — Nombren países alternando sin repetir. El primero que se quede en blanco o repita pierde y toma doble" },
-  { id: "a08", text: "VERSUS: {player} vs {randomPlayer} — Aguanten la respiración. El que no aguante más pierde y toma. El grupo hace de árbitro", duration: 60 }, // ⏱️
-  { id: "a09", text: "VERSUS: {player} vs {randomPlayer} — Batalla de humor negro. Cada uno lanza su mejor chiste oscuro. El grupo vota. El perdedor toma doble" },
-  { id: "a10", text: "VERSUS: {player} vs {randomPlayer} — ¿Quién es más probable que sea infiel? El grupo vota entre los dos sin piedad. El más señalado toma doble" },
-  { id: "a11", text: "VERSUS: {player} vs {randomPlayer} — Pose cómica: cada uno hace la pose más ridícula posible. El grupo vota al menos gracioso. El perdedor toma doble" },
-  { id: "a12", text: "VERSUS: {player} vs {randomPlayer} — Reacción rápida: el último en quitarse el calzado pierde y toma" },
+  { id: "a01", text: "{player} vs {randomPlayer} — Piedra, papel o tijera al mejor de 3. El que pierda toma doble, el que gane reparte 2 tragos entre el grupo" },
+  { id: "a02", text: "{player} vs {randomPlayer} — Duelo de miradas: 30 segundos sin parpadear. El primero que parpadee pierde y toma doble", duration: 30 }, // ⏱️
+  { id: "a03", text: "{player} vs {randomPlayer} — Pulseada. El que pierda toma, el que gane elige a alguien del grupo para que tome uno" },
+  { id: "a04", text: "{player} vs {randomPlayer} — Cara seria: mirándose a los ojos sin reírse. El primero en quebrarse toma doble" },
+  { id: "a05", text: "{player} vs {randomPlayer} — Reacción rápida: ¿quién es el jugador más viejo? El último en tocarlo pierde y toma" },
+  { id: "a06", text: "{player} vs {randomPlayer} — Guerra de pulgares. El que pierda toma, el que gane obliga a alguien del grupo a tomar uno" },
+  { id: "a07", text: "{player} vs {randomPlayer} — Nombren países alternando sin repetir. El primero que se quede en blanco o repita pierde y toma doble" },
+  { id: "a08", text: "{player} vs {randomPlayer} — Aguanten la respiración. El que no aguante más pierde y toma. El grupo hace de árbitro", duration: 60 }, // ⏱️
+  { id: "a09", text: "{player} vs {randomPlayer} — Batalla de humor negro. Cada uno lanza su mejor chiste oscuro. El grupo vota. El perdedor toma doble" },
+  { id: "a10", text: "{player} vs {randomPlayer} — ¿Quién es más probable que sea infiel? El grupo vota entre los dos sin piedad. El más señalado toma doble" },
+  { id: "a11", text: "{player} vs {randomPlayer} — Pose cómica: cada uno hace la pose más ridícula posible. El grupo vota al menos gracioso. El perdedor toma doble" },
+  { id: "a12", text: "{player} vs {randomPlayer} — Reacción rápida: el último en quitarse el calzado pierde y toma" },
   { id: "a13", text: "{player} y {randomPlayer}: inventen un saludo con choque de manos y ejecútenlo. Si lo clavan, ganan. Si no les sale, ambos toman", poseCount: 2 },
-  { id: "a14", text: "VERSUS: {player} vs {randomPlayer} — ¿A cuál de los dos llamarías para esconder un cuerpo? El grupo vota. El más señalado toma doble" },
+  { id: "a14", text: "{player} vs {randomPlayer} — ¿A cuál de los dos llamarías para esconder un cuerpo? El grupo vota. El más señalado toma doble" },
 
   // ── ACCIONES DIRECTAS DEL JUGADOR ──────────────────────────
   { id: "a15", text: "{player}, decile a {randomPlayer} una verdad incómoda en menos de 5 segundos o tomás doble", duration: 5 }, // ⏱️

@@ -13,7 +13,7 @@ export const picanteCards: CardData[] = [
   { id: "p35", text: "{player}, elegí a alguien para hacer contacto visual incómodo por 15 segundos", duration: 15 },
   { id: "p37", text: "{player}, hacé un sonido que represente tu momento más hot" },
   { id: "p41", text: "{player}, el grupo decide si sos más lento/a o intenso/a en la cama" },
-  { id: "p42", text: "VERSUS: {player} vs {randomPlayer} — contacto visual intenso sin reírse. El primero que se quiebre toma triple" },
+  { id: "p42", text: "{player} vs {randomPlayer} — contacto visual intenso sin reírse. El primero que se quiebre toma triple" },
   { id: "p43", text: "{player}, acercate a {randomPlayer} y susurrale algo provocador al oído" },
   { id: "p46", text: "{player}, el grupo vota si sos más fantasía o realidad. El que quede como 'fantasía' reparte 2 tragos" },
   { id: "p49", text: "{player}, decí algo que harías con alguien del grupo si no hubiera consecuencias" },
