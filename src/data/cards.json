@@ -1,0 +1,1673 @@
+[
+  {
+    "id": "r02",
+    "category": "RETO",
+    "text": "{player}, intercambiá una prenda con {randomPlayer} por 2 rondas",
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r03",
+    "category": "RETO",
+    "text": "{player}, sentate encima de {randomPlayer} hasta tu próximo turno",
+    "points": 1,
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r06",
+    "category": "RETO",
+    "text": "{player}, dale un baile sexy a {randomPlayer} durante 15 segundos",
+    "duration": 15,
+    "points": 3
+  },
+  {
+    "id": "r07",
+    "category": "RETO",
+    "text": "{player}, hablá como bebé hasta tu próximo turno",
+    "points": 3
+  },
+  {
+    "id": "r08",
+    "category": "RETO",
+    "text": "{player}, dale un beso en la mejilla a {randomPlayer} sin reírte",
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r09",
+    "category": "RETO",
+    "text": "{player}, sacate una prenda o tomá"
+  },
+  {
+    "id": "r10",
+    "category": "RETO",
+    "text": "{player}, cargá a {randomPlayer} 5 segundos",
+    "duration": 5,
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r11",
+    "category": "RETO",
+    "text": "{player}, dejá que el grupo te ponga un apodo por toda la partida",
+    "description": "Cada que alguien se olvide, debe tomar!",
+    "points": 3
+  },
+  {
+    "id": "r13",
+    "category": "RETO",
+    "text": "{player}, no podés decir 'sí' ni 'no' por 2 rondas",
+    "description": "Cada que te olvidas tomás! "
+  },
+  {
+    "id": "r19",
+    "category": "RETO",
+    "text": "{player}, usá un objeto random como sombrero por 2 rondas",
+    "points": 1
+  },
+  {
+    "id": "r21",
+    "category": "RETO",
+    "text": "{player}, hacé tu mejor gemido falso. El grupo decide si tomas o no",
+    "points": 3
+  },
+  {
+    "id": "r23",
+    "category": "RETO",
+    "text": "{player}, intercambiá medias con {randomPlayer}",
+    "description": "Si no acepta o no tiene, pierden ambos!"
+  },
+  {
+    "id": "r24",
+    "category": "RETO",
+    "text": "{player}, girá 15 veces y haz el 4!",
+    "points": 3,
+    "description": "Si lo haces y te tambaleas pierdes"
+  },
+  {
+    "id": "r25",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Pulseada. El perdedor toma."
+  },
+  {
+    "id": "r27",
+    "category": "RETO",
+    "text": "{player}, sostené un hielo en la mano 30 segundos",
+    "duration": 30
+  },
+  {
+    "id": "r29",
+    "category": "RETO",
+    "text": "{player}, terminá todas tus frases con 'mi rey' por 2 turnos"
+  },
+  {
+    "id": "r30",
+    "category": "RETO",
+    "text": "{player}, mantené contacto físico con {randomPlayer} por 1 ronda",
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r33",
+    "category": "RETO",
+    "text": "{player}, debes ser el masajista personal de {randomPlayer} por 1 ronda.",
+    "points": 3,
+    "description": "Si no quiere, pierden ambos."
+  },
+  {
+    "id": "r36",
+    "category": "RETO",
+    "text": "{player}, gritá como si te hubieras golpeado el dedo chiquito"
+  },
+  {
+    "id": "r37",
+    "category": "RETO",
+    "text": "{player}, obedecé a {randomPlayer} por 2 rondas",
+    "description": "No puede mandarte nada peligroso. Si te negás, tomás 2"
+  },
+  {
+    "id": "r38",
+    "category": "RETO",
+    "text": "{player}, no podés sentarte por 2 rondas",
+    "points": 1
+  },
+  {
+    "id": "r39",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Trabalenguas: decirlo a la primera sin equivocarse.",
+    "description": "Si empatan, pierde {player}",
+    "points": 1
+  },
+  {
+    "id": "r42",
+    "category": "RETO",
+    "text": "{player}, hablá con acento italiano por 2 rondas"
+  },
+  {
+    "id": "r43",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Pulseada con la mano no dominante. El perdedor toma.",
+    "points": 2
+  },
+  {
+    "id": "r44",
+    "category": "RETO",
+    "text": "{player}, tienens 15 segundos para tirar la cadena de un inodoro.",
+    "points": 3,
+    "description": "Si no hay inodoro pierdes automaticamente."
+  },
+  {
+    "id": "r45",
+    "category": "RETO",
+    "text": "{player}, intercambiá remera con {randomPlayer}",
+    "description": "Si no pueden o quieren pierden ambos!"
+  },
+  {
+    "id": "r47",
+    "category": "RETO",
+    "text": "{player}, besá la mano de {randomPlayer} como si fuera una princesa",
+    "description": "Si no quiere pierden ambos!"
+  },
+  {
+    "id": "r49",
+    "category": "RETO",
+    "text": "{player}, hablá cantando por una ronda"
+  },
+  {
+    "id": "r51",
+    "category": "RETO",
+    "cardSubtype": "solo",
+    "text": "{player}, si no sabés el segundo nombre de {randomPlayer}, tomás 2"
+  },
+  {
+    "id": "r52",
+    "category": "RETO",
+    "cardSubtype": "solo",
+    "text": "{player}, intentá adivinar el color de la ropa interior de {randomPlayer}. Si fallás, tomás 2",
+    "points": 3
+  },
+  {
+    "id": "r53",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — {player} esconde una moneda en su ropa. {randomPlayer} tiene 20 segundos para encontrarla. Si no puede, pierde.",
+    "duration": 20,
+    "description": "El grupo decide si el lugar donde estaba escondida es válido."
+  },
+  {
+    "id": "r54",
+    "category": "RETO",
+    "text": "{player}, cada jugador debe apretarte los cachetes como si fuera tu abuela"
+  },
+  {
+    "id": "r55",
+    "category": "RETO",
+    "text": "{player}, hablá susurrando durante 2 rondas",
+    "description": "Cada vez que te olvides, tomás 1"
+  },
+  {
+    "id": "r56",
+    "category": "RETO",
+    "text": "{player}, dale un beso en el cachete a la persona que esté 3 lugares a tu derecha",
+    "description": "Si no quiere, pierden ambos."
+  },
+  {
+    "id": "r57",
+    "category": "RETO",
+    "text": "{player}, hacé una risa de millonario sin salirte del personaje"
+  },
+  {
+    "id": "r59",
+    "category": "RETO",
+    "text": "{player}, pasá un hielo con la boca a la persona que está 2 lugares a tu izquierda",
+    "points": 3,
+    "description": "Si no quieren ambos pierden!"
+  },
+  {
+    "id": "r60",
+    "category": "RETO",
+    "text": "{player}, dale la mano a {randomPlayer} durante 2 rondas",
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r61",
+    "category": "RETO",
+    "text": "{player}, hablá como vaca durante una ronda",
+    "points": 3,
+    "description": "Si te olvidas tomas!"
+  },
+  {
+    "id": "r62",
+    "category": "RETO",
+    "text": "{player}, dale un pico a {randomPlayer}. Si alguno no quiere, toman los dos.",
+    "points": 3,
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r63",
+    "category": "RETO",
+    "text": "{player}, mencioná una fantasía que tengas por cumplir, o tomá"
+  },
+  {
+    "id": "r64",
+    "category": "RETO",
+    "text": "{player}, pasá una ronda sin calzado, o tomá"
+  },
+  {
+    "id": "r65",
+    "category": "RETO",
+    "text": "{player}, elegí: con quién te casás, con quién te acostás y a quién matás de los presentes, o tomá"
+  },
+  {
+    "id": "r66",
+    "category": "RETO",
+    "text": "{player}, mostrá tu bandeja de WhatsApp, o tomá 2",
+    "points": 3
+  },
+  {
+    "id": "r67",
+    "category": "RETO",
+    "text": "{player}, decí en voz alta el nombre de la última persona con quien tuviste algo, o tomá"
+  },
+  {
+    "id": "r68",
+    "category": "RETO",
+    "text": "{player}, mandá un mensaje a tu ex diciendo 'te extraño', o tomá 3",
+    "points": 3
+  },
+  {
+    "id": "r69",
+    "category": "RETO",
+    "text": "{player}, mostrá las últimas 5 fotos de tu galería sin filtrar nada, o tomá 3",
+    "points": 3
+  },
+  {
+    "id": "r70",
+    "category": "RETO",
+    "text": "{player}, nombrá quién del grupo te parece más atractivo/a, o tomá"
+  },
+  {
+    "id": "r71",
+    "category": "RETO",
+    "text": "{player}, poné en voz alta el último audio que recibiste, o tomá 2",
+    "points": 2
+  },
+  {
+    "id": "r72",
+    "category": "RETO",
+    "text": "{player}, decí con quién del grupo harías algo si no hubiera consecuencias, o tomá 3",
+    "points": 3
+  },
+  {
+    "id": "r73",
+    "category": "RETO",
+    "text": "{player}, actuá que estás borracho/a por 3 turnos o tomá ahora",
+    "description": "Si te olvidás en algún turno, tomá!",
+    "points": 3
+  },
+  {
+    "id": "r74",
+    "category": "RETO",
+    "text": "{player}, besá en la boca a {randomPlayer}. Si alguno no quiere, toman los dos.",
+    "points": 3,
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r75",
+    "category": "RETO",
+    "text": "{player}, besá el cuello de {randomPlayer}, o toman los dos",
+    "points": 3,
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r76",
+    "category": "RETO",
+    "text": "{player}, hacé 3 reverencias seguidas a {randomPlayer}, o tomá 2"
+  },
+  {
+    "id": "r77",
+    "category": "RETO",
+    "text": "{player}, jugá una ronda entera de cachetes pegados con {randomPlayer}. Si alguno no quiere, toman 2.",
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r78",
+    "category": "RETO",
+    "text": "{player}, acariciá el pelo de {randomPlayer} por dos rondas. Si alguno se niega, toman 2.",
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r79",
+    "category": "RETO",
+    "text": "{player}, {randomPlayer} te da una dejará en una posición random por 1 ronda, o tomá 2",
+    "description": "Si alguno no quiere, pierden ambos."
+  },
+  {
+    "id": "r80",
+    "category": "RETO",
+    "text": "{player}, mostrá tu sección de Explorar en Instagram, o tomá 2",
+    "points": 3
+  },
+  {
+    "id": "r81",
+    "category": "RETO",
+    "text": "{player}, decí quién del grupo creés que es el peor en la cama, o tomá 2",
+    "points": 2
+  },
+  {
+    "id": "r82",
+    "category": "RETO",
+    "text": "{player}, hacé 'el reloj' en el piso, o tomá 2",
+    "points": 1
+  },
+  {
+    "id": "r83",
+    "category": "RETO",
+    "text": "{player}, contá tu mejor chiste. Si nadie se ríe, tomás"
+  },
+  {
+    "id": "r84",
+    "category": "RETO",
+    "text": "{player}, escribí tu nombre en el brazo de {randomPlayer} con un marcador, o ambos toman",
+    "description": "Si alguno no quiere, pierden ambos.",
+    "points": 3
+  },
+  {
+    "id": "r85",
+    "category": "RETO",
+    "cardSubtype": "solo",
+    "text": "{player}, adiviná el número de calzado de {randomPlayer}. Si no acertás, tomá"
+  },
+  {
+    "id": "r86",
+    "category": "RETO",
+    "text": "{player}, conseguí que alguien del grupo te dé una prenda que lleve puesta, o tomá 2"
+  },
+  {
+    "id": "r87",
+    "category": "RETO",
+    "text": "{player}, conseguí las llaves de un auto en 15 segundos, o tomá 2",
+    "duration": 15,
+    "points": 2
+  },
+  {
+    "id": "c02",
+    "category": "CONFESION",
+    "text": "{player}, ¿hiciste algo borracho/a de lo que todavía te da vergüenza?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c04",
+    "category": "CONFESION",
+    "text": "{player}, ¿hiciste alguna vez algo ilegal, aunque sea un poco?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c08",
+    "category": "CONFESION",
+    "text": "{player}, ¿alguna vez traicionaste de verdad a un amigo?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c09",
+    "category": "CONFESION",
+    "text": "{player}, ¿tuviste alguna vez una pelea o alguien quiso pelear contigo en una fiesta?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c10",
+    "category": "CONFESION",
+    "text": "{player}, ¿te chapaste a alguien que sabias que no debías? Y no te importó.",
+    "description": "Si lo hiciste, tomá.",
+    "points": 2
+  },
+  {
+    "id": "c11",
+    "category": "CONFESION",
+    "text": "{player}, ¿hablaste mal de alguien del grupo alguna vez?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c13",
+    "category": "CONFESION",
+    "text": "{player}, ¿te chapaste más de una persona en una misma noche?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c16",
+    "category": "CONFESION",
+    "text": "{player}, ¿mantuviste una mentira por mucho tiempo?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c20",
+    "category": "CONFESION",
+    "text": "{player}, ¿tuviste alguna vez un episodio horrible con el alcohol?",
+    "description": "Si lo tuviste, tomá."
+  },
+  {
+    "id": "c21",
+    "category": "CONFESION",
+    "text": "{player}, ¿la primera impresión que tuviste de {randomPlayer} fue mala?",
+    "description": "Si fue mala, tomá."
+  },
+  {
+    "id": "c22",
+    "category": "CONFESION",
+    "text": "{player}, ¿hiciste algo estúpido para impresionar a alguien?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c23",
+    "category": "CONFESION",
+    "text": "{player}, ¿buscaste algo en internet que daría vergüenza mostrar?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c25",
+    "category": "CONFESION",
+    "text": "{player}, ¿fingiste saber algo y quedaste en offside?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c26",
+    "category": "CONFESION",
+    "text": "{player}, ¿intentaste chamuyar a alguien y fue un desastre total?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c29",
+    "category": "CONFESION",
+    "text": "{player}, ¿ignoraste red flags obvias por alguien que te gustaba?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c32",
+    "category": "CONFESION",
+    "text": "{player}, ¿dijiste 'te quiero' alguna vez sin sentirlo de verdad?",
+    "description": "Si lo dijiste, tomá."
+  },
+  {
+    "id": "c36",
+    "category": "CONFESION",
+    "text": "{player}, ¿tenés algo que confesar sobre {randomPlayer}?",
+    "description": "Si tenés, contalo y tomá."
+  },
+  {
+    "id": "c38",
+    "category": "CONFESION",
+    "text": "{player}, ¿hiciste algo que nadie del grupo esperaría de vos?",
+    "description": "Si lo hiciste, contalo y tomá."
+  },
+  {
+    "id": "c40",
+    "category": "CONFESION",
+    "text": "{player}, ¿hiciste algo solo/a que nunca contarías… hasta hoy?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c41",
+    "category": "CONFESION",
+    "text": "{player}, ¿tuviste alguna cita que fue un desastre total?",
+    "description": "Si la tuviste, tomá."
+  },
+  {
+    "id": "c42",
+    "category": "CONFESION",
+    "text": "{player}, ¿hiciste algo vergonzoso por celos?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c52",
+    "category": "CONFESION",
+    "text": "{player}, ¿tenés algún fetiche que nunca le contaste a nadie?",
+    "description": "Si lo tenés, contalo y tomá."
+  },
+  {
+    "id": "c57",
+    "category": "CONFESION",
+    "text": "{player}, ¿te arrepentiste alguna vez después de algo sexual?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c64",
+    "category": "CONFESION",
+    "text": "{player}, ¿hiciste algo atrevido en un lugar público?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c67",
+    "category": "CONFESION",
+    "text": "{player}, ¿stalkeaste a alguien por calentura?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c68",
+    "category": "CONFESION",
+    "text": "{player}, ¿tuviste alguna experiencia sexual que fue un desastre?",
+    "description": "Si la tuviste, tomá."
+  },
+  {
+    "id": "c77",
+    "category": "CONFESION",
+    "text": "{player}, ¿te calentaste en un momento totalmente inapropiado?",
+    "description": "Si lo hiciste, tomá."
+  },
+  {
+    "id": "c79",
+    "category": "CONFESION",
+    "text": "{player}, ¿mandaste algo subido de tono a la persona equivocada?",
+    "description": "Si lo mandaste, tomá."
+  },
+  {
+    "id": "t01",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez hicieron un trío"
+  },
+  {
+    "id": "t02",
+    "category": "TODOS",
+    "text": "Toman todos los que están en pareja actualmente"
+  },
+  {
+    "id": "t04",
+    "category": "TODOS",
+    "text": "Toman todos los que han usado juguetes sexuales"
+  },
+  {
+    "id": "t05",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez mandaron fotos o videos subidos de tono"
+  },
+  {
+    "id": "t06",
+    "category": "TODOS",
+    "text": "Toman todos los que trabajan actualmente"
+  },
+  {
+    "id": "t07",
+    "category": "TODOS",
+    "text": "Toman todos los que van o fueron a la universidad"
+  },
+  {
+    "id": "t09",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez fingieron un orgasmo"
+  },
+  {
+    "id": "t10",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez tuvieron sentimientos por alguien de este grupo"
+  },
+  {
+    "id": "t11",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez espiaron el celular de su pareja o ex"
+  },
+  {
+    "id": "t12",
+    "category": "TODOS",
+    "text": "Toman todos los que tienen tatuajes"
+  },
+  {
+    "id": "t13",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez tuvieron sexo en un lugar público"
+  },
+  {
+    "id": "t14",
+    "category": "TODOS",
+    "text": "Toman todos los que todavía hablan con algún ex"
+  },
+  {
+    "id": "t15",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez bloquearon a alguien después de tener algo"
+  },
+  {
+    "id": "t16",
+    "category": "TODOS",
+    "text": "Toman todos los que tienen más de 3 ex"
+  },
+  {
+    "id": "t17",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez besaron a alguien del mismo sexo"
+  },
+  {
+    "id": "t18",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez se excitaron pensando en alguien de este grupo"
+  },
+  {
+    "id": "t19",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez tuvieron sexo el mismo día que conocieron a alguien"
+  },
+  {
+    "id": "t20",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez lloraron después de sexo"
+  },
+  {
+    "id": "t21",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez tuvieron un aventura o chamuyo con alguien comprometido/a"
+  },
+  {
+    "id": "t22",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez se levantaron a alguien de un velorio, boda o entierro"
+  },
+  {
+    "id": "t23",
+    "category": "TODOS",
+    "text": "Toman todos los que actualmente tienen conversaciones secretas en el celu que nunca mostrarían"
+  },
+  {
+    "id": "t24",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez tuvieron sexo con alguien del trabajo o estudio"
+  },
+  {
+    "id": "t25",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez perdieron un amigo/a por enamorarse de la misma persona"
+  },
+  {
+    "id": "t26",
+    "category": "TODOS",
+    "text": "¿Quién es más probable que haya tenido el mayor número de parejas? El grupo decide. Esa persona toma"
+  },
+  {
+    "id": "t27",
+    "category": "TODOS",
+    "text": "¿Quién es más probable que sea mejor en la cama de lo que aparenta? El grupo vota. Esa persona toma"
+  },
+  {
+    "id": "t28",
+    "category": "TODOS",
+    "text": "¿Quién es más probable que tenga el historial de búsqueda más comprometedor? Esa persona toma"
+  },
+  {
+    "id": "t29",
+    "category": "TODOS",
+    "text": "¿Quién es más probable que sea infiel si pudiera sin consecuencias? El grupo vota. Esa persona toma"
+  },
+  {
+    "id": "t30",
+    "category": "TODOS",
+    "text": "¿Quién es más probable que mande nudes más rápido? La persona más señalada toma"
+  },
+  {
+    "id": "t31",
+    "category": "TODOS",
+    "text": "¿Quién es más probable que acabe solo/a para siempre? Esa persona reparte tragos como quiera"
+  },
+  {
+    "id": "t32",
+    "category": "TODOS",
+    "text": "¿Quién es más probable que llore primero esta noche? Esa persona toma ahora para adelantarse"
+  },
+  {
+    "id": "t33",
+    "category": "TODOS",
+    "text": "¿Quién es más probable que haya tenido el peor ex? La persona más señalada cuenta la historia o toma"
+  },
+  {
+    "id": "t35",
+    "category": "TODOS",
+    "text": "Todos muestran la última foto de su galería sin elegirla. El que no quiera mostrarla toma"
+  },
+  {
+    "id": "t41",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez pensaron en alguien de este grupo de forma sexual. No hay que decir quién"
+  },
+  {
+    "id": "t46",
+    "category": "TODOS",
+    "text": "El grupo vota quién tiene más vida sexual activa. Esa persona confiesa la ultima vez que lo hizo o toma"
+  },
+  {
+    "id": "t50",
+    "category": "TODOS",
+    "text": "El grupo vota quién tiene el mejor y el peor estilo de todos. El de mejor estilo reparte tragos, el de peor toma"
+  },
+  {
+    "id": "t51",
+    "category": "TODOS",
+    "cardSubtype": "save_half",
+    "minPlayers": 3,
+    "text": "{player}, elegí quién se salva. La mitad del grupo queda a salvo, el resto toma."
+  },
+  {
+    "id": "t52",
+    "category": "TODOS",
+    "text": "Toman todos si alguien del grupo tiene ropa interior {randomColor} puesta en este momento",
+    "colorOptions": [
+      "roja",
+      "negra",
+      "blanca",
+      "azul",
+      "rosa"
+    ]
+  },
+  {
+    "id": "t53",
+    "category": "TODOS",
+    "text": "Toman todos los que usan lentes"
+  },
+  {
+    "id": "t54",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez fumaron marihuana"
+  },
+  {
+    "id": "t55",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez fueron infieles en una relación"
+  },
+  {
+    "id": "t56",
+    "category": "TODOS",
+    "text": "Toman todos si alguien del grupo tiene un preservativo encima ahora mismo"
+  },
+  {
+    "id": "t57",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez hicieron algo sexual en un auto"
+  },
+  {
+    "id": "t58",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez borraron chats para que no los vean"
+  },
+  {
+    "id": "t59",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez usaron una excusa para zafar de tener sexo"
+  },
+  {
+    "id": "t60",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez tuvieron sexo en la casa de sus viejos"
+  },
+  {
+    "id": "t61",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez tuvieron sexo en el lugar donde están ahora"
+  },
+  {
+    "id": "t62",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez estuvieron con más de una persona el mismo día"
+  },
+  {
+    "id": "t63",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez le mintieron a su pareja sobre dónde estaban"
+  },
+  {
+    "id": "t64",
+    "category": "TODOS",
+    "text": "Toman todos los que en este momento tienen conversaciones sin responder de más de una semana"
+  },
+  {
+    "id": "t65",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez mandaron un audio borracho/a y al día siguiente se arrepintieron"
+  },
+  {
+    "id": "t66",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez se enamoraron de alguien mientras estaban en pareja"
+  },
+  {
+    "id": "t67",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez tuvieron sexo con alguien más de 10 años mayor"
+  },
+  {
+    "id": "t68",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez terminaron lastimados después de tener sexo (Cuenten obvio ahr)"
+  },
+  {
+    "id": "t69",
+    "category": "TODOS",
+    "text": "Toman todos los que en este momento tienen fotos comprometedoras de otra persona en el celu"
+  },
+  {
+    "id": "t70",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez revisaron el perfil de un ex desde una cuenta falsa o ajena"
+  },
+  {
+    "id": "t71",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez hicieron algo sexual con alguien de este grupo"
+  },
+  {
+    "id": "t72",
+    "category": "TODOS",
+    "text": "Toman todos los que llevan perfume puesto ahora mismo"
+  },
+  {
+    "id": "t73",
+    "category": "TODOS",
+    "text": "Toman todos los que tienen el celular con menos del 30% de batería"
+  },
+  {
+    "id": "t74",
+    "category": "TODOS",
+    "text": "Toman todos los que tienen instalada una app de citas en el celular"
+  },
+  {
+    "id": "t75",
+    "category": "TODOS",
+    "text": "Toman todos los que tienen como fondo de pantalla la foto de alguien que no son ellos"
+  },
+  {
+    "id": "t76",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez dejaron a sus amigos para irse a coger"
+  },
+  {
+    "id": "t77",
+    "category": "TODOS",
+    "text": "Toman todos si alguien del grupo tiene más de 1 tatuaje"
+  },
+  {
+    "id": "t78",
+    "category": "TODOS",
+    "text": "Toman todos los que alguna vez escucharon a sus padres teniendo sexo"
+  },
+  {
+    "id": "t79",
+    "category": "TODOS",
+    "text": "Toman todos los que tienen tatuajes"
+  },
+  {
+    "id": "t80",
+    "category": "TODOS",
+    "text": "Toman todos los que cumplen años en {randomMonth}",
+    "monthOptions": [
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre"
+    ]
+  },
+  {
+    "id": "t81",
+    "category": "TODOS",
+    "text": "Toman todos los que prefieren el frío al calor"
+  },
+  {
+    "id": "t82",
+    "category": "TODOS",
+    "text": "Toman todos los que prefieren el calor al frío"
+  },
+  {
+    "id": "t83",
+    "category": "TODOS",
+    "text": "Toman todos los que ven anime"
+  },
+  {
+    "id": "t84",
+    "category": "TODOS",
+    "text": "Toman todos los que ven o vieron One Piece"
+  },
+  {
+    "id": "a01",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Piedra, papel o tijera al mejor de 3. El perdedor toma."
+  },
+  {
+    "id": "a02",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Duelo de miradas: 30 segundos sin parpadear. Pierde el primero que falla.",
+    "duration": 30
+  },
+  {
+    "id": "a04",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Cara seria: mirándose a los ojos sin reírse. El primero en reír pierde."
+  },
+  {
+    "id": "a05",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Reacción rápida: ¿quién es el jugador más viejo? El que se equivoca pierde."
+  },
+  {
+    "id": "a06",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Guerra de pulgares. El perdedor toma.",
+    "points": 1
+  },
+  {
+    "id": "a08",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Aguanten la respiración. El primero en fallar pierde.",
+    "duration": 60
+  },
+  {
+    "id": "a09",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Batalla de humor negro: uno cada uno. El que se queda sin ideas pierde.",
+    "points": 3
+  },
+  {
+    "id": "a10",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — ¿Quién es más probable que tenga sexo en un lugar público? El elegido toma.",
+    "points": 3
+  },
+  {
+    "id": "a12",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Reacción rápida: el último en quitarse el calzado pierde."
+  },
+  {
+    "id": "a14",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — ¿A cuál de los dos llamarías para esconder un cuerpo? El elegido toma."
+  },
+  {
+    "id": "p42",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Guerra de altura: el más alto pierde."
+  },
+  {
+    "id": "p44",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Guerra de altura: el más bajo pierde."
+  },
+  {
+    "id": "v01",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: acción sexual que se hace con la boca. El primero en responder gana.",
+    "description": "PETE / MAMADA",
+    "spoiler": true
+  },
+  {
+    "id": "v02",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: posición sexual con referencia a un animal. El primero en responder gana.",
+    "description": "DE PERRITO",
+    "spoiler": true
+  },
+  {
+    "id": "v03",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: fantasía sexual que involucra más de 3 personas. El primero en responder gana.",
+    "description": "ORGÍA",
+    "spoiler": true
+  },
+  {
+    "id": "v04",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: lugar común donde puede pasar algo íntimo. El primero en responder gana.",
+    "description": "CAMA",
+    "spoiler": true
+  },
+  {
+    "id": "v05",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes de coger (versión masculina). El primero en responder gana.",
+    "description": "BOXER",
+    "spoiler": true
+  },
+  {
+    "id": "v06",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes de coger (versión femenina). El primero en responder gana.",
+    "description": "TANGA",
+    "spoiler": true
+  },
+  {
+    "id": "v07",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Más vale tarde que…\". El primero en completarlo gana.",
+    "description": "…nunca",
+    "spoiler": true
+  },
+  {
+    "id": "v08",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Al que madruga…\". El primero en completarlo gana.",
+    "description": "…Dios lo ayuda",
+    "spoiler": true
+  },
+  {
+    "id": "v09",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar la frase: \"Ojos que no ven…\". El primero en completarlo gana.",
+    "description": "…corazón que no siente",
+    "spoiler": true
+  },
+  {
+    "id": "v10",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar la frase: \"El que ríe último…\". El primero en completarlo gana.",
+    "description": "…ríe mejor",
+    "spoiler": true
+  },
+  {
+    "id": "v11",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Reacción rápida: el último en tocar al jugador más joven pierde."
+  },
+  {
+    "id": "v12",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Reacción rápida: el último en tocar al jugador con el color de piel más humilde pierde. Si ese jugador eres tú, ganas automáticamente."
+  },
+  {
+    "id": "v13",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: objeto que se usa para no dejar embarazada a alguien. El primero en responder gana.",
+    "description": "PRESERVATIVO",
+    "spoiler": true
+  },
+  {
+    "id": "v14",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: cuando alguien le pone los cuernos a su pareja. El primero en responder gana.",
+    "description": "INFIDELIDAD",
+    "spoiler": true
+  },
+  {
+    "id": "v15",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: atracción sexual por algo inusual o específico. El primero en responder gana.",
+    "description": "FETICHE",
+    "spoiler": true
+  },
+  {
+    "id": "v16",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"A caballo regalado…\". El primero en completarlo gana.",
+    "description": "…no se le miran los dientes",
+    "spoiler": true
+  },
+  {
+    "id": "v17",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"En boca cerrada…\". El primero en completarlo gana.",
+    "description": "…no entran moscas",
+    "spoiler": true
+  },
+  {
+    "id": "v18",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"No hay mal que por bien…\". El primero en completarlo gana.",
+    "description": "…no venga",
+    "spoiler": true
+  },
+  {
+    "id": "v19",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Camarón que se duerme…\". El primero en completarlo gana.",
+    "description": "…se lo lleva la corriente",
+    "spoiler": true
+  },
+  {
+    "id": "v20",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Dime con quién andás…\". El primero en completarlo gana.",
+    "description": "…y te diré quién eres",
+    "spoiler": true
+  },
+  {
+    "id": "v21",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: prenda de vestir que mucha gente no se quita cuando tiene sexo. El primero en responder gana.",
+    "description": "MEDIAS",
+    "spoiler": true
+  },
+  {
+    "id": "a16",
+    "category": "AMIGOS",
+    "cardSubtype": "partner",
+    "text": "{player}, apoyá la cabeza en el hombro de {randomPlayer} por 2 rondas.",
+    "points": 2
+  },
+  {
+    "id": "a18",
+    "category": "AMIGOS",
+    "cardSubtype": "partner",
+    "text": "{player}, intercambiá lugar con {randomPlayer} por 3 rondas",
+    "points": 1
+  },
+  {
+    "id": "a24",
+    "category": "AMIGOS",
+    "cardSubtype": "partner",
+    "text": "{player}, intercambiá un accesorio con {randomPlayer} por 2 rondas",
+    "description": "Si no tiene accesorios pierdes",
+    "points": 1
+  },
+  {
+    "id": "a25",
+    "category": "AMIGOS",
+    "text": "{player}, hacé contacto visual con {randomPlayer} por 20 segundos, si aguantan super serios ganan.",
+    "duration": 20,
+    "description": "Si alguno se rompe, pierden ambos!",
+    "points": 2
+  },
+  {
+    "id": "a26",
+    "category": "AMIGOS",
+    "cardSubtype": "partner",
+    "text": "{player}, apoyá tu mano sobre la de {randomPlayer} hasta tu próximo turno. Si la retirás, tomás",
+    "points": 1
+  },
+  {
+    "id": "a27",
+    "category": "AMIGOS",
+    "cardSubtype": "partner",
+    "text": "{player}, dale un pico a {randomPlayer} o tomá triple"
+  },
+  {
+    "id": "a30",
+    "category": "AMIGOS",
+    "text": "{player}, decí a quien eliminarías del grupo si no tuvieras elección!",
+    "points": 3
+  },
+  {
+    "id": "a32",
+    "category": "AMIGOS",
+    "text": "{player}, decí una verdad incómoda sobre alguien del grupo sin decir el nombre.",
+    "points": 2
+  },
+  {
+    "id": "a33",
+    "category": "AMIGOS",
+    "cardSubtype": "partner",
+    "text": "{player}, abrazá a {randomPlayer} por la espalda como en titanic por 30 segundos!",
+    "duration": 30,
+    "points": 2,
+    "description": "Tu eres Jack"
+  },
+  {
+    "id": "a38",
+    "category": "AMIGOS",
+    "text": "{player}, contá algo que le envidias a {randomPlayer} y nunca le dijiste",
+    "points": 2
+  },
+  {
+    "id": "a39",
+    "category": "AMIGOS",
+    "text": "{player}, describí tu peor anécdota con alguien del grupo sin decir el nombre.",
+    "points": 2
+  },
+  {
+    "id": "a40",
+    "category": "AMIGOS",
+    "text": "{player}, decile a {randomPlayer} lo que realmente pensás de su ex",
+    "points": 2,
+    "description": "O su ultimo amante"
+  },
+  {
+    "id": "a41",
+    "category": "AMIGOS",
+    "cardSubtype": "partner",
+    "text": "{player}, actuá como el lustra botas de {randomPlayer} durante 1 ronda",
+    "points": 2
+  },
+  {
+    "id": "a42",
+    "category": "AMIGOS",
+    "text": "{player}, contá lo peor que aguantaste por alguien y te avergüenza hoy",
+    "points": 2
+  },
+  {
+    "id": "a45",
+    "category": "AMIGOS",
+    "text": "{player}, confesá algo que pensás sobre {randomPlayer} y que nunca te animaste a decir",
+    "points": 1
+  },
+  {
+    "id": "a46",
+    "category": "AMIGOS",
+    "text": "{player}, abrazá a la persona del grupo con la que menos te relacionas, por 15 segundos",
+    "duration": 15,
+    "points": 2,
+    "description": "El grupo puede decidir"
+  },
+  {
+    "id": "a47",
+    "category": "AMIGOS",
+    "text": "{player}, contá quien es el mas segundero del grupo para vos y por que",
+    "points": 2
+  },
+  {
+    "id": "a49",
+    "category": "AMIGOS",
+    "text": "{player}, decile al grupo quién creés que es el más chamuyero cuando esta soltero. Sin esquivar",
+    "points": 2
+  },
+  {
+    "id": "pose01",
+    "category": "AMIGOS",
+    "text": "{player}, replicá esta pose. Si no querés, tomás",
+    "image": "/images/poses/pose1p1.jpg",
+    "poseCount": 1
+  },
+  {
+    "id": "pose02",
+    "category": "AMIGOS",
+    "text": "{player}, replicá esta pose. Si no querés, tomás",
+    "image": "/images/poses/pose1p2.jpg",
+    "poseCount": 1
+  },
+  {
+    "id": "pose03",
+    "category": "AMIGOS",
+    "text": "{player}, replicá esta pose. Si no querés, tomás",
+    "image": "/images/poses/pose1p3.jpg",
+    "poseCount": 1
+  },
+  {
+    "id": "pose04",
+    "category": "AMIGOS",
+    "text": "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman",
+    "image": "/images/poses/pose2p1.jpeg",
+    "poseCount": 2
+  },
+  {
+    "id": "pose05",
+    "category": "AMIGOS",
+    "text": "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman",
+    "image": "/images/poses/pose2p2.jpeg",
+    "poseCount": 2
+  },
+  {
+    "id": "pose06",
+    "category": "AMIGOS",
+    "text": "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman",
+    "image": "/images/poses/pose2p3.jpeg",
+    "poseCount": 2
+  },
+  {
+    "id": "pose07",
+    "category": "AMIGOS",
+    "text": "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman",
+    "image": "/images/poses/pose2p4.jpg",
+    "poseCount": 2
+  },
+  {
+    "id": "pose08",
+    "category": "AMIGOS",
+    "text": "{player} y {randomPlayer}: repliquen esta pose juntos. Si no quieren, ambos toman",
+    "image": "/images/poses/pose2p5.jpg",
+    "poseCount": 2
+  },
+  {
+    "id": "pose09",
+    "category": "AMIGOS",
+    "text": "{player}, {randomPlayer} y {randomPlayer2}: repliquen esta pose entre los 3. Si no quieren, todos toman",
+    "image": "/images/poses/pose3p1.png",
+    "poseCount": 3
+  },
+  {
+    "id": "pose10",
+    "category": "AMIGOS",
+    "text": "{player}, {randomPlayer} y {randomPlayer2}: repliquen esta pose entre los 3. Si no quieren, todos toman",
+    "image": "/images/poses/pose3p2.jpg",
+    "poseCount": 3
+  },
+  {
+    "id": "pose11",
+    "category": "AMIGOS",
+    "text": "{player}, {randomPlayer} y {randomPlayer2}: repliquen esta pose entre los 3. Si no quieren, todos toman",
+    "image": "/images/poses/pose3p3.jpeg",
+    "poseCount": 3
+  },
+  {
+    "id": "p01",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me masturbé esta semana. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p02",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca probé el semen. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p03",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca busqué posiciones o técnicas raras en internet. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p04",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me cogí a alguien que juré que nunca haría, por pura calentura. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p05",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca le hablé a un ex solamente para coger. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p06",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me arrepentí al día siguiente de haber cogido con alguien. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p07",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca tuve sexo en un baño público. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p08",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca mandé una foto desnudo/a sin que me la pidieran. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p09",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca fingí un orgasmo para que terminara más rápido. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p10",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca tuve sexo con alguien sin saber su apellido. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p11",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca usé un juguete sexual con otra persona. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p12",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me excité viendo algo que me dio vergüenza. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p13",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca le mentí a alguien sobre mi número de parejas. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p14",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca tuve sexo con alguien del trabajo o la facu. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p15",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me corté solo/a porque no podía terminar. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p16",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca tuve sexo en un auto. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p17",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me desperté con alguien y quise salir corriendo. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p18",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca hice algo en la cama que no me animé a repetir. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p19",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me excité pensando en alguien de este grupo. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p20",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca tuve algo con alguien que estaba en pareja. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p21",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca grabé o saqué fotos en un momento íntimo. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p22",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca tuve ganas de hacerlo con más de una persona de este grupo al mismo tiempo. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p23",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca terminé llorando después de sexo. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p24",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca le mentí sobre dónde estaba para poder estar con alguien. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p25",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca clavé un polvo por otro mejor. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p26",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca probé algo que juraba que no me gustaba y me encantó. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p27",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca lo hice por la puerta de atrás. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p28",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca tuve videollamadas hot en una relación a distancia. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p29",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me masturbé hablando con un amante o pareja por teléfono. Si lo hiciste, tomá.",
+    "points": 2
+  },
+  {
+    "id": "p30",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca cogí en un lugar público. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p31",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca cogí en un parque. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p32",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca quise que mi pareja se disfrazara de algún personaje para tener sexo. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p33",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me disfracé de algo para complacer a mi pareja en la cama. Si lo hiciste, tomá."
+  },
+  {
+    "id": "b01",
+    "category": "BASTA",
+    "text": "Cosas que se lamen. Sin repetir, alternando.",
+    "description": "El que se quede en blanco o repita pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b02",
+    "category": "BASTA",
+    "text": "Cosas en las que te podés sentar. Sin repetir.",
+    "description": "El que no pueda nombrar una nueva pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b03",
+    "category": "BASTA",
+    "text": "Marcas de bebidas alcohólicas. Sin repetir, alternando.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b04",
+    "category": "BASTA",
+    "text": "Posiciones sexuales. Sin repetir.",
+    "description": "El que no pueda nombrar una nueva pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b05",
+    "category": "BASTA",
+    "text": "Cosas que se dicen en la cama y en la cocina, sin repetir.",
+    "description": "El que se calle pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b06",
+    "category": "BASTA",
+    "text": "Cosas largas y duras. Sin repetir.",
+    "description": "El que dude más de 2 segundos pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b07",
+    "category": "BASTA",
+    "text": "Cosas que vibran. Sin repetir, alternando.",
+    "description": "El que se quede sin ideas pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b09",
+    "category": "BASTA",
+    "text": "Apodos para el pene. Sin repetir, alternando.",
+    "description": "El que se quede sin ideas pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b10",
+    "category": "BASTA",
+    "text": "Apodos para la vagina. Sin repetir, alternando.",
+    "description": "El que se quede sin ideas pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b11",
+    "category": "BASTA",
+    "text": "Excusas para no tener sexo. Sin repetir.",
+    "description": "El que no pueda inventar una pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b12",
+    "category": "BASTA",
+    "text": "Lugares donde tuviste o quisieras tener sexo. Sin repetir.",
+    "description": "El que se quede callado pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b13",
+    "category": "BASTA",
+    "text": "Nombres de series. Sin repetir.",
+    "description": "El que no sepa ninguna nueva pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b14",
+    "category": "BASTA",
+    "text": "Cosas que se hacen en la cama. Sin repetir.",
+    "description": "El que dude pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b15",
+    "category": "BASTA",
+    "text": "Títulos de videos para adultos. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b16",
+    "category": "BASTA",
+    "text": "Cosas que pasan de pequeño a grande. Sin repetir, alternando.",
+    "description": "El que repita o dude pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b17",
+    "category": "BASTA",
+    "text": "Cosas que se encuentran en una sex shop. Sin repetir.",
+    "description": "El que se quede sin ideas pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b18",
+    "category": "BASTA",
+    "text": "Frases que decís para tener sexo. Sin repetir.",
+    "description": "El que no pueda pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b19",
+    "category": "BASTA",
+    "text": "Formas de nombrar el pecho femenino. Sin repetir, alternando.",
+    "description": "El que dude pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b22",
+    "category": "BASTA",
+    "text": "Cosas que se abren con dificultad. Sin repetir.",
+    "description": "El que dude más de 2 segundos pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b23",
+    "category": "BASTA",
+    "text": "Excusas para hablar con tu ex. Sin repetir.",
+    "description": "El que se quede sin ideas pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b24",
+    "category": "BASTA",
+    "text": "Cosas que duelen pero gustan. Sin repetir.",
+    "description": "El que no pueda nombrar nada pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b25",
+    "category": "BASTA",
+    "text": "Nombres de redes sociales. Sin repetir.",
+    "description": "El que dude o repita pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b26",
+    "category": "BASTA",
+    "text": "Frases que se dicen en un funeral… y también en la cama. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b27",
+    "category": "BASTA",
+    "text": "Motivos para cortar un polvo a la mitad. Sin repetir.",
+    "description": "El que no pueda nombrar uno pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b28",
+    "category": "BASTA",
+    "text": "Cosas en las que podés pensar para durar más en la cama. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  }
+]

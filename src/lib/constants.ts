@@ -59,7 +59,16 @@ export const CATEGORY_CONFIG: Record<CardCategory, CategoryConfig> = {
     color: "#C9A84C",
     bgGlow: "rgba(201,168,76,0.15)",
     tailwindColor: "brand-gold",
-    points: 0,
+    points: 2,
     isGroupCard: true,
+  },
+  VERSUS: {
+    label: "VERSUS",
+    emoji: "⚔️",
+    color: "#00E5FF",
+    bgGlow: "rgba(0,229,255,0.15)",
+    tailwindColor: "brand-cyan",
+    points: 2,
+    isGroupCard: false,
   },
 };

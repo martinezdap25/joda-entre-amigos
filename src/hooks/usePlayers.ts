@@ -22,13 +22,14 @@ export function usePlayers(): UsePlayersReturn {
 
   const addPlayer = useCallback((): boolean => {
     const name = playerName.trim().slice(0, MAX_NAME_LENGTH);
+    const normalizedName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
-    if (!name) {
+    if (!normalizedName) {
       setError("Escribí un nombre");
       return false;
     }
 
-    if (players.some((p) => p.toLowerCase() === name.toLowerCase())) {
+    if (players.some((p) => p.toLowerCase() === normalizedName.toLowerCase())) {
       setError("Ese nombre ya está en la lista");
       return false;
     }
@@ -38,7 +39,7 @@ export function usePlayers(): UsePlayersReturn {
       return false;
     }
 
-    setPlayers((prev) => [...prev, name]);
+    setPlayers((prev) => [...prev, normalizedName]);
     setPlayerName("");
     setError("");
     return true;

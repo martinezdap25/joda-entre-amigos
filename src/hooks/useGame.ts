@@ -22,12 +22,13 @@ interface UseGameReturn {
 
   // Actions
   startGame: (playerList: string[]) => void;
-  handleCompleted: () => void;
-  handleDrank: () => void;
+  handleCompleted: (partner?: string) => void;
+  handleDrank: (partner?: string) => void;
   handleNext: () => void;
   handleVersusResult: (winner: string, loser: string) => void;
   handlePoseResult: (involvedPlayers: string[], success: boolean) => void;
   handleBastaLoser: (loser: string) => void;
+  handleSaveHalf: (savedPlayers: string[]) => void;
   restartGame: () => void;
   exitGame: () => void;
 }
@@ -56,9 +57,27 @@ export function useGame(): UseGameReturn {
 
   const createDeck = useCallback(
     (playerCount: number) => {
-      const allCards = buildInterlacedDeck(cardsByCategory);
+      // Filtrar cartas con requisito mínimo de jugadores
+      const filtered = Object.fromEntries(
+        Object.entries(cardsByCategory).map(([cat, cards]) => [
+          cat,
+          cards.filter((c) => !c.minPlayers || c.minPlayers <= playerCount),
+        ])
+      ) as typeof cardsByCategory;
+      const allCards = buildInterlacedDeck(filtered);
       const total = CARDS_PER_PLAYER * playerCount;
-      return allCards.slice(0, Math.min(total, allCards.length));
+      return allCards.slice(0, Math.min(total, allCards.length)).map((card) => {
+        let c = { ...card };
+        if (c.colorOptions?.length && c.text.includes("{randomColor}")) {
+          const color = c.colorOptions[Math.floor(Math.random() * c.colorOptions.length)];
+          c = { ...c, text: c.text.replace(/\{randomColor\}/g, color) };
+        }
+        if (c.monthOptions?.length && c.text.includes("{randomMonth}")) {
+          const month = c.monthOptions[Math.floor(Math.random() * c.monthOptions.length)];
+          c = { ...c, text: c.text.replace(/\{randomMonth\}/g, month) };
+        }
+        return c;
+      });
     },
     []
   );
@@ -77,22 +96,26 @@ export function useGame(): UseGameReturn {
     return card.points ?? CATEGORY_CONFIG[card.category].points;
   }, []);
 
-  const handleCompleted = useCallback(() => {
+  const handleCompleted = useCallback((partner?: string) => {
     const pts = getPoints(currentCard);
     setScores((prev) =>
-      prev.map((s) =>
-        s.name === currentPlayer ? { ...s, medals: s.medals + pts } : s
-      )
+      prev.map((s) => {
+        if (s.name === currentPlayer) return { ...s, medals: s.medals + pts };
+        if (partner && s.name === partner) return { ...s, medals: s.medals + pts };
+        return s;
+      })
     );
     advanceCard();
   }, [currentPlayer, currentCard, advanceCard, getPoints]);
 
-  const handleDrank = useCallback(() => {
+  const handleDrank = useCallback((partner?: string) => {
     const pts = getPoints(currentCard);
     setScores((prev) =>
-      prev.map((s) =>
-        s.name === currentPlayer ? { ...s, drinks: s.drinks + pts } : s
-      )
+      prev.map((s) => {
+        if (s.name === currentPlayer) return { ...s, drinks: s.drinks + pts };
+        if (partner && s.name === partner) return { ...s, drinks: s.drinks + pts };
+        return s;
+      })
     );
     advanceCard();
   }, [currentPlayer, currentCard, advanceCard, getPoints]);
@@ -102,10 +125,21 @@ export function useGame(): UseGameReturn {
     advanceCard();
   }, [advanceCard]);
 
-  // Para BASTA: el perdedor suma 2 copas y se avanza
+  // Para BASTA: el perdedor suma copas según los puntos de la carta y se avanza
   const handleBastaLoser = useCallback((loser: string) => {
+    const pts = getPoints(currentCard);
     setScores((prev) =>
-      prev.map((s) => s.name === loser ? { ...s, drinks: s.drinks + 2 } : s)
+      prev.map((s) => s.name === loser ? { ...s, drinks: s.drinks + pts } : s)
+    );
+    advanceCard();
+  }, [currentCard, advanceCard, getPoints]);
+
+  // Para save_half: los jugadores no salvados reciben 3 copas cada uno
+  const handleSaveHalf = useCallback((savedPlayers: string[]) => {
+    setScores((prev) =>
+      prev.map((s) =>
+        savedPlayers.includes(s.name) ? s : { ...s, drinks: s.drinks + 3 }
+      )
     );
     advanceCard();
   }, [advanceCard]);
@@ -185,6 +219,7 @@ export function useGame(): UseGameReturn {
     handleVersusResult,
     handleBastaLoser,
     handlePoseResult,
+    handleSaveHalf,
     restartGame,
     exitGame,
   };

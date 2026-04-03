@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { GameCard } from "@/lib/types";
 import { processCardText } from "@/lib/utils";
 import { CATEGORY_CONFIG } from "@/lib/constants";
@@ -17,6 +17,62 @@ interface CardDisplayProps {
   versusPlayer?: string;
   versusPlayer2?: string;
   onTimerRunning?: (running: boolean) => void;
+}
+
+/* ── Spoiler: mantener presionado para revelar ───────── */
+function SpoilerReveal({ text, accentColor }: { text: string; accentColor: string }) {
+  const [revealed, setReveal] = useState(false);
+
+  return (
+    <div
+      className="mt-4 select-none touch-none w-full max-w-[300px]"
+      style={{ cursor: "pointer" }}
+      onMouseDown={() => setReveal(true)}
+      onMouseUp={() => setReveal(false)}
+      onMouseLeave={() => setReveal(false)}
+      onTouchStart={(e) => { e.preventDefault(); setReveal(true); }}
+      onTouchEnd={() => setReveal(false)}
+    >
+      {/* min-h fijo para que el recuadro no cambie de tamaño al revelar */}
+      <div
+        className="px-6 py-2 rounded-2xl flex flex-col items-center justify-center"
+        style={{
+          border: `1px solid ${accentColor}40`,
+          background: `${accentColor}12`,
+          minHeight: "4rem",
+        }}
+      >
+        {!revealed ? (
+          <>
+            <span
+              className="font-display text-[10px] tracking-[0.22em] uppercase"
+              style={{ color: `${accentColor}80` }}
+            >
+              🔒 Mantené presionado para revelar
+            </span>
+            <div
+              className="h-3 rounded-full mt-1"
+              style={{ width: "6rem", background: `${accentColor}30` }}
+            />
+          </>
+        ) : (
+          <motion.p
+            key="revealed"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="font-display font-bold text-center"
+            style={{
+              color: accentColor,
+              fontSize: "clamp(1rem, 4vw, 1.15rem)",
+              textShadow: `0 0 18px ${accentColor}60`,
+            }}
+          >
+            {text}
+          </motion.p>
+        )}
+      </div>
+    </div>
+  );
 }
 
 /* ── Rayo SVG animado ────────────────────────────────── */
@@ -92,15 +148,25 @@ function getCardAnimation(category: string) {
         animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
       };
     case "AMIGOS":
-      // Entrada con leve shake horizontal
+      // Entrada suave desde abajo
       return {
         initial: { opacity: 0, y: 20, scale: 1 },
         animate: {
           opacity: 1,
           y: 0,
-          x: [0, -3, 3, -2, 0],
           scale: 1,
-          transition: { duration: 0.4, ease: "easeOut", x: { duration: 0.4, times: [0, 0.2, 0.4, 0.7, 1] } },
+          transition: { duration: 0.4, ease: "easeOut" },
+        },
+      };
+    case "VERSUS":
+      // Choque: entra desde abajo con leve rebote de escala
+      return {
+        initial: { opacity: 0, y: 30, scale: 0.97 },
+        animate: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { duration: 0.35, ease: "easeOut" },
         },
       };
     case "BASTA":
@@ -144,6 +210,7 @@ export function CardDisplay({
     else if (card.category === "TODOS") audioManager.playSfx("/sounds/todos_card_fx.mp3");
     else if (card.category === "AMIGOS") audioManager.playSfx("/sounds/dead_fx.mp3", 1.8);
     else if (card.category === "CONFESION") audioManager.playSfx("/sounds/dexter_fx.mp3");
+    else if (card.category === "VERSUS") audioManager.playSfx("/sounds/fighting_fx.mp3");
     else audioManager.playSfx("/sounds/faaah_fx.mp3");
   }, [card.id, showLightning, card.category]);
 
@@ -182,8 +249,12 @@ export function CardDisplay({
         </div>
       )}
 
-      {/* Points indicator — oculto para cartas grupales (0 pts no aporta info) */}
-      {!config.isGroupCard && (() => {
+      {/* Points indicator */}
+      {isBasta ? (
+        <div className="font-display text-[11px] text-[#C9A84C]/50 tracking-[0.25em] uppercase mb-5">
+          🍷 2 copas — el perdedor
+        </div>
+      ) : !config.isGroupCard && (() => {
         const pts = card.points ?? config.points;
         return (
           <div className="font-display text-[11px] text-[#C9A84C]/50 tracking-[0.25em] uppercase mb-5">
@@ -266,12 +337,16 @@ export function CardDisplay({
 
       {/* Descripción opcional */}
       {card.description && (
-        <p
-          className="font-display text-[#888] leading-relaxed mt-4 max-w-[320px] text-center"
-          style={{ fontSize: "clamp(0.72rem, 2.5vw, 0.82rem)", letterSpacing: "0.01em" }}
-        >
-          {card.description}
-        </p>
+        card.spoiler ? (
+          <SpoilerReveal text={card.description} accentColor={config.color} />
+        ) : (
+          <p
+            className="font-display text-[#888] leading-relaxed mt-4 max-w-[320px] text-center"
+            style={{ fontSize: "clamp(0.72rem, 2.5vw, 0.82rem)", letterSpacing: "0.01em" }}
+          >
+            {card.description}
+          </p>
+        )
       )}
 
       {/* Timer — solo para cartas con duración, excepto BASTA que lo muestra fuera de la card */}

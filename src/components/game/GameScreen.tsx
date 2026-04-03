@@ -4,11 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import { Shield } from "lucide-react";
 import { GameCard } from "@/lib/types";
 import { pickRandomPlayer } from "@/lib/utils";
-import { CATEGORY_CONFIG } from "@/lib/constants";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { CardDisplay } from "./CardDisplay";
 import { CardTimer } from "./CardTimer";
 import { BastaLoserModal } from "./BastaLoserModal";
+import { SaveHalfModal } from "./SaveHalfModal";
 import { audioManager } from "@/lib/audioManager";
 
 interface GameScreenProps {
@@ -19,12 +19,13 @@ interface GameScreenProps {
   totalCards: number;
   progress: number;
   isGroupCard: boolean;
-  onCompleted: () => void;
-  onDrank: () => void;
+  onCompleted: (partner?: string) => void;
+  onDrank: (partner?: string) => void;
   onNext: () => void;
   onVersusResult: (winner: string, loser: string) => void;
   onPoseResult: (involvedPlayers: string[], success: boolean) => void;
   onBastaLoser: (loser: string) => void;
+  onSaveHalf: (savedPlayers: string[]) => void;
   onExit: () => void;
 }
 
@@ -42,6 +43,7 @@ export function GameScreen({
   onVersusResult,
   onPoseResult,
   onBastaLoser,
+  onSaveHalf,
   onExit,
 }: GameScreenProps) {
   const [animKey, setAnimKey] = useState(0);
@@ -50,6 +52,7 @@ export function GameScreen({
   const [versusPlayer, setVersusPlayer] = useState<string>("");
   const [versusPlayer2, setVersusPlayer2] = useState<string>("");
   const [bastaFinished, setBastaFinished] = useState(false);
+  const [showSaveHalf, setShowSaveHalf] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -63,14 +66,20 @@ export function GameScreen({
   }, [animKey]);
 
   const isBasta = currentCard.category === "BASTA";
-  const isVersus = currentCard.text.startsWith("VERSUS:");
+  const isVersus = currentCard.category === "VERSUS";
+  const isPicante = currentCard.category === "PICANTE";
+  const isRetoWithPartner = currentCard.category === "RETO" && currentCard.text.includes("{randomPlayer}") && currentCard.cardSubtype !== "solo";
+  const isWithPartner = isRetoWithPartner || currentCard.cardSubtype === "partner";
+  const isSaveHalf = currentCard.cardSubtype === "save_half";
   const isPose = !!currentCard.poseCount;
   const poseCount = currentCard.poseCount ?? 1;
 
   // Elegir jugadores extra una vez por carta
   useEffect(() => {
     setBastaFinished(false);
-    const needsOne = (isVersus || poseCount >= 2) && players.length > 1;
+    setShowSaveHalf(false);
+    if (isPicante) audioManager.playSfx("/sounds/ara_ara_fx.mp3");
+    const needsOne = (isVersus || poseCount >= 2 || isWithPartner) && players.length > 1;
     if (!needsOne) { setVersusPlayer(""); setVersusPlayer2(""); return; }
 
     const p1 = pickRandomPlayer(players, currentPlayer);
@@ -191,6 +200,19 @@ export function GameScreen({
               }}
             />
           </div>
+        ) : isSaveHalf ? (
+          /* Carta save_half → botón para abrir selección de equipo */
+          <button
+            onClick={() => setShowSaveHalf(true)}
+            className="relative flex-1 py-5 border-2 font-display tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden text-base bg-gradient-to-b from-[#1a1800] via-[#1a1500] to-[#0e0c08] border-[#FFEA00]/60 text-[#FFEA00] hover:border-[#FFE000] hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#FFEA00]/60 pointer-events-none" />
+            <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#FFEA00]/60 pointer-events-none" />
+            <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#FFEA00]/60 pointer-events-none" />
+            <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#FFEA00]/60 pointer-events-none" />
+            <span className="text-xl">🛡️</span>
+            ELEGIR EQUIPO
+          </button>
         ) : isGroupCard ? (
           /* Carta grupal → solo SIGUIENTE, sin scoring */
           <button
@@ -270,31 +292,44 @@ export function GameScreen({
           /* Carta de jugador → CUMPLIÓ / TOMÓ */
           <>
             <button
-              onClick={() => handleChoice(onCompleted)}
-              className="relative flex-1 py-5 border-2 font-display tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden text-base bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+              onClick={() => handleChoice(() => onCompleted(isWithPartner && versusPlayer ? versusPlayer : undefined))}
+              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
-              <span className="text-xl">🏅</span>
-              CUMPLIÓ
+              <span className="text-lg">🏅</span>
+              <span className="text-[0.65rem]">{isPicante ? "SAFÓ" : isWithPartner ? "CUMPLIERON" : "CUMPLIÓ"}</span>
             </button>
 
             <button
-              onClick={() => handleChoice(onDrank)}
-              className="relative flex-1 py-5 border-2 font-display tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden text-base bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
+              onClick={() => handleChoice(() => onDrank(isWithPartner && versusPlayer ? versusPlayer : undefined))}
+              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
               <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
-              <span className="text-xl">🍷</span>
-              TOMÓ
+              <span className="text-lg">🍷</span>
+              <span className="text-[0.65rem]">{isWithPartner ? "TOMARON" : "TOMÓ"}</span>
             </button>
           </>
         )}
       </div>
+      {/* Modal: save half */}
+      {showSaveHalf && (
+        <SaveHalfModal
+          players={players}
+          saveCount={Math.floor(players.length / 2)}
+          onConfirm={(savedPlayers) => {
+            setShowSaveHalf(false);
+            setAnimKey((k) => k + 1);
+            timeoutRef.current = setTimeout(() => onSaveHalf(savedPlayers), 30);
+          }}
+        />
+      )}
+
       {/* Modal: perdedor de BASTA */}
       {bastaFinished && (
         <BastaLoserModal
