@@ -25,6 +25,7 @@ export default function Home() {
     handleVersusResult,
     handlePoseResult,
     handleBastaLoser,
+    handleSaveHalf,
     restartGame,
     exitGame,
   } = useGame();
@@ -74,6 +75,7 @@ export default function Home() {
           onVersusResult={handleVersusResult}
           onPoseResult={handlePoseResult}
           onBastaLoser={handleBastaLoser}
+          onSaveHalf={handleSaveHalf}
           onExit={exitGame}
         />
       )}
