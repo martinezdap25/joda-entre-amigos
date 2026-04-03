@@ -82,8 +82,7 @@ export function GameScreen({
     } else {
       setVersusPlayer2("");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCard.id]);
+  }, [currentCard, players, currentPlayer, isVersus, poseCount]);
 
   const handleChoice = (action: () => void) => {
     if (timerRunning) {
