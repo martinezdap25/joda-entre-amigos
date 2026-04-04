@@ -39,14 +39,19 @@ export function GameOver({ totalCards, scores, onRestart, onExit }: GameOverProp
     };
   }, []);
   // Campeón: más medallas (desempate: menos copas)
-  const champion = [...scores].sort((a, b) =>
+  const sortedByMedals = [...scores].sort((a, b) =>
     b.medals - a.medals || a.drinks - b.drinks
-  )[0];
+  );
 
   // Perdedor: más copas (desempate: menos medallas)
   const loser = [...scores].sort((a, b) =>
     b.drinks - a.drinks || a.medals - b.medals
   )[0];
+
+  // Si el campeón y el perdedor son la misma persona, el siguiente es el campeón
+  const champion = sortedByMedals[0]?.name === loser?.name
+    ? (sortedByMedals[1] ?? sortedByMedals[0])
+    : sortedByMedals[0];
 
   // Ranking por medallas
   const ranking = [...scores].sort((a, b) =>

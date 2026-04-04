@@ -1498,6 +1498,31 @@
     "text": "{player}, yo nunca me disfracé de algo para complacer a mi pareja en la cama. Si lo hiciste, tomá."
   },
   {
+    "id": "p34",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca fui a un telo. Si fuiste, tomá."
+  },
+  {
+    "id": "p35",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca me toqué mirando hentai. Si lo hiciste, tomá."
+  },
+  {
+    "id": "p36",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca vi porno gay. Si lo viste, tomá."
+  },
+  {
+    "id": "p37",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca dudé de mi sexualidad. Si dudaste, tomá."
+  },
+  {
+    "id": "p38",
+    "category": "PICANTE",
+    "text": "{player}, toma si alguna vez se te rompió el preservativo mientras lo hacías."
+  },
+  {
     "id": "b01",
     "category": "BASTA",
     "text": "Cosas que se lamen. Sin repetir, alternando.",
@@ -1675,7 +1700,7 @@
   {
     "id": "adv01",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es un personaje de dibujos animados. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🍩🛋️📺",
     "description": "HOMER SIMPSON",
     "spoiler": true,
     "duration": 60
@@ -1683,7 +1708,7 @@
   {
     "id": "adv02",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es el protagonista de una película animada. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🧅🐉🪚",
     "description": "SHREK",
     "spoiler": true,
     "duration": 60
@@ -1691,7 +1716,7 @@
   {
     "id": "adv03",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es un personaje de dibujos animados. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🧽🍍🌊",
     "description": "BOB ESPONJA",
     "spoiler": true,
     "duration": 60
@@ -1699,7 +1724,7 @@
   {
     "id": "adv04",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es el protagonista de una serie de TV. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🧪👨‍🔬💊",
     "description": "WALTER WHITE",
     "spoiler": true,
     "duration": 60
@@ -1707,7 +1732,7 @@
   {
     "id": "adv05",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es el protagonista de una saga de películas y libros. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🧙‍♂️⚡🦉",
     "description": "HARRY POTTER",
     "spoiler": true,
     "duration": 60
@@ -1715,7 +1740,7 @@
   {
     "id": "adv06",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es el villano icónico de una saga de ciencia ficción. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🌌🖤😮‍💨",
     "description": "DARTH VADER",
     "spoiler": true,
     "duration": 60
@@ -1723,7 +1748,7 @@
   {
     "id": "adv07",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es un superhéroe sin superpoderes. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🦇🌃🔫",
     "description": "BATMAN",
     "spoiler": true,
     "duration": 60
@@ -1731,7 +1756,7 @@
   {
     "id": "adv08",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es el protagonista de una saga de película de piratas. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🏴‍☠️🍾🧭",
     "description": "JACK SPARROW",
     "spoiler": true,
     "duration": 60
@@ -1739,7 +1764,7 @@
   {
     "id": "adv09",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es personaje secundario de una saga de películas y libros de magia. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 📚🪄🦦",
     "description": "HERMIONE GRANGER",
     "spoiler": true,
     "duration": 60
@@ -1747,7 +1772,7 @@
   {
     "id": "adv10",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es un supervillano icónico de cómic y película. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🃏🎭🔪",
     "description": "EL JOKER",
     "spoiler": true,
     "duration": 60
@@ -1755,7 +1780,7 @@
   {
     "id": "adv11",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es un superhéroe millonario de película de acción. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🦾🤵💰",
     "description": "TONY STARK",
     "spoiler": true,
     "duration": 60
@@ -1763,7 +1788,7 @@
   {
     "id": "adv12",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es el protagonista de una película dramática muy famosa. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🏃🍫🦐",
     "description": "FORREST GUMP",
     "spoiler": true,
     "duration": 60
@@ -1771,7 +1796,7 @@
   {
     "id": "adv13",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es un personaje icónico de juguetes que tuvo su propia película. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 💅👗🩷",
     "description": "BARBIE",
     "spoiler": true,
     "duration": 60
@@ -1779,7 +1804,7 @@
   {
     "id": "adv14",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es un antihéroe de cómic y película, muy bocón. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🦸‍♂️💬🩸",
     "description": "DEADPOOL",
     "spoiler": true,
     "duration": 60
@@ -1787,7 +1812,7 @@
   {
     "id": "adv15",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es el protagonista de una serie animada para adultos. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🔬🥃🛸",
     "description": "RICK SANCHEZ",
     "spoiler": true,
     "duration": 60
@@ -1795,7 +1820,7 @@
   {
     "id": "adv16",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es un personaje muy peculiar de una saga de fantasía épica. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 💍🏔️👁️",
     "description": "GOLLUM",
     "spoiler": true,
     "duration": 60
@@ -1803,7 +1828,7 @@
   {
     "id": "adv17",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es un espía famoso de película. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🕵️‍♂️🍸🔫",
     "description": "JAMES BOND",
     "spoiler": true,
     "duration": 60
@@ -1811,7 +1836,7 @@
   {
     "id": "adv18",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? Es el jefe de una serie de comedia de oficina. Los demás te dan pistas sin decir el nombre. ¡60 segundos!",
+    "text": "{player}, ¿podés adivinar el personaje? 🏢😬📋",
     "description": "MICHAEL SCOTT",
     "spoiler": true,
     "duration": 60
