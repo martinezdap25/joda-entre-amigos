@@ -404,23 +404,18 @@
     "description": "Si lo hiciste, tomá."
   },
   {
-    "id": "c09",
-    "category": "CONFESION",
-    "text": "{player}, ¿tuviste alguna vez una pelea o alguien quiso pelear contigo en una fiesta?",
-    "description": "Si lo hiciste, tomá."
-  },
-  {
     "id": "c10",
     "category": "CONFESION",
-    "text": "{player}, ¿te chapaste a alguien que sabias que no debías? Y no te importó.",
+    "text": "{player}, ¿te cogiste o besaste a alguien solo para darle celos a alguien más?",
     "description": "Si lo hiciste, tomá.",
     "points": 2
   },
   {
     "id": "c11",
     "category": "CONFESION",
-    "text": "{player}, ¿hablaste mal de alguien del grupo alguna vez?",
-    "description": "Si lo hiciste, tomá."
+    "text": "{player}, ¿alguna fuiste infiel por que sabias que también te hacían lo mismo?",
+    "description": "Si lo hiciste, tomá.",
+    "points": 2
   },
   {
     "id": "c13",
@@ -431,14 +426,15 @@
   {
     "id": "c16",
     "category": "CONFESION",
-    "text": "{player}, ¿mantuviste una mentira por mucho tiempo?",
-    "description": "Si lo hiciste, tomá."
+    "text": "{player}, ¿Quién de aquí no te caía bien al principio?",
+    "description": "Si lo hiciste, tomá.",
+    "points": 3
   },
   {
     "id": "c20",
     "category": "CONFESION",
-    "text": "{player}, ¿tuviste alguna vez un episodio horrible con el alcohol?",
-    "description": "Si lo tuviste, tomá."
+    "text": "{player}, ¿tuviste una experiencia paranormal?",
+    "description": "Si la tuviste, tomá."
   },
   {
     "id": "c21",
@@ -449,7 +445,7 @@
   {
     "id": "c22",
     "category": "CONFESION",
-    "text": "{player}, ¿hiciste algo estúpido para impresionar a alguien?",
+    "text": "{player}, ¿te escapabas del colegio?",
     "description": "Si lo hiciste, tomá."
   },
   {
@@ -485,8 +481,8 @@
   {
     "id": "c36",
     "category": "CONFESION",
-    "text": "{player}, ¿tenés algo que confesar sobre {randomPlayer}?",
-    "description": "Si tenés, contalo y tomá."
+    "text": "{player}, definí la peor experiencia sexual, sin dar nombre.",
+    "description": "Con lujos y detalles obvio "
   },
   {
     "id": "c38",
@@ -497,14 +493,8 @@
   {
     "id": "c40",
     "category": "CONFESION",
-    "text": "{player}, ¿hiciste algo solo/a que nunca contarías… hasta hoy?",
-    "description": "Si lo hiciste, tomá."
-  },
-  {
-    "id": "c41",
-    "category": "CONFESION",
-    "text": "{player}, ¿tuviste alguna cita que fue un desastre total?",
-    "description": "Si la tuviste, tomá."
+    "text": "{player}, contá algo super secreto que muera aquí, si no toma! ",
+    "points": 3
   },
   {
     "id": "c42",
@@ -515,8 +505,9 @@
   {
     "id": "c52",
     "category": "CONFESION",
-    "text": "{player}, ¿tenés algún fetiche que nunca le contaste a nadie?",
-    "description": "Si lo tenés, contalo y tomá."
+    "text": "{player}, ¿tenés algún fetiche extraño?",
+    "description": "Si lo tenés, contalo y tomá.",
+    "points": 2
   },
   {
     "id": "c57",
@@ -527,7 +518,7 @@
   {
     "id": "c64",
     "category": "CONFESION",
-    "text": "{player}, ¿hiciste algo atrevido en un lugar público?",
+    "text": "{player}, ¿alguna vez te descubrieron haciéndolo o cortaron el polvo?",
     "description": "Si lo hiciste, tomá."
   },
   {
@@ -607,7 +598,7 @@
   {
     "id": "t13",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez tuvieron sexo en un lugar público"
+    "text": "Toman todos los que alguna vez hicieron el delicioso en un lugar público"
   },
   {
     "id": "t14",
@@ -637,7 +628,7 @@
   {
     "id": "t19",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez tuvieron sexo el mismo día que conocieron a alguien"
+    "text": "Toman todos los que alguna vez hicieron el frutifantástico el mismo día que conocieron a alguien"
   },
   {
     "id": "t20",
@@ -662,7 +653,7 @@
   {
     "id": "t24",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez tuvieron sexo con alguien del trabajo o estudio"
+    "text": "Toman todos los que alguna vez hicieron el delicioso con alguien del trabajo o estudio"
   },
   {
     "id": "t25",
@@ -781,17 +772,17 @@
   {
     "id": "t59",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez usaron una excusa para zafar de tener sexo"
+    "text": "Toman todos los que alguna vez usaron una excusa para zafar del frutifantástico"
   },
   {
     "id": "t60",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez tuvieron sexo en la casa de sus viejos"
+    "text": "Toman todos los que alguna vez hicieron el delicioso en la casa de sus viejos"
   },
   {
     "id": "t61",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez tuvieron sexo en el lugar donde están ahora"
+    "text": "Toman todos los que alguna vez hicieron el frutifantástico en el lugar donde están ahora"
   },
   {
     "id": "t62",
@@ -821,12 +812,12 @@
   {
     "id": "t67",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez tuvieron sexo con alguien más de 10 años mayor"
+    "text": "Toman todos los que alguna vez hicieron el delicioso con alguien más de 10 años mayor"
   },
   {
     "id": "t68",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez terminaron lastimados después de tener sexo (Cuenten obvio ahr)"
+    "text": "Toman todos los que alguna vez terminaron lastimados después del frutifantástico (Cuenten obvio ahr)"
   },
   {
     "id": "t69",
@@ -866,7 +857,7 @@
   {
     "id": "t76",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez dejaron a sus amigos para irse a coger"
+    "text": "Toman todos los que alguna vez dejaron a sus amigos para irse al frutifantástico"
   },
   {
     "id": "t77",
@@ -876,7 +867,7 @@
   {
     "id": "t78",
     "category": "TODOS",
-    "text": "Toman todos los que alguna vez escucharon a sus padres teniendo sexo"
+    "text": "Toman todos los que alguna vez escucharon a sus padres haciendo el delicioso"
   },
   {
     "id": "t79",
@@ -1019,14 +1010,14 @@
   {
     "id": "v05",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes de coger (versión masculina). El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes del delicioso (versión masculina). El primero en responder gana.",
     "description": "BOXER",
     "spoiler": true
   },
   {
     "id": "v06",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes de coger (versión femenina). El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes del delicioso (versión femenina). El primero en responder gana.",
     "description": "TANGA",
     "spoiler": true
   },
@@ -1334,168 +1325,204 @@
   {
     "id": "p01",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me masturbé esta semana. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca me toqué como piano embrujado esta semana. ",
+    "description": "Si lo hiciste, tomá"
   },
   {
     "id": "p02",
     "category": "PICANTE",
-    "text": "{player}, yo nunca probé el semen. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca probé el semen.",
+    "description": "Si lo hiciste, tomá.",
+    "points": 2
   },
   {
     "id": "p03",
     "category": "PICANTE",
-    "text": "{player}, yo nunca busqué posiciones o técnicas raras en internet. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca busqué posiciones o técnicas raras en internet..",
+    "points": 2,
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p04",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me cogí a alguien que juré que nunca haría, por pura calentura. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca me cogí a alguien que juré que nunca haría, por pura calentura..",
+    "points": 2,
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p05",
     "category": "PICANTE",
-    "text": "{player}, yo nunca le hablé a un ex solamente para coger. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca le hablé a un ex solamente para el frutifantástico..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p06",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me arrepentí al día siguiente de haber cogido con alguien. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca me arrepentí al día siguiente de haber cogido con alguien..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p07",
     "category": "PICANTE",
-    "text": "{player}, yo nunca tuve sexo en un baño público. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca hice el delicioso en un baño público..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p08",
     "category": "PICANTE",
-    "text": "{player}, yo nunca mandé una foto desnudo/a sin que me la pidieran. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca mandé una foto desnudo/a sin que me la pidieran..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p09",
     "category": "PICANTE",
-    "text": "{player}, yo nunca fingí un orgasmo para que terminara más rápido. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca fingí un orgasmo para que terminara más rápido..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p10",
     "category": "PICANTE",
-    "text": "{player}, yo nunca tuve sexo con alguien sin saber su apellido. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca hice el frutifantástico con alguien sin saber su apellido..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p11",
     "category": "PICANTE",
-    "text": "{player}, yo nunca usé un juguete sexual con otra persona. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca usé un juguete sexual con otra persona..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p12",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me excité viendo algo que me dio vergüenza. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca me excité viendo algo que me dio vergüenza..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p13",
     "category": "PICANTE",
-    "text": "{player}, yo nunca le mentí a alguien sobre mi número de parejas. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca le mentí a alguien sobre mi número de parejas..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p14",
     "category": "PICANTE",
-    "text": "{player}, yo nunca tuve sexo con alguien del trabajo o la facu. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca hice el delicioso con alguien del trabajo o la facu..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p15",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me corté solo/a porque no podía terminar. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca me corté solo/a porque no podía terminar..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p16",
     "category": "PICANTE",
-    "text": "{player}, yo nunca tuve sexo en un auto. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca hice el frutifantástico en un auto..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p17",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me desperté con alguien y quise salir corriendo. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca me desperté con alguien y quise salir corriendo..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p18",
     "category": "PICANTE",
-    "text": "{player}, yo nunca hice algo en la cama que no me animé a repetir. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca hice algo en la cama que no me animé a repetir..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p19",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me excité pensando en alguien de este grupo. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca me excité pensando en alguien de este grupo..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p20",
     "category": "PICANTE",
-    "text": "{player}, yo nunca tuve algo con alguien que estaba en pareja. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca tuve algo con alguien que estaba en pareja..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p21",
     "category": "PICANTE",
-    "text": "{player}, yo nunca grabé o saqué fotos en un momento íntimo. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca grabé o saqué fotos en un momento íntimo..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p22",
     "category": "PICANTE",
-    "text": "{player}, yo nunca tuve ganas de hacerlo con más de una persona de este grupo al mismo tiempo. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca tuve ganas de hacerlo con más de una persona de este grupo al mismo tiempo..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p23",
     "category": "PICANTE",
-    "text": "{player}, yo nunca terminé llorando después de sexo. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca terminé llorando después de sexo..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p24",
     "category": "PICANTE",
-    "text": "{player}, yo nunca le mentí sobre dónde estaba para poder estar con alguien. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca le mentí sobre dónde estaba para poder estar con alguien..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p25",
     "category": "PICANTE",
-    "text": "{player}, yo nunca clavé un polvo por otro mejor. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca clavé un polvo por otro mejor..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p26",
     "category": "PICANTE",
-    "text": "{player}, yo nunca probé algo que juraba que no me gustaba y me encantó. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca probé algo que juraba que no me gustaba y me encantó..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p27",
     "category": "PICANTE",
-    "text": "{player}, yo nunca lo hice por la puerta de atrás. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca lo hice por la puerta de atrás..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p28",
     "category": "PICANTE",
-    "text": "{player}, yo nunca tuve videollamadas hot en una relación a distancia. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca tuve videollamadas hot en una relación a distancia..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p29",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me masturbé hablando con un amante o pareja por teléfono. Si lo hiciste, tomá.",
-    "points": 2
+    "text": "{player}, yo nunca me toqué como piano embrujado hablando con un amante o pareja por teléfono..",
+    "points": 2,
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p30",
     "category": "PICANTE",
-    "text": "{player}, yo nunca cogí en un lugar público. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca cogí en un lugar público..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p31",
     "category": "PICANTE",
-    "text": "{player}, yo nunca cogí en un parque. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca cogí en un parque..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p32",
     "category": "PICANTE",
-    "text": "{player}, yo nunca quise que mi pareja se disfrazara de algún personaje para tener sexo. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca quise que mi pareja se disfrazara de algún personaje para el delicioso..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p33",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me disfracé de algo para complacer a mi pareja en la cama. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca me disfracé de algo para complacer a mi pareja en la cama..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p34",
@@ -1505,7 +1532,8 @@
   {
     "id": "p35",
     "category": "PICANTE",
-    "text": "{player}, yo nunca me toqué mirando hentai. Si lo hiciste, tomá."
+    "text": "{player}, yo nunca me toqué mirando hentai..",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "p36",
@@ -1521,6 +1549,12 @@
     "id": "p38",
     "category": "PICANTE",
     "text": "{player}, toma si alguna vez se te rompió el preservativo mientras lo hacías."
+  },
+  {
+    "id": "p39",
+    "category": "PICANTE",
+    "text": "{player}, yo nunca le hablé a alguien solo para el frutifantástico y después me lo tuve que fumar hasta que se fue.",
+    "description": "Si lo hiciste, tomá."
   },
   {
     "id": "b01",
@@ -1588,14 +1622,14 @@
   {
     "id": "b11",
     "category": "BASTA",
-    "text": "Excusas para no tener sexo. Sin repetir.",
+    "text": "Excusas para no hacer el frutifantástico. Sin repetir.",
     "description": "El que no pueda inventar una pierde.",
     "duration": 10
   },
   {
     "id": "b12",
     "category": "BASTA",
-    "text": "Lugares donde tuviste o quisieras tener sexo. Sin repetir.",
+    "text": "Lugares donde hiciste o quisieras hacer el delicioso. Sin repetir.",
     "description": "El que se quede callado pierde.",
     "duration": 10
   },
@@ -1637,7 +1671,7 @@
   {
     "id": "b18",
     "category": "BASTA",
-    "text": "Frases que decís para tener sexo. Sin repetir.",
+    "text": "Frases que decís para conseguir el frutifantástico. Sin repetir.",
     "description": "El que no pueda pierde.",
     "duration": 10
   },
@@ -1694,6 +1728,90 @@
     "id": "b28",
     "category": "BASTA",
     "text": "Cosas en las que podés pensar para durar más en la cama. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b29",
+    "category": "BASTA",
+    "text": "Cosas que se dicen durante el frutifantástico. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b30",
+    "category": "BASTA",
+    "text": "Tipos de juguetes sexuales. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b31",
+    "category": "BASTA",
+    "text": "Comida callejera. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b32",
+    "category": "BASTA",
+    "text": "Bandas famosas. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b33",
+    "category": "BASTA",
+    "text": "Cantantes argentinos. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b34",
+    "category": "BASTA",
+    "text": "Cosas que encontrás en una farmacia. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b35",
+    "category": "BASTA",
+    "text": "Tipos de drogas. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b36",
+    "category": "BASTA",
+    "text": "Trabajos donde te negrean. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b37",
+    "category": "BASTA",
+    "text": "Series o películas famosas. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b38",
+    "category": "BASTA",
+    "text": "Tipos de géneros (aunque no lo sean). Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b39",
+    "category": "BASTA",
+    "text": "Tipos de red flags. Sin repetir.",
+    "description": "El que se quede en blanco pierde.",
+    "duration": 10
+  },
+  {
+    "id": "b40",
+    "category": "BASTA",
+    "text": "Excusas o motivos por los que fuiste infiel. Sin repetir.",
     "description": "El que se quede en blanco pierde.",
     "duration": 10
   },

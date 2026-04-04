@@ -50,7 +50,7 @@ export const CATEGORY_CONFIG: Record<CardCategory, CategoryConfig> = {
     color: "#FF9100",
     bgGlow: "rgba(255,145,0,0.15)",
     tailwindColor: "brand-orange",
-    points: 3,
+    points: 2,
     isGroupCard: false,
   },
   BASTA: {
