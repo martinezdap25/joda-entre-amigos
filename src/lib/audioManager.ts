@@ -90,7 +90,7 @@ class AudioManager {
     localStorage.setItem(SFX_VOL_KEY, String(vol));
   }
 
-  playTimerTick(urgent = false) {
+  playTimerTick(urgent = false, volumeScale = 1) {
     if (typeof window === 'undefined' || this._sfxVol === 0) return;
     // Cortar el tick anterior antes de disparar el nuevo
     if (this.tickAudio) {
@@ -99,7 +99,7 @@ class AudioManager {
       this.tickAudio = null;
     }
     const audio = new Audio("/sounds/clock_10_fx.mp3");
-    audio.volume = Math.min(1, this._sfxVol * (urgent ? 1.8 : 1.4));
+    audio.volume = Math.min(1, this._sfxVol * (urgent ? 1.8 : 1.4) * volumeScale);
     audio.play().catch(() => {});
     this.tickAudio = audio;
     // Limpiar referencia al terminar

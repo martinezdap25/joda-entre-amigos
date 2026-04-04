@@ -13,6 +13,7 @@ export const cardsByCategory: Record<CardCategory, CardData[]> = {
   PICANTE:   allCards.filter(c => c.category === "PICANTE"),
   BASTA:     allCards.filter(c => c.category === "BASTA"),
   VERSUS:    allCards.filter(c => c.category === "VERSUS"),
+  ADIVINA:   allCards.filter(c => c.category === "ADIVINA"),
 };
 
 export const totalCardCount = allCards.length;

@@ -71,4 +71,13 @@ export const CATEGORY_CONFIG: Record<CardCategory, CategoryConfig> = {
     points: 2,
     isGroupCard: false,
   },
+  ADIVINA: {
+    label: "ADIVINA QUIÉN SOY",
+    emoji: "🎭",
+    color: "#B388FF",
+    bgGlow: "rgba(179,136,255,0.15)",
+    tailwindColor: "brand-purple",
+    points: 2,
+    isGroupCard: false,
+  },
 };

@@ -7,13 +7,14 @@ interface CardTimerProps {
   duration: number;
   accentColor: string;
   large?: boolean;   // modo BASTA: botón interactivo que reinicia al presionar
+  tickVolumeScale?: number; // escala de volumen para los ticks (default 1)
   onRunningChange?: (running: boolean) => void;
   onDone?: () => void; // llamado una sola vez cuando el timer expira
 }
 
 type TimerStatus = "idle" | "running" | "done";
 
-export function CardTimer({ duration, accentColor, large = false, onRunningChange, onDone }: CardTimerProps) {
+export function CardTimer({ duration, accentColor, large = false, tickVolumeScale = 1, onRunningChange, onDone }: CardTimerProps) {
   const [status, setStatus] = useState<TimerStatus>("idle");
   const [remaining, setRemaining] = useState(duration);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -40,7 +41,7 @@ export function CardTimer({ duration, accentColor, large = false, onRunningChang
       } else {
         setRemaining(current);
         // Tick de bomba: urgente en los últimos 3 segundos
-        audioManager.playTimerTick(current <= 3);
+        audioManager.playTimerTick(current <= 3, tickVolumeScale);
       }
     }, 1000);
   };

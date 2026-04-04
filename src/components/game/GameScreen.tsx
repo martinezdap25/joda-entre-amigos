@@ -67,6 +67,7 @@ export function GameScreen({
 
   const isBasta = currentCard.category === "BASTA";
   const isVersus = currentCard.category === "VERSUS";
+  const isAdivina = currentCard.category === "ADIVINA";
   const isPicante = currentCard.category === "PICANTE";
   const isRetoWithPartner = currentCard.category === "RETO" && currentCard.text.includes("{randomPlayer}") && currentCard.cardSubtype !== "solo";
   const isWithPartner = isRetoWithPartner || currentCard.cardSubtype === "partner";
@@ -288,6 +289,32 @@ export function GameScreen({
               </>
             );
           })()
+        ) : isAdivina ? (
+          /* Carta ADIVINA → adivinó (medallas) o no adivinó (copas) */
+          <>
+            <button
+              onClick={() => handleChoice(() => onCompleted())}
+              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
+              <span className="text-lg">🏅</span>
+              <span className="text-[0.65rem]">ADIVINÓ</span>
+            </button>
+            <button
+              onClick={() => handleChoice(() => onDrank())}
+              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
+              <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
+              <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
+              <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
+              <span className="text-lg">🍷</span>
+              <span className="text-[0.65rem]">NO ADIVINÓ</span>
+            </button>
+          </>
         ) : (
           /* Carta de jugador → CUMPLIÓ / TOMÓ */
           <>

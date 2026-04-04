@@ -169,6 +169,12 @@ function getCardAnimation(category: string) {
           transition: { duration: 0.35, ease: "easeOut" },
         },
       };
+    case "ADIVINA":
+      // Misteriosa: fade lento con leve zoom in
+      return {
+        initial: { opacity: 0, scale: 0.94, y: 15 },
+        animate: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+      };
     case "BASTA":
       // Pop energético — entra escalando con rebote
       return {
@@ -211,6 +217,7 @@ export function CardDisplay({
     else if (card.category === "AMIGOS") audioManager.playSfx("/sounds/dead_fx.mp3", 1.8);
     else if (card.category === "CONFESION") audioManager.playSfx("/sounds/dexter_fx.mp3");
     else if (card.category === "VERSUS") audioManager.playSfx("/sounds/fighting_fx.mp3");
+    else if (card.category === "ADIVINA") audioManager.playSfx("/sounds/dexter_fx.mp3", 0.8);
     else audioManager.playSfx("/sounds/faaah_fx.mp3");
   }, [card.id, showLightning, card.category]);
 
@@ -355,6 +362,7 @@ export function CardDisplay({
           duration={card.duration}
           accentColor={config.color}
           large={card.category === "TODOS"}
+          tickVolumeScale={card.category === "ADIVINA" ? 0.35 : 1}
           onRunningChange={onTimerRunning}
         />
       )}
