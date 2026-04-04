@@ -1700,26 +1700,26 @@
   {
     "id": "adv01",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? 🍩🛋️📺",
+    "text": "{player}, ¿podés adivinar el personaje? 🍩📺",
     "description": "HOMER SIMPSON",
     "spoiler": true,
-    "duration": 60
+    "duration": 40
   },
   {
     "id": "adv02",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? 🧅🐉🪚",
+    "text": "{player}, ¿podés adivinar el personaje? 🧅🐉",
     "description": "SHREK",
     "spoiler": true,
-    "duration": 60
+    "duration": 40
   },
   {
     "id": "adv03",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? 🧽🍍🌊",
+    "text": "{player}, ¿podés adivinar el personaje? 🌊🍍",
     "description": "BOB ESPONJA",
     "spoiler": true,
-    "duration": 60
+    "duration": 40
   },
   {
     "id": "adv04",
@@ -1732,26 +1732,26 @@
   {
     "id": "adv05",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? 🧙‍♂️⚡🦉",
+    "text": "{player}, ¿podés adivinar el personaje? ⚡🧙‍♂️",
     "description": "HARRY POTTER",
     "spoiler": true,
-    "duration": 60
+    "duration": 40
   },
   {
     "id": "adv06",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? 🌌🖤😮‍💨",
+    "text": "{player}, ¿podés adivinar el personaje? 🌌‍💨",
     "description": "DARTH VADER",
     "spoiler": true,
-    "duration": 60
+    "duration": 40
   },
   {
     "id": "adv07",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? 🦇🌃🔫",
+    "text": "{player}, ¿podés adivinar el personaje? 🦇🔫",
     "description": "BATMAN",
     "spoiler": true,
-    "duration": 60
+    "duration": 40
   },
   {
     "id": "adv08",
@@ -1772,10 +1772,10 @@
   {
     "id": "adv10",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? 🃏🎭🔪",
+    "text": "{player}, ¿podés adivinar el personaje? 🃏🎭",
     "description": "EL JOKER",
     "spoiler": true,
-    "duration": 60
+    "duration": 40
   },
   {
     "id": "adv11",
@@ -1796,10 +1796,10 @@
   {
     "id": "adv13",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? 💅👗🩷",
+    "text": "{player}, ¿podés adivinar el personaje? 💅👗",
     "description": "BARBIE",
     "spoiler": true,
-    "duration": 60
+    "duration": 40
   },
   {
     "id": "adv14",
@@ -1828,10 +1828,10 @@
   {
     "id": "adv17",
     "category": "ADIVINA",
-    "text": "{player}, ¿podés adivinar el personaje? 🕵️‍♂️🍸🔫",
+    "text": "{player}, ¿podés adivinar el personaje? 🍸🔫",
     "description": "JAMES BOND",
     "spoiler": true,
-    "duration": 60
+    "duration": 40
   },
   {
     "id": "adv18",
