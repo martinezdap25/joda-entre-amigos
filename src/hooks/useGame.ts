@@ -5,6 +5,7 @@ import { GameCard, GameScreen, PlayerScore } from "@/lib/types";
 import { buildInterlacedDeck } from "@/lib/utils";
 import { cardsByCategory } from "@/data";
 import { CARDS_PER_PLAYER, CATEGORY_CONFIG } from "@/lib/constants";
+import { audioManager } from "@/lib/audioManager";
 
 interface UseGameReturn {
   // State
@@ -192,6 +193,7 @@ export function useGame(): UseGameReturn {
   }, [createDeck, players]);
 
   const exitGame = useCallback(() => {
+    audioManager.stopTimerTick();
     setScreen("setup");
     setPlayers([]);
     setDeck([]);

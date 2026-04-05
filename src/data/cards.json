@@ -131,7 +131,7 @@
     "id": "r39",
     "category": "VERSUS",
     "text": "{player} vs {randomPlayer} — Trabalenguas: decirlo a la primera sin equivocarse.",
-    "description": "Si empatan, pierde {player}",
+    "description": "Si empatan, pierde quien retó",
     "points": 1
   },
   {
@@ -185,8 +185,8 @@
   {
     "id": "r53",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — {player} esconde una moneda en su ropa. {randomPlayer} tiene 20 segundos para encontrarla. Si no puede, pierde.",
-    "duration": 20,
+    "text": "{player} vs {randomPlayer} — {player} esconde una moneda en su ropa. {randomPlayer} tiene 1 minuto para encontrarla. Si no puede, pierde.",
+    "duration": 60,
     "description": "El grupo decide si el lugar donde estaba escondida es válido."
   },
   {
@@ -982,70 +982,70 @@
   {
     "id": "v01",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: acción sexual que se hace con la boca. El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: acción sexual que se hace con la boca.",
     "description": "PETE / MAMADA",
     "spoiler": true
   },
   {
     "id": "v02",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: posición sexual con referencia a un animal. El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: posición sexual con referencia a un animal.",
     "description": "DE PERRITO",
     "spoiler": true
   },
   {
     "id": "v03",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: fantasía sexual que involucra más de 3 personas. El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: fantasía sexual que involucra más de 3 personas.",
     "description": "ORGÍA",
     "spoiler": true
   },
   {
     "id": "v04",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: lugar común donde puede pasar algo íntimo. El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: lugar común donde puede pasar algo íntimo.",
     "description": "CAMA",
     "spoiler": true
   },
   {
     "id": "v05",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes del delicioso (versión masculina). El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes del delicioso (versión masculina).",
     "description": "BOXER",
     "spoiler": true
   },
   {
     "id": "v06",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes del delicioso (versión femenina). El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: última prenda que alguien se quita antes del delicioso (versión femenina).",
     "description": "TANGA",
     "spoiler": true
   },
   {
     "id": "v07",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Más vale tarde que…\". El primero en completarlo gana.",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Más vale tarde que…\".",
     "description": "…nunca",
     "spoiler": true
   },
   {
     "id": "v08",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Al que madruga…\". El primero en completarlo gana.",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Al que madruga…\".",
     "description": "…Dios lo ayuda",
     "spoiler": true
   },
   {
     "id": "v09",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Completar la frase: \"Ojos que no ven…\". El primero en completarlo gana.",
+    "text": "{player} vs {randomPlayer} — Completar la frase: \"Ojos que no ven…\".",
     "description": "…corazón que no siente",
     "spoiler": true
   },
   {
     "id": "v10",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Completar la frase: \"El que ríe último…\". El primero en completarlo gana.",
+    "text": "{player} vs {randomPlayer} — Completar la frase: \"El que ríe último…\".",
     "description": "…ríe mejor",
     "spoiler": true
   },
@@ -1063,64 +1063,141 @@
   {
     "id": "v13",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: objeto que se usa para no dejar embarazada a alguien. El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: objeto que se usa para no dejar embarazada a alguien.",
     "description": "PRESERVATIVO",
     "spoiler": true
   },
   {
     "id": "v14",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: cuando alguien le pone los cuernos a su pareja. El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: cuando alguien le pone los cuernos a su pareja.",
     "description": "INFIDELIDAD",
     "spoiler": true
   },
   {
     "id": "v15",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: atracción sexual por algo inusual o específico. El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: atracción sexual por algo inusual o específico.",
     "description": "FETICHE",
     "spoiler": true
   },
   {
     "id": "v16",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Completar el refrán: \"A caballo regalado…\". El primero en completarlo gana.",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"A caballo regalado…\".",
     "description": "…no se le miran los dientes",
     "spoiler": true
   },
   {
     "id": "v17",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Completar el refrán: \"En boca cerrada…\". El primero en completarlo gana.",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"En boca cerrada…\".",
     "description": "…no entran moscas",
     "spoiler": true
   },
   {
     "id": "v18",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Completar el refrán: \"No hay mal que por bien…\". El primero en completarlo gana.",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"No hay mal que por bien…\".",
     "description": "…no venga",
     "spoiler": true
   },
   {
     "id": "v19",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Camarón que se duerme…\". El primero en completarlo gana.",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Camarón que se duerme…\".",
     "description": "…se lo lleva la corriente",
     "spoiler": true
   },
   {
     "id": "v20",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Dime con quién andás…\". El primero en completarlo gana.",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Dime con quién andás…\".",
     "description": "…y te diré quién eres",
     "spoiler": true
   },
   {
     "id": "v21",
     "category": "VERSUS",
-    "text": "{player} vs {randomPlayer} — Adivinar la palabra: prenda de vestir que mucha gente no se quita cuando tiene sexo. El primero en responder gana.",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: prenda de vestir que mucha gente no se quita cuando tiene sexo.",
     "description": "MEDIAS",
+    "spoiler": true
+  },
+  {
+    "id": "v22",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: acto sexual que se hace con la mano.",
+    "description": "PAJA",
+    "spoiler": true
+  },
+  {
+    "id": "v23",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: apodo para nombrar a un aparato reproductor masculino muy pequeño.",
+    "description": "ÑOQUIS",
+    "spoiler": true
+  },
+  {
+    "id": "v25",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: sonido que los hombres no hacen durante el delicioso.",
+    "description": "GEMIDO",
+    "spoiler": true
+  },
+  {
+    "id": "v27",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: app que usan los solteros para conseguir citas.",
+    "description": "TINDER",
+    "spoiler": true
+  },
+  {
+    "id": "v28",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: término para cuando alguien desaparece sin dar explicaciones después de hablar mucho.",
+    "description": "GHOSTING",
+    "spoiler": true
+  },
+  {
+    "id": "v29",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Donde hubo fuego…\".",
+    "description": "…cenizas quedan",
+    "spoiler": true
+  },
+  {
+    "id": "v31",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"A falta de pan…\".",
+    "description": "…buenas son tortas",
+    "spoiler": true
+  },
+  {
+    "id": "v32",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Más sabe el diablo por viejo…\".",
+    "description": "…que por diablo",
+    "spoiler": true
+  },
+  {
+    "id": "v33",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"No dejes para mañana…\".",
+    "description": "…lo que puedas hacer hoy",
+    "spoiler": true
+  },
+  {
+    "id": "v34",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Completar el refrán: \"Perro que ladra…\".",
+    "description": "…no muerde",
+    "spoiler": true
+  },
+  {
+    "id": "v35",
+    "category": "VERSUS",
+    "text": "{player} vs {randomPlayer} — Adivinar la palabra: lugar donde las parejas realizan el acto sexual.",
+    "description": "TELO",
     "spoiler": true
   },
   {

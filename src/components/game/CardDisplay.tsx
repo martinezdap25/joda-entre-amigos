@@ -25,7 +25,7 @@ function SpoilerReveal({ text, accentColor }: { text: string; accentColor: strin
 
   return (
     <div
-      className="mt-4 select-none touch-none w-full max-w-[300px]"
+      className="mt-5 select-none touch-none w-full max-w-[300px] relative"
       style={{ cursor: "pointer" }}
       onMouseDown={() => setReveal(true)}
       onMouseUp={() => setReveal(false)}
@@ -33,38 +33,60 @@ function SpoilerReveal({ text, accentColor }: { text: string; accentColor: strin
       onTouchStart={(e) => { e.preventDefault(); setReveal(true); }}
       onTouchEnd={() => setReveal(false)}
     >
-      {/* min-h fijo para que el recuadro no cambie de tamaño al revelar */}
+      {/* Separador ornamental superior */}
+      <div className="flex items-center gap-2 mb-3 px-2">
+        <div className="flex-1 h-px" style={{ background: `linear-gradient(to right, transparent, ${accentColor}90)` }} />
+        <span className="font-display text-[10px] tracking-[0.3em] uppercase" style={{ color: accentColor }}>
+          revelar frase
+        </span>
+        <div className="flex-1 h-px" style={{ background: `linear-gradient(to left, transparent, ${accentColor}90)` }} />
+      </div>
+
+      {/* Recuadro con esquinas decorativas */}
       <div
-        className="px-6 py-2 rounded-2xl flex flex-col items-center justify-center"
+        className="relative px-6 py-4 flex flex-col items-center justify-center overflow-hidden"
         style={{
-          border: `1px solid ${accentColor}40`,
-          background: `${accentColor}12`,
-          minHeight: "4rem",
+          border: `1.5px solid ${accentColor}80`,
+          background: `${accentColor}18`,
+          minHeight: "4.5rem",
         }}
       >
+        {/* Esquinas ornamentales */}
+        <span className="absolute top-[5px] left-[5px] w-3 h-3 border-t-2 border-l-2 pointer-events-none" style={{ borderColor: accentColor }} />
+        <span className="absolute top-[5px] right-[5px] w-3 h-3 border-t-2 border-r-2 pointer-events-none" style={{ borderColor: accentColor }} />
+        <span className="absolute bottom-[5px] left-[5px] w-3 h-3 border-b-2 border-l-2 pointer-events-none" style={{ borderColor: accentColor }} />
+        <span className="absolute bottom-[5px] right-[5px] w-3 h-3 border-b-2 border-r-2 pointer-events-none" style={{ borderColor: accentColor }} />
+
         {!revealed ? (
-          <>
+          <motion.div
+            className="flex flex-col items-center gap-2"
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          >
             <span
-              className="font-display text-[10px] tracking-[0.22em] uppercase"
-              style={{ color: `${accentColor}80` }}
+              className="font-display tracking-[0.22em] uppercase"
+              style={{ color: accentColor, fontSize: "0.75rem" }}
             >
-              🔒 Mantené presionado para revelar
+              mantené presionado
             </span>
-            <div
-              className="h-3 rounded-full mt-1"
-              style={{ width: "6rem", background: `${accentColor}30` }}
-            />
-          </>
+            <div className="flex items-center gap-1.5">
+              <div className="w-1.5 h-1.5 rounded-full" style={{ background: accentColor }} />
+              <div className="h-px w-14" style={{ background: `linear-gradient(to right, transparent, ${accentColor}, transparent)` }} />
+              <div className="w-1.5 h-1.5 rounded-full" style={{ background: accentColor }} />
+            </div>
+          </motion.div>
         ) : (
           <motion.p
             key="revealed"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
             className="font-display font-bold text-center"
             style={{
               color: accentColor,
               fontSize: "clamp(1rem, 4vw, 1.15rem)",
-              textShadow: `0 0 18px ${accentColor}60`,
+              letterSpacing: "0.02em",
+              textShadow: `0 0 20px ${accentColor}80`,
             }}
           >
             {text}
@@ -208,6 +230,7 @@ export function CardDisplay({
   const animationProps = getCardAnimation(card.category);
   const showLightning = card.category === "RETO" || card.category === "PICANTE";
   const isBasta = card.category === "BASTA";
+  const isAdivina = card.category === "ADIVINA";
   const bastaGoesRight = useMemo(() => Math.random() > 0.5, [card.id]);
 
   useEffect(() => {
@@ -225,9 +248,19 @@ export function CardDisplay({
     <motion.div
       key={animKey}
       {...animationProps}
-      className="w-full max-w-[420px] min-h-[340px] rounded-[2.2rem] p-9 flex flex-col justify-center items-center text-center relative overflow-hidden border-2 border-[#C9A84C]/40 bg-gradient-to-br from-[#18120a] via-[#221a0e] to-[#0e0c08]"
+      className="w-full max-w-[420px] min-h-[340px] rounded-[2.2rem] p-9 flex flex-col justify-center items-center text-center relative overflow-hidden border-2"
       style={{
-        boxShadow: `0 20px 60px rgba(0,0,0,0.5), 0 0 40px ${config.color}22, 0 0 0 4px #C9A84C11, inset 0 1px 0 rgba(255,255,255,0.06)`,
+        borderColor: isAdivina ? "#B388FF40" : isBasta ? "#00E67640" : "#C9A84C40",
+        background: isAdivina
+          ? "linear-gradient(160deg, #130d1e 0%, #0f0a1a 50%, #0a0810 100%)"
+          : isBasta
+          ? "linear-gradient(160deg, #061a0e 0%, #041208 50%, #020a04 100%)"
+          : "linear-gradient(to bottom right, #18120a, #221a0e, #0e0c08)",
+        boxShadow: isAdivina
+          ? `0 20px 60px rgba(0,0,0,0.5), 0 0 40px #B388FF22, 0 0 0 4px #B388FF11, inset 0 1px 0 rgba(255,255,255,0.06)`
+          : isBasta
+          ? `0 20px 60px rgba(0,0,0,0.5), 0 0 40px #00E67622, 0 0 0 4px #00E67611, inset 0 1px 0 rgba(255,255,255,0.06)`
+          : `0 20px 60px rgba(0,0,0,0.5), 0 0 40px ${config.color}22, 0 0 0 4px #C9A84C11, inset 0 1px 0 rgba(255,255,255,0.06)`,
       }}
     >
       {/* Efecto rayo para cartas pesadas */}
@@ -239,13 +272,21 @@ export function CardDisplay({
       <div
         className="absolute top-0 left-0 right-0 h-1"
         style={{
-          background: `linear-gradient(90deg, transparent, #C9A84C, transparent)`,
+          background: isAdivina
+            ? `linear-gradient(90deg, transparent, #B388FF, transparent)`
+            : isBasta
+            ? `linear-gradient(90deg, transparent, #00E676, transparent)`
+            : `linear-gradient(90deg, transparent, #C9A84C, transparent)`,
           opacity: 0.55,
         }}
       />
 
-      {/* Emoji */}
-      <div className="text-6xl mb-4">
+      {/* Emoji de fondo decorativo */}
+      <div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+        style={{ fontSize: "clamp(10rem, 40vw, 14rem)", opacity: 0.06, zIndex: 0 }}
+        aria-hidden="true"
+      >
         {config.emoji}
       </div>
 
@@ -271,15 +312,56 @@ export function CardDisplay({
       })()}
 
       {/* Card text */}
-      <p
-        className="font-display font-bold text-[#F0D98A] leading-relaxed m-0 max-w-[340px]"
-        style={{
-          fontSize: "clamp(1.18rem, 4.5vw, 1.38rem)",
-          letterSpacing: "0.01em",
-        }}
-      >
-        {text}
-      </p>
+      {isAdivina ? (
+        <>
+          {/* Nombre del personaje bien visible para el resto del grupo */}
+          <p
+            className="font-display font-bold text-center m-0"
+            style={{
+              color: config.color,
+              fontSize: "clamp(1.7rem, 7vw, 2.3rem)",
+              letterSpacing: "0.04em",
+              textShadow: `0 0 28px ${config.color}60`,
+            }}
+          >
+            {card.description}
+          </p>
+          {/* Instrucción para el resto */}
+          <p
+            className="font-display text-center mt-4 max-w-[300px]"
+            style={{
+              color: `${config.color}99`,
+              fontSize: "clamp(0.85rem, 3vw, 0.95rem)",
+              letterSpacing: "0.01em",
+              lineHeight: 1.5,
+            }}
+          >
+            <span style={{ color: config.color, fontWeight: "bold" }}>{currentPlayer}</span>{" "}
+            debe hacer preguntas para descubrir su personaje.{" "}
+            Solo tiene{" "}
+            <span style={{ color: config.color }}>{card.duration ?? 40} segundos</span>.
+          </p>
+          {/* Timer dentro del bloque ADIVINA */}
+          {card.duration !== undefined && (
+            <CardTimer
+              duration={card.duration}
+              accentColor={config.color}
+              tickVolumeScale={0.35}
+              onRunningChange={onTimerRunning}
+            />
+          )}
+        </>
+      ) : (
+        <p
+          className="font-display font-bold text-[#F0D98A] leading-relaxed m-0 max-w-[340px]"
+          style={{
+            fontSize: "clamp(1.18rem, 4.5vw, 1.38rem)",
+            letterSpacing: "0.01em",
+          }}
+        >
+          {text}
+        </p>
+      )}
 
       {/* Indicador BASTA: quién empieza y hacia dónde */}
       {isBasta && (
@@ -342,22 +424,22 @@ export function CardDisplay({
       {/* Imagen opcional (ej: poses) */}
       {card.image && <ImageLightbox src={card.image} />}
 
-      {/* Descripción opcional */}
-      {card.description && (
+      {/* Descripción opcional — no para ADIVINA (ya se muestra arriba) */}
+      {card.description && !isAdivina && (
         card.spoiler ? (
           <SpoilerReveal text={card.description} accentColor={config.color} />
         ) : (
           <p
-            className="font-display text-[#888] leading-relaxed mt-4 max-w-[320px] text-center"
-            style={{ fontSize: "clamp(0.72rem, 2.5vw, 0.82rem)", letterSpacing: "0.01em" }}
+            className="font-display text-[#aaa] leading-relaxed mt-4 max-w-[320px] text-center"
+            style={{ fontSize: "clamp(0.88rem, 3vw, 1rem)", letterSpacing: "0.01em" }}
           >
             {card.description}
           </p>
         )
       )}
 
-      {/* Timer — solo para cartas con duración, excepto BASTA que lo muestra fuera de la card */}
-      {card.duration !== undefined && !isBasta && (
+      {/* Timer — solo para cartas con duración, excepto BASTA y ADIVINA (ya tiene el suyo) */}
+      {card.duration !== undefined && !isBasta && !isAdivina && (
         <CardTimer
           duration={card.duration}
           accentColor={config.color}
@@ -371,7 +453,11 @@ export function CardDisplay({
       <div
         className="absolute bottom-0 left-0 right-0 h-1"
         style={{
-          background: `linear-gradient(90deg, transparent, #C9A84C, transparent)`,
+          background: isAdivina
+            ? `linear-gradient(90deg, transparent, #B388FF, transparent)`
+            : isBasta
+            ? `linear-gradient(90deg, transparent, #00E676, transparent)`
+            : `linear-gradient(90deg, transparent, #C9A84C, transparent)`,
           opacity: 0.38,
         }}
       />

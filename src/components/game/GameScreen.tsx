@@ -48,6 +48,7 @@ export function GameScreen({
 }: GameScreenProps) {
   const [animKey, setAnimKey] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
+  const [versusRevealed, setVersusRevealed] = useState(false);
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
   const [versusPlayer, setVersusPlayer] = useState<string>("");
   const [versusPlayer2, setVersusPlayer2] = useState<string>("");
@@ -79,7 +80,9 @@ export function GameScreen({
   useEffect(() => {
     setBastaFinished(false);
     setShowSaveHalf(false);
+    setVersusRevealed(false);
     if (isPicante) audioManager.playSfx("/sounds/ara_ara_fx.mp3");
+    if (isAdivina) audioManager.playSfx("/sounds/quien_es_fx.mp3");
     const needsOne = (isVersus || poseCount >= 2 || isWithPartner) && players.length > 1;
     if (!needsOne) { setVersusPlayer(""); setVersusPlayer2(""); return; }
 
@@ -173,6 +176,7 @@ export function GameScreen({
 
       {/* Card */}
       <div className="w-full flex justify-center">
+        <div className="w-full max-w-[420px] relative">
         <CardDisplay
           card={currentCard}
           currentPlayer={currentPlayer}
@@ -182,6 +186,116 @@ export function GameScreen({
           versusPlayer2={versusPlayer2 || undefined}
           onTimerRunning={setTimerRunning}
         />
+
+        {/* Tapa VERSUS: cubre la carta hasta que un tercero la revele */}
+        {isVersus && versusPlayer && !versusRevealed && (
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center rounded-[2.2rem] overflow-hidden"
+            style={{
+              background: "linear-gradient(160deg, #1e1608 0%, #18120a 50%, #0e0c08 100%)",
+              border: "2px solid #C9A84C40",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.5), 0 0 40px #C9A84C22, inset 0 1px 0 rgba(255,255,255,0.06)",
+            }}
+          >
+            {/* Línea ornamental superior */}
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, transparent, #C9A84C, transparent)", opacity: 0.55 }} />
+
+            <div className="flex flex-col items-center gap-5 px-7 py-8 w-full">
+              {/* Label */}
+              <div className="flex items-center gap-3 w-full">
+                <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#C9A84C]" />
+                <span className="font-display text-[10px] tracking-[0.35em] uppercase text-[#C9A84C]">versus</span>
+                <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#C9A84C]" />
+              </div>
+
+              {/* Jugadores */}
+              <div className="flex items-center gap-3 justify-center">
+                <span className="font-display font-bold text-[#F0D98A]" style={{ fontSize: "clamp(1.2rem, 5vw, 1.6rem)", letterSpacing: "0.04em" }}>
+                  {currentPlayer}
+                </span>
+                <span className="font-display text-[#C9A84C]/60 text-lg">vs</span>
+                <span className="font-display font-bold text-[#F0D98A]" style={{ fontSize: "clamp(1.2rem, 5vw, 1.6rem)", letterSpacing: "0.04em" }}>
+                  {versusPlayer}
+                </span>
+              </div>
+
+              {/* Instrucción */}
+              <p className="font-display text-[#C9A84C] text-center leading-relaxed" style={{ fontSize: "clamp(0.95rem, 3.5vw, 1.1rem)", letterSpacing: "0.02em" }}>
+                Que otro jugador lea la carta en voz alta.{" "}
+                <span className="text-[#F0D98A] font-bold">{currentPlayer}</span> y <span className="text-[#F0D98A] font-bold">{versusPlayer}</span> no la miren.
+              </p>
+
+              {/* Botón revelar */}
+              <button
+                onClick={() => setVersusRevealed(true)}
+                className="relative w-full py-4 border-2 font-display tracking-[0.22em] uppercase transition-all duration-200 flex items-center justify-center overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C] text-[#F0D98A] hover:bg-[#3a2d00] active:scale-[0.98]"
+              >
+                <span className="absolute top-[5px] left-[5px] w-3 h-3 border-t-2 border-l-2 border-[#C9A84C] pointer-events-none" />
+                <span className="absolute top-[5px] right-[5px] w-3 h-3 border-t-2 border-r-2 border-[#C9A84C] pointer-events-none" />
+                <span className="absolute bottom-[5px] left-[5px] w-3 h-3 border-b-2 border-l-2 border-[#C9A84C] pointer-events-none" />
+                <span className="absolute bottom-[5px] right-[5px] w-3 h-3 border-b-2 border-r-2 border-[#C9A84C] pointer-events-none" />
+                VER CARTA
+              </button>
+            </div>
+
+            {/* Línea ornamental inferior */}
+            <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, transparent, #C9A84C, transparent)", opacity: 0.55 }} />
+          </div>
+        )}
+
+        {/* Tapa ADIVINA: muestra los emojis-pista antes de revelar la carta */}
+        {isAdivina && !versusRevealed && (() => {
+          const emojiHint = currentCard.text.split('? ')[1]?.trim() ?? '';
+          return (
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center rounded-[2.2rem] overflow-hidden"
+              style={{
+                background: "linear-gradient(160deg, #130d1e 0%, #0f0a1a 50%, #0a0810 100%)",
+                border: "2px solid #B388FF40",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.5), 0 0 40px #B388FF22, inset 0 1px 0 rgba(255,255,255,0.06)",
+              }}
+            >
+              {/* Línea ornamental superior */}
+              <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, transparent, #B388FF, transparent)", opacity: 0.55 }} />
+
+              <div className="flex flex-col items-center gap-5 px-7 py-8 w-full">
+                {/* Label */}
+                <div className="flex items-center gap-3 w-full">
+                  <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#B388FF]" />
+                  <span className="font-display text-[10px] tracking-[0.35em] uppercase text-[#B388FF]">adivina quién soy</span>
+                  <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#B388FF]" />
+                </div>
+
+                {/* Emojis pista */}
+                <div className="text-center" style={{ fontSize: "clamp(3.5rem, 18vw, 5rem)", lineHeight: 1.2 }}>
+                  {emojiHint}
+                </div>
+
+                {/* Instrucción */}
+                <p className="font-display text-[#B388FF] text-center leading-relaxed" style={{ fontSize: "clamp(0.88rem, 3.2vw, 1rem)", letterSpacing: "0.02em" }}>
+                  <span className="text-[#D4AAFF] font-bold">{currentPlayer}</span>, usá los emojis como pista para adivinar tu personaje. Cuando estés listo, otro jugador apretá{" "}
+                  <span style={{ color: "#D4AAFF" }}>VER CARTA</span>.
+                </p>
+
+                {/* Botón revelar */}
+                <button
+                  onClick={() => setVersusRevealed(true)}
+                  className="relative w-full py-4 border-2 font-display tracking-[0.22em] uppercase transition-all duration-200 flex items-center justify-center overflow-hidden text-sm bg-gradient-to-b from-[#1e1030] via-[#130a20] to-[#0a0810] border-[#B388FF] text-[#D4AAFF] hover:bg-[#2a1840] active:scale-[0.98]"
+                >
+                  <span className="absolute top-[5px] left-[5px] w-3 h-3 border-t-2 border-l-2 border-[#B388FF] pointer-events-none" />
+                  <span className="absolute top-[5px] right-[5px] w-3 h-3 border-t-2 border-r-2 border-[#B388FF] pointer-events-none" />
+                  <span className="absolute bottom-[5px] left-[5px] w-3 h-3 border-b-2 border-l-2 border-[#B388FF] pointer-events-none" />
+                  <span className="absolute bottom-[5px] right-[5px] w-3 h-3 border-b-2 border-r-2 border-[#B388FF] pointer-events-none" />
+                  VER CARTA
+                </button>
+              </div>
+
+              {/* Línea ornamental inferior */}
+              <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, transparent, #B388FF, transparent)", opacity: 0.55 }} />
+            </div>
+          );
+        })()}
+        </div>
       </div>
 
       {/* Botones: condicional según tipo de carta */}
@@ -211,7 +325,6 @@ export function GameScreen({
             <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#FFEA00]/60 pointer-events-none" />
             <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#FFEA00]/60 pointer-events-none" />
             <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#FFEA00]/60 pointer-events-none" />
-            <span className="text-xl">🛡️</span>
             ELEGIR EQUIPO
           </button>
         ) : isGroupCard ? (
@@ -224,7 +337,6 @@ export function GameScreen({
             <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#FFEA00]/60 pointer-events-none" />
             <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#FFEA00]/60 pointer-events-none" />
             <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#FFEA00]/60 pointer-events-none" />
-            <span className="text-xl">🎲</span>
             SIGUIENTE
           </button>
         ) : isVersus && versusPlayer ? (
@@ -232,28 +344,28 @@ export function GameScreen({
           <>
             <button
               onClick={() => handleChoice(() => onVersusResult(currentPlayer, versusPlayer))}
-              className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+              disabled={!versusRevealed}
+              className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-30 disabled:pointer-events-none"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
-              <span className="text-lg">🏅</span>
               <span className="truncate max-w-full px-2">{currentPlayer}</span>
-              <span className="text-[10px] text-[#C9A84C]/50 tracking-[0.2em]">GANÓ</span>
+              <span className="text-xs text-[#C9A84C]/50 tracking-[0.2em]">GANÓ</span>
             </button>
 
             <button
               onClick={() => handleChoice(() => onVersusResult(versusPlayer, currentPlayer))}
-              className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+              disabled={!versusRevealed}
+              className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-30 disabled:pointer-events-none"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
-              <span className="text-lg">🏅</span>
               <span className="truncate max-w-full px-2">{versusPlayer}</span>
-              <span className="text-[10px] text-[#C9A84C]/50 tracking-[0.2em]">GANÓ</span>
+              <span className="text-xs text-[#C9A84C]/50 tracking-[0.2em]">GANÓ</span>
             </button>
           </>
         ) : isPose && poseCount >= 2 ? (
@@ -266,25 +378,23 @@ export function GameScreen({
               <>
                 <button
                   onClick={() => handleChoice(() => onPoseResult(involved, true))}
-                  className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+                  className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex items-center justify-center overflow-hidden text-sm bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
                   <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
                   <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
                   <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
-                  <span className="text-xl">🏅</span>
-                  <span className="text-xs tracking-[0.15em]">CLAVARON</span>
+                  <span className="text-sm tracking-[0.15em]">CLAVARON</span>
                 </button>
                 <button
                   onClick={() => handleChoice(() => onPoseResult(involved, false))}
-                  className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-1 overflow-hidden text-sm bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
+                  className="relative flex-1 py-4 border-2 font-display tracking-[0.12em] uppercase transition-all duration-300 flex items-center justify-center overflow-hidden text-sm bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
                   <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
                   <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
                   <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
-                  <span className="text-xl">🍷</span>
-                  <span className="text-xs tracking-[0.15em]">NO CLAVARON</span>
+                  <span className="text-sm tracking-[0.15em]">NO CLAVARON</span>
                 </button>
               </>
             );
@@ -294,25 +404,25 @@ export function GameScreen({
           <>
             <button
               onClick={() => handleChoice(() => onCompleted())}
-              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+              disabled={!versusRevealed}
+              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-30 disabled:pointer-events-none"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
-              <span className="text-lg">🏅</span>
-              <span className="text-[0.65rem]">ADIVINÓ</span>
+              <span className="text-sm">ADIVINÓ</span>
             </button>
             <button
               onClick={() => handleChoice(() => onDrank())}
-              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
+              disabled={!versusRevealed}
+              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-30 disabled:pointer-events-none"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
               <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
-              <span className="text-lg">🍷</span>
-              <span className="text-[0.65rem]">NO ADIVINÓ</span>
+              <span className="text-sm">NO ADIVINÓ</span>
             </button>
           </>
         ) : (
@@ -320,26 +430,24 @@ export function GameScreen({
           <>
             <button
               onClick={() => handleChoice(() => onCompleted(isWithPartner && versusPlayer ? versusPlayer : undefined))}
-              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
+              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#2a1f00] via-[#1a1200] to-[#0e0c08] border-[#C9A84C]/70 text-[#F0D98A] hover:border-[#E8C84A] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#C9A84C]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#C9A84C]/70 pointer-events-none" />
-              <span className="text-lg">🏅</span>
-              <span className="text-[0.65rem]">{isPicante ? "SAFÓ" : isWithPartner ? "CUMPLIERON" : "CUMPLIÓ"}</span>
+              <span className="text-sm">{isPicante ? "SAFÓ" : isWithPartner ? "CUMPLIERON" : "CUMPLIÓ"}</span>
             </button>
 
             <button
               onClick={() => handleChoice(() => onDrank(isWithPartner && versusPlayer ? versusPlayer : undefined))}
-              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex flex-col items-center justify-center gap-0.5 overflow-hidden bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
+              className="relative flex-1 py-3 border-2 font-display tracking-[0.15em] uppercase transition-all duration-300 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1a0a0a] via-[#220e0e] to-[#0e0808] border-[#8B2020]/70 text-[#FF6B6B] hover:border-[#C03030] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="absolute top-[5px] left-[5px] w-2.5 h-2.5 border-t-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
               <span className="absolute top-[5px] right-[5px] w-2.5 h-2.5 border-t-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] left-[5px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#8B2020]/70 pointer-events-none" />
               <span className="absolute bottom-[5px] right-[5px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#8B2020]/70 pointer-events-none" />
-              <span className="text-lg">🍷</span>
-              <span className="text-[0.65rem]">{isWithPartner ? "TOMARON" : "TOMÓ"}</span>
+              <span className="text-sm">{isWithPartner ? "TOMARON" : "TOMÓ"}</span>
             </button>
           </>
         )}

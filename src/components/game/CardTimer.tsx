@@ -50,12 +50,14 @@ export function CardTimer({ duration, accentColor, large = false, tickVolumeScal
     setRemaining(duration);
     setStatus("running");
     onRunningChange?.(true);
+    if (large) audioManager.playBastaPress();
     startInterval();
   };
 
   // Modo BASTA: reinicia y arranca de inmediato sin animación
   const handlePress = () => {
     audioManager.stopTimerTick();
+    audioManager.playBastaPress();
     setRemaining(duration);
     startInterval();
   };

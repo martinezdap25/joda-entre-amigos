@@ -56,9 +56,9 @@ export const CATEGORY_CONFIG: Record<CardCategory, CategoryConfig> = {
   BASTA: {
     label: "¡BASTA!",
     emoji: "⏱️",
-    color: "#C9A84C",
-    bgGlow: "rgba(201,168,76,0.15)",
-    tailwindColor: "brand-gold",
+    color: "#00E676",
+    bgGlow: "rgba(0,230,118,0.15)",
+    tailwindColor: "brand-green",
     points: 2,
     isGroupCard: true,
   },
